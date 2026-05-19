@@ -117,26 +117,26 @@
             margin: 26px auto;
         }
 
-        /* The Moving SuperDisc Blue & Yellow Awning Marquee Engine */
+        /* The Moving Sovereign Tricolor Awning Marquee Engine */
         @keyframes ants-roll {
             0% { background-position: 0 0; }
-            100% { background-position: 56px 0; }
+            100% { background-position: 72px 0; }
         }
 
         .awning-marquee {
             padding: 12px;
+            /* Balanced three-color matrix mapping to the official sovereign hex tokens */
             background-image: linear-gradient(
                 -45deg, 
-                #0033aa 25%, 
-                #ffcc00 25%, 
-                #ffcc00 50%, 
-                #0033aa 50%, 
-                #0033aa 75%, 
-                #ffcc00 75%, 
-                #ffcc00 100%
+                #00205B 0%, #00205B 16.6%, 
+                #FFCD00 16.6%, #FFCD00 33.3%, 
+                #C8102E 33.3%, #C8102E 50%,
+                #00205B 50%, #00205B 66.6%,
+                #FFCD00 66.6%, #FFCD00 83.3%,
+                #C8102E 83.3%, #C8102E 100%
             );
-            background-size: 56px 56px;
-            animation: ants-roll 1.31s linear infinite; /* Tempo-locked tracking speed */
+            background-size: 72px 72px; /* Mathematically adjusted for crisp integer color divisions */
+            animation: ants-roll 1.5s linear infinite; /* Smooth, tempo-matched rotation */
             border-radius: 8px;
         }
 
