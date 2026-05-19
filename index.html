@@ -94,6 +94,11 @@
         <img class="mouse-icon" src="https://raw.githubusercontent.com/gsnoopy/react-old-icons/main/Icons/IntelliPoint2.webp" alt="Chad, Default, PARFAIT" />
 
         <p>You may also call the "Default" template or "PARFAIT" (Pedigree Apogee Repartee Filigree Attaché Illustré Trophée).</p>
+        
+        <h3>Examples</h3>
+        <ul>
+            <li>TODO: flex grid of ~4 EXIF-purged pics: iPad + Android TV showing different releases with censored titles.</li>
+        </ul>
 
         <h3>Name Template</h3>
         <div class="template-card">
@@ -139,13 +144,8 @@
             <li>Easily customized service provider emojis/colors (see below).</li>
             <li>Thoroughly tested and tweaked/tricked out.</li>
         </ul>
-
-        <h3>Further Customization</h3>
-        <p>Change as you please. The concept is as follows.</p>
-        <ul>
-            <li>Don’t want to see “release” info that appears in the last row? Delete <code class="inline-label">{stream.repack</code> onward, omitting the message portion.</li>
-            <li>Don’t want to see HEVC/AVC, etc. due to little variety and relevance to the layman viewer? Delete the relevant portion; hint: <code class="inline-label">{stream.encode}</code>.</li>
-        </ul>
+        
+        <h3>Name Template</h3>
 
         <h4>Services</h4>
         <ul>
@@ -154,18 +154,86 @@
             <li><code class="inline-label">⬜️</code> = Other (hint: heart emojis offer the greatest color variation of all emojis to date)</li>
         </ul>
 
-        <h4>English Emoji</h4>
+        <h4>Cached/Uncached</h4>
         <ul>
+            <li><code class="inline-label">▶</code> = Cached (ready to play); appears next to the service, e.g., <code class="inline-label">🟦</code> RD ▶</li>
+            <li><code class="inline-label">▼</code> = Uncached (not ready to play/download required); appears next to the service, e.g., <code class="inline-label">🟦</code> RD ▼</li>
+        </ul>
+
+        <h4>Score</h4>
+        <ul>
+            <li><code class="inline-label">👑 S | 100</code> = A top-quality anime release (per SeaDex) that preserves original artwork/artistic vision; not upscaled</li>
+            <li><code class="inline-label">👑 A+ | 100</code> = A top-quality release (per Tamtaro's SEL)</li>
+            <li><code class="inline-label">📊 A | 99</code> = A less than top-quality release (per Tamtaro's SEL); scores use academic format</li>
+            <li>Good releases are sometimes scored low&mdash;Tamtaro's method does a fine job, but is not inclusive of considering all potential quality metrics.</li>
+        </ul>
+        
+        <h4>Resolution</h4>
+        <ul>
+            <li><code class="inline-label">🤩 4K/UHD</code> = Highest resolution currently available in mass production</li>
+            <li>Smiley emojis (<code class="inline-label">😍</code>, <code class="inline-label">😎</code>, <code class="inline-label">🙂</code>) are used for lesser reoslutions until <code class="inline-label">📺 SD</code>, <code class="inline-label"></code>📟 LD</code>, and <code class="inline-label">❔ UNK</code> (unknown).</li>
+        </ul>
+
+        <h4>Visual Qualities/Tags</h4>
+        <ul>
+            <li><code class="inline-label">💎 DV</code> = Dolby Vision</li>
+            <li><code class="inline-label">💎 HDR</code> = High Dynamic Range</code></li>
+            <li><code class="inline-label">Other visual tags exist and they are also prefixed with a <code class="inline-label">💎</code>. Some devices cannot properly display DV files.</li>
+        </ul>
+
+        <h3>Description Template</h3>
+        
+        <h4>Release Title, Year &amp; Season/Episode</h4>
+        <ul>
+            <li><code class="inline-label">🍿 Release Title (2026) | S1E1</code> = should be self-explanatory; movies don't have season or episode counts, FYI</li>
+        </ul>
+
+        <h4>Quality/Source Material &amp; Encoding Format</h4>
+        <ul>
+            <li><code class="inline-label">🎞️ REMUX ∙ HEVC</code> = REMUX files are typically 60GB+ and should only be used by sufficiently capable devices and internet plans. WEB and other source material is self-explanatory. HEVC/AVC/etc. is typically neglible/safe to ignore. AV1, however, is newer and currently less viable on some devices.</li>
+        </ul>
+
+        <h4>Audio Formats/Tags &amp; Channels</h4>
+        <ul>
+            <li><code class="inline-label">🔊 Atmos TrueHD DD+ ∙ 7.1 5.1 2.1</code> = audio format/technology for those with capable equipment followed by the number of audio channels, ordered from greatest to least. Truncation (... marks) may occur when many formats are available. Truncation intentionally occurs separately to provide a larger picture of available formats.</li>
+        </ul>
+
+        <h4>Languages</h4>
+        <ul>
+            <li><code class="inline-label">🌐</code> = available languages depicted as flags. Self-explanatory. <code class="inline-label">DUAL</code> represents Dual Audio. Similar shortening of audio tags also exist. The Mexican flag represents Latin America because corporate AI says it's the most recognizable Spanish-speaking Latin American flag. Got a problem? Fight AI about it and enjoy the dodging/descalation maneuvers. It's one Earth, anyway, and all the lines are imaginary.</li>
+        </ul>
+
+        <h4>Subtitles</h4>
+        <ul>
+            <li><code class="inline-label">💬</code> = available subtitles depicted as flags. Self-explanatory. Quite similar to language display. Look, like I told you in languages, if you are sailing the high seas, a port is a port, land mass or computer class. Names and numbers may change, but what prevails is what counts.</li>
+        </ul>        
+
+        <h4>File Info</h4>
+        <ul>
+            <li><code class="inline-label">📦</code> = file size (typically GB)&mdash;watch this value if your internet plan is slow or has limited data, your WiFi is poor, or your device is slow. Bitrate&mdash;a visual fidelity metric (some encoders are more efficient than others. The remainder on this row are "stats for nerds" and typically have to do with P2P activity, which you shouldn't bother with unless you know what you're doing. Anyway, the XXX)
+        </ul>
+
+        <h4>Forbidden Treasures</h4>
+        <ul>
+            <li>This row deals with high seas plunder. You've got repack, </li>
+        </ul>
+
+        <h3>Further Customization</h3>
+        <p>Change as you please. The concept is as follows.</p>
+        <ul>
+            <li>Don’t want to see "release" info that appears in the last row? Delete <code class="inline-label">{stream.repack</code> onward, omitting the message portion.</li>
+            <li>Don’t want to see HEVC/AVC, etc. due to little variety and relevance to the layman viewer? Delete the relevant portion; hint: <code class="inline-label">{stream.encode}</code>.</li>
             <li>Prefer <code class="inline-label">🇬🇧</code> over <code class="inline-label">🇺🇸</code> for audio and subtitles? Remove <code class="inline-label">::replace('🇬🇧', '🇺🇸')</code> in both places.</li>
         </ul>
 
         <h3>Notes</h3>
         <ul>
             <li>The AIOStreams Formatter is limited. Workarounds are necessary to create pleasing results. For example, <code class="inline-label">{streams.editions}</code> is an array, yet four booleans (<code class="inline-label">{stream.upscaled}, {stream.regraded}, {stream.uncensored}, {stream.unrated}</code>) exist for qualities of a similar nature. Consequentially, the join() array modifier (used for cleanly displaying array contents with non-orphaned separators), cannot be used on these booleans the same way as <code class="inline-label">{streams.editions}</code>. Therefore, careful workarounds (as I have done) are required.</li>
-            <li>A popular streaming app provides two columns with only so many rows, each of the same limited length for media information display. Truncation occurs in excess. Any good Formatter template will attempt to maximize displayed media information without truncation. As such, when duration/<code class="inline-label">{stream.duration}</code> does not exist, this affords an extra row that is used to display those edition and boolean qualifiers, should they exist, and if so, they appear on their own row prefixed with <code class="inline-label">⭐️</code>. Conversely, should duration/<code class="inline-label">{stream.duration}</code> exist as well as one or more of those qualifiers, the qualifiers are displayed to the right of the duration text after a <code class="inline-label">|</code> (pipe), rather than a <code class="inline-label">⭐️</code> (as to preserve my rule that emojis are to be limited to the first character of each row except for the bottom-most “release” row). Why? Arguably, the qualifier information is somewhat neglible to the average viewer. Also, multiple qualifiers for the same media rarely exist in the wild. Secondly, preserving an extra row where possible is preferred. Thirdly, the duration text is always relatively short and affords room to the right. You may infer this is also why four-letter abbreviations are used for the various qualifiers—there is the possibility many may apply to certain media, even if exceedingly rare.</li>
+            <li>A popular streaming app provides two columns with only so many rows, each of the same limited length for media information display. Truncation occurs in excess. Any good Formatter template will attempt to maximize displayed media information without truncation. As such, when duration/<code class="inline-label">{stream.duration}</code> does not exist, this affords an extra row that is used to display those edition and boolean qualifiers, should they exist, and if so, they appear on their own row prefixed with <code class="inline-label">⭐️</code>. Conversely, should duration/<code class="inline-label">{stream.duration}</code> exist as well as one or more of those qualifiers, the qualifiers are displayed to the right of the duration text after a <code class="inline-label">|</code> (pipe), rather than a <code class="inline-label">⭐️</code> (as to preserve my rule that emojis are to be limited to the first character of each row except for the bottom-most "release" row). Why? Arguably, the qualifier information is somewhat neglible to the average viewer. Also, multiple qualifiers for the same media rarely exist in the wild. Secondly, preserving an extra row where possible is preferred. Thirdly, the duration text is always relatively short and affords room to the right. You may infer this is also why four-letter abbreviations are used for the various qualifiers—there is the possibility many may apply to certain media, even if exceedingly rare.</li>
+            <li>On that note, you may notice <code class="inline-label">IMAX</code> appears in both <code class="inline-label">{stream.editions}</code>&mdash;again, not my design&mdash;the current AIOStreams design&mdash;perhaps because in some instances, IMAX source material quality intentionally is not transfer to the resulting release.</li>
         </ul>
 
-        <p style="margin-top: 42px; font-weight: 700;">…Bon appétit!</p>
+        <p style="margin-top: 42px; font-weight: 700;">...Bon appétit!</p>
         <p>~ Chad/Default/PARFAIT 🍨</p>
 
     </div>
