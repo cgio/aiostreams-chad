@@ -41,8 +41,8 @@
         button, pre { -webkit-user-select: none; user-select: none; }
 
         /* --- THE PHI / GOLDEN RATIO GEOMETRY ENGINE --- */
-        /* Reduced bottom margin from 42px to 16px to eliminate the loose-change cavity */
-        .container { max-width: 800px; margin: 42px auto 16px auto; padding: 0 26px; }
+        /* Balanced perfectly at 26px top and bottom to equalize vertical volume */
+        .container { max-width: 800px; margin: 26px auto; padding: 0 26px; }
 
         h1 { font-size: 42px; margin-bottom: 26px; letter-spacing: -0.5px; }
         h1 a { color: #111111; }
@@ -56,21 +56,28 @@
         .template-card { position: relative; margin: 26px 0; border: 1px solid #83007f; border-radius: 8px; background-color: #fafafa; overflow: hidden; }
         pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 11px; padding: 26px; max-height: 260px; overflow-y: auto; white-space: pre-wrap; word-break: break-all; color: #222222; -webkit-user-select: text; user-select: text; }
 
-        /* Apple-Standard 44px Interaction Target Minimal Minimum */
         .copy-btn { position: absolute; top: 16px; right: 16px; min-height: 44px; min-width: 72px; padding: 0 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer; background-color: #83007f; color: #ffffff; border: 1px solid #83007f; border-radius: 6px; transition: all 0.15s ease-in-out; z-index: 10; }
         .copy-btn:hover { background-color: #d300cd; border-color: #d300cd; }
         .copy-btn:active { background-color: #50004e; border-color: #50004e; }
-        /* Cleaned up to use a strict 256-color compliant retro index green */
         .copy-btn.success { background-color: #00ff00; border-color: #00ff00; color: #000000; }
 
         /* --- VISUAL INTERRUPTS & RESPONSIVE RECTANGLES --- */
         .media-wrapper { width: 100%; max-width: 600px; margin: 42px auto; }
         .video-container { width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 
-        /* Morphogenetic Scalar Effect applied: 16px scaled by phi^2 to approx 42px */
-        .fruit-divider { text-align: center; margin: 42px auto; font-size: 42px; line-height: 1; }
-        .mouse-icon { width: 128px; height: 128px; margin: 26px 0; }
+        /* --- THE CASHEW-FAMILY ANTI-CONTAMINATION FLEX GRID --- */
+        .fruit-divider { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 16px; /* Fibonacci step prevents horizontal and vertical contact */
+            margin: 42px auto; 
+            font-size: 42px; 
+            line-height: 1; 
+        }
+        .fruit-item { display: inline-block; padding: 4px; }
 
+        .mouse-icon { width: 128px; height: 128px; margin: 26px 0; }
         code.inline-label { font-family: monospace; background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
   </style>
 </head>
@@ -106,7 +113,9 @@
             </div>
         </div>
 
-        <div class="fruit-divider">🥭 🍎 🍐 🍊 🍋 🍌 🍉 🍏 🍇 🍓 🫐 🍈 🍒 🍑 🍍 🥥 🥝</div>
+        <div class="fruit-divider">
+            <span class="fruit-item">🥭</span><span class="fruit-item">🍎</span><span class="fruit-item">🍐</span><span class="fruit-item">🍊</span><span class="fruit-item">🍋</span><span class="fruit-item">🍌</span><span class="fruit-item">🍉</span><span class="fruit-item">🍏</span><span class="fruit-item">🍇</span><span class="fruit-item">🍓</span><span class="fruit-item">🫐</span><span class="fruit-item">🍈</span><span class="fruit-item">🍒</span><span class="fruit-item">🍑</span><span class="fruit-item">🍍</span><span class="fruit-item">🥥</span><span class="fruit-item">🥝</span>
+        </div>        
 
         <h3>Requirements</h3>
         <ul>
