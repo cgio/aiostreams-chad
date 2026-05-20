@@ -192,6 +192,50 @@
         .placard-tilt-2 .placard-face { animation: placard-wobble-2 0.28s ease-in-out infinite; }
         .placard-fly-out { animation: placard-tumble-exit 2.4s ease-in-out forwards; pointer-events: none; }
 
+        /* --- MIRE BIFURCATION SCAN EYE COMPONENT --- */
+        .telemetry-eye {
+            position: relative;
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            margin-left: 10px;
+            border: 1px solid #1a1005;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+            vertical-align: middle;
+            transform: translate3d(0, 0, 0); /* Secure hardware acceleration layer */
+        }
+
+        .eye-iris {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #111111;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+            transition: transform 0.1s ease-out;
+            animation: eye-coordinate-scan 7s ease-in-out infinite;
+        }
+
+        /* Ambient Scanning Matrix: Inspecting layout width anomalies */
+        @keyframes eye-coordinate-scan {
+            0%, 100% { transform: translate(0, 0); }       /* Focus dead-center at operator */
+            12%, 24% { transform: translate(-3px, 0); }    /* Scanning left toward column scores */
+            32%, 40% { transform: translate(3px, -2px); }  /* Inspecting top H1 text wrap boundaries */
+            52%, 64% { transform: translate(0, 3px); }     /* Looking down at copy interaction templates */
+            72%, 88% { transform: translate(-2px, 2px); }  /* Telemetry tracking coordinate inputs */
+        }
+
+        /* Interrupt Protocol: Force immediate tracking freeze when instability increments */
+        .placard-tilt-1 .eye-iris, 
+        .placard-tilt-2 .eye-iris {
+            animation: none !important;
+            transform: translate(0, 0) scale(1.2) !important; /* Iris expands slightly in panic */
+        }
+
         /* CHAD NATIONAL FLAG COLORS & YE OLDE TOWN SQUARE CANVAS FRUIT VENDOR MARQUEE */
         .cpug-vault {
             display: block;
@@ -247,6 +291,9 @@
             <div class="name-placard" id="warning-placard">
                 <div class="placard-face">
                     <span class="placard-text">⚠️ DO NOT TOUCH</span>
+                    <div class="telemetry-eye">
+                        <div class="eye-iris"></div>
+                    </div>
                 </div>
             </div>
         </div>
