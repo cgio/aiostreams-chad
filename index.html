@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Chad/Default/PARFAIT v1.0 AIOStreams Formatter Template | Chad G.</title>
+    <title>Chad/Default/PARFAIT v1.0 AIOStreams Formatter Template</title>
     <meta name="description" content="Official home of the Chad/Default/PARFAIT template for the AIOStreams Formatter. Comprehensive, high-density media info for power users. Ministry of Information, Rumors, &amp; Entrainment (MIRE)-approved.">
     <meta name="robots" content="index, follow">
 
@@ -27,6 +27,7 @@
     <meta name="twitter:image" content="./img/IntelliPoint2.webp">
 
     <style>
+
         /* --- THE CHAD AMALGAMATED CSS RESET --- */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { font-size: 16px; -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
@@ -46,6 +47,13 @@
         h1 { font-size: 42px; margin-bottom: 26px; letter-spacing: -0.5px; }
         h1 a { color: #111111; }
         h1 a:hover { text-decoration: none; color: #83007f; }
+        @media (max-width: 600px) {
+            h1 { 
+                font-size: 26px;
+                letter-spacing: -0.5px;
+                margin-bottom: 16px;
+            }
+        }
 
         h3 { font-size: 26px; margin-top: 42px; margin-bottom: 16px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
         p { font-size: 16px; margin-bottom: 16px; }
@@ -83,9 +91,9 @@
             cursor: pointer;
             transition: transform 0.15s ease-in-out, opacity 0.3s ease-out;
             transform-origin: bottom center;
-            -webkit-tap-highlight-color: transparent; /* Banishes the blue interaction box on touch */
-            -webkit-touch-callout: none;              /* Prevents callout menus on long press */
-            user-select: none;                        /* Disables standard selection artifacts */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            user-select: none;
         }
 
         code.inline-label { font-family: monospace; background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
@@ -118,12 +126,12 @@
             margin: 26px auto;
         }
 
-        /* Sovereign Chad Moving Awning Marquee Engine Restored */
         @keyframes ants-roll {
             0% { background-position: 0 0; }
             100% { background-position: 72px 0; }
         }
 
+        /* CHAD NATIONAL FLAG COLORS & YE OLDE TOWN SQUARE CANVAS FRUIT VENDOR MARQUEE */
         .awning-marquee {
             padding: 12px;
             background-image: linear-gradient(
@@ -138,17 +146,6 @@
             background-size: 72px 72px;
             animation: ants-roll 1.5s linear infinite;
             border-radius: 8px;
-        }
-
-
-
-        /* --- RESPONSIVE TYPOGRAPHY OVERRIDE --- */
-        @media (max-width: 600px) {
-            h1 { 
-                font-size: 26px; /* Scales smoothly to protect narrow mobile portrait boundaries */
-                letter-spacing: -0.5px;
-                margin-bottom: 16px;
-            }
         }
 
     </style>
