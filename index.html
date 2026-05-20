@@ -83,7 +83,11 @@
             cursor: pointer;
             transition: transform 0.15s ease-in-out, opacity 0.3s ease-out;
             transform-origin: bottom center;
+            -webkit-tap-highlight-color: transparent; /* Banishes the blue interaction box on touch */
+            -webkit-touch-callout: none;              /* Prevents callout menus on long press */
+            user-select: none;                        /* Disables standard selection artifacts */
         }
+
         code.inline-label { font-family: monospace; background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
 
         @keyframes sway-mild { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(10deg); } }
@@ -135,6 +139,18 @@
             animation: ants-roll 1.5s linear infinite;
             border-radius: 8px;
         }
+
+
+
+        /* --- RESPONSIVE TYPOGRAPHY OVERRIDE --- */
+        @media (max-width: 600px) {
+            h1 { 
+                font-size: 26px; /* Scales smoothly to protect narrow mobile portrait boundaries */
+                letter-spacing: -0.5px;
+                margin-bottom: 16px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -206,7 +222,7 @@
 
         <h3>Features</h3>
         <ul>
-            <li>A comprehensive, professional, and cohesive display of media information that retains legibility—satisfies neophytes through connoisseurs.</li>
+            <li>A comprehensive, professional, and cohesive display of media information that retains legibility&mdash;satisfies neophytes through connoisseurs.</li>
             <li>Easily read academic scoring: A+ (100), A (99-90), B (89-80), C (79-70), D (69-60), F (&lt;60).</li>
             <li>Easily customized service provider emojis/colors (see below).</li>
             <li>Thoroughly tested and tweaked/tricked out.</li>
@@ -280,7 +296,7 @@
             <li><code class="inline-label">📦 9GB</code> = file size (typically GB)&mdash;watch this value if your internet plan is slow or has limited data, your WiFi is poor, or your device is slow.</li>
             <li><code class="inline-label">20MBPS</code> = bitrate&mdash;a visual fidelity metric (some encoders are more efficient than others, however, so it's not always a perfect fidelity metric). Btw, the remainder on this row are "stats for nerds" and typically have to do with "peer" activity, which you shouldn't bother with unless you know what you're doing.</li>
             <li><code class="inline-label">10↑</code> = # of seeders&mdash;typically negligible unless you are sharing bytes with your peers, which I wouldn't advise when "DEB" and "USE" solutions exist.</li>
-            <li><code class="inline-label">PF⊕</code> = tracker type&mdash;in this example, both "P"/"private" and "F"/"freeleech" apply. Again, stats for nerds/power users/inside baseball.</li>
+            <li><code class="inline-label">PF⊕</code> = tracker type&mdash;in this example, both "P"/"private" and "F"/"freeleech" apply. Again, stats for nerds/power users/inside-baseball.</li>
             <li><code class="inline-label">100D</code> = # age in days&mdash;in this example, the contraband/treasure has been available for 100 days. Not really relevant to the layman who wants to know it's simply available.</li>
         </ul>
 
