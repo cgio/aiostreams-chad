@@ -373,7 +373,7 @@
             </div>
         </div>
 
-        <p class="fruit-caption">🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.s3m:::&nbsp;&darr;&nbsp;:::<span data-yt-id="309WIMZJQ4M">SHISHISHISHI</span>:::&nbsp;📡&nbsp;🏴‍☠️</p>
+        <p class="fruit-caption">🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.s3m:::&nbsp;&darr;&nbsp;:::<span data-yt-id="309WIMZJQ4M" style="cursor: pointer; text-decoration: underline;" class="track-trigger">SHISHISHISHI</span>:::&nbsp;📡&nbsp;🏴‍☠️</p>
 
         <div class="fruit-divider">
             <span class="fruit-item" data-yt-id="309WIMZJQ4M">🥭</span>
@@ -644,11 +644,16 @@
         const lightbox = document.getElementById('media-lightbox');
         const playerTarget = document.getElementById('lightbox-player-target');
         const closeBtn = document.getElementById('close-lightbox');
-        const fruitNodes = document.querySelectorAll('.fruit-item');
+        
+        // Universal Telemetry Target Sweep: Track any node carrying a valid video identifier
+        const mediaTriggers = document.querySelectorAll('[data-yt-id]');
 
-        fruitNodes.forEach(fruit => {
-            fruit.addEventListener('click', () => {
-                const videoId = fruit.getAttribute('data-yt-id');
+        mediaTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                // Prevent nested event bubbling from colliding with underlying container triggers
+                e.stopPropagation();
+                
+                const videoId = trigger.getAttribute('data-yt-id');
                 if (videoId) {
                     // Inject a clean iframe payload onto the screen layer safely on user request
                     playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
