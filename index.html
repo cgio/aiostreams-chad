@@ -126,66 +126,77 @@
         }
 
         /* --- WINAMP WINDOWS 95 SYSTEM TICKER ENGINE --- */
-        .ticker-window {
+        .marquee {
+            display: flex;
+            flex-direction: row;
             width: 100%;
-            max-width: 300px; /* Aligned with retro grid item footprint */
+            max-width: 300px; /* Locked precisely to your retro grid item footprint */
             margin: 26px auto;
-            overflow: hidden;
-            white-space: nowrap;
             background-color: #ffffe1; /* Vintage 16-bit Windows System Warning Yellow */
             border: 1px solid #d0d0d0; /* Matches your H3 divider metrics flawlessly */
             padding: 6px 0;
+            overflow: hidden;
             cursor: pointer;
             -webkit-user-select: none;
             user-select: none;
+            
+            /* CodePen Dynamic Pixel Velocity Variables */
+            --textWidth: 100; 
+            --animSpeed: 35; /* Adjusted down from 100 to achieve a smooth, unhurried retro pace */
         }
-
-        .ticker-track {
-            display: inline-block; /* Returns rail to a natural, fluid text pipeline */
-            white-space: nowrap;
-            padding-left: 0;
-            animation: winamp-asteroids-scroll 24s linear infinite;
+        
+        .marquee__content {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            /* Computes precise scroll duration based on physical text string pixel width */
+            animation: marquee-scroll calc( (var(--textWidth) * 1s) / var(--animSpeed) ) linear infinite;
         }
-
-        /* Standard Dark Windows Text String */
-        .ticker-text {
+        
+        .marquee__text {
+            display: block;
+            flex-shrink: 0;
+            flex-grow: 0;
+            margin: 0;
+            padding-right: 42px; /* Uniform spacing buffer between the loop sequences */
+            text-transform: uppercase;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
             font-size: 11px;
             font-weight: 700;
             color: #111111; /* Windows Default Dark Neutral Text */
-            text-transform: uppercase;
             letter-spacing: 0.5px;
-            display: inline-block;
-            padding-right: 64px; /* Crisp spatial gap before the mirror copy appears */
         }
-
+        
         /* Distinct Hyperlink Blue Link */
-        .ticker-text .track-trigger {
+        .marquee__text .track-trigger {
             color: #0000ee !important; /* System Blue */
             text-decoration: underline;
         }
         
-        .ticker-text .track-trigger:hover {
+        .marquee__text .track-trigger:hover {
             color: #551a8b !important; /* Traditional Visited/Active Purple state on hover */
         }
+        
+        .marquee__copies {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100%;
+            width: 0;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
 
-        /* Perfect Seamless Loop: Shifts exactly the length of one text node, then snaps back invisibly */
-        @keyframes winamp-asteroids-scroll {
-            0% { transform: translate3d(0, 0, 0); }
-            
-            /* Loops forward smoothly to the halfway mark */
-            40% { transform: translate3d(-50%, 0, 0); }
-            
-            /* Holds perfectly still for exactly 3.236 seconds (1.618 * 2) to read data coordinates */
-            40%, 53.5% { transform: translate3d(-50%, 0, 0); }
-            
-            /* Transitions cleanly into the identical mirror frame */
+        /* Seamless Pixels-to-Pixels Reset */
+        @keyframes marquee-scroll {
+            0%   { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* Touch & Mouse Hover Halt Engine */
-        .ticker-window:hover .ticker-track,
-        .ticker-window.manual-freeze .ticker-track {
+        /* Touch & Mouse Hover Halt Override Engine */
+        .marquee:hover .marquee__content,
+        .marquee.manual-freeze .marquee__content {
             animation-play-state: paused !important;
         }
 
@@ -437,14 +448,12 @@
             </div>
         </div>
 
-        <div class="ticker-window" id="winamp-ticker">
-            <div class="ticker-track">
-                <span class="ticker-text">
+        <div class="marquee" id="winamp-ticker">
+            <div class="marquee__content">
+                <p class="marquee__text">
                     🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
-                </span>
-                <span class="ticker-text">
-                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
-                </span>
+                </p>
+                <div class="marquee__copies" aria-hidden="true"></div>
             </div>
         </div>
 
@@ -743,12 +752,60 @@
         closeBtn.addEventListener('click', terminateLightboxStream);
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) terminateLightboxStream(); });
 
-        // --- TICKER TOUCH FREQUENCY FREEZE LOOP ---
-        const tickerWindow = document.getElementById('winamp-ticker');
+        // --- NATIVE VANILLA RETRO TICKER CLONING MATRIX ---
+        const tickerContainer = document.getElementById('winamp-ticker');
+        const marqueeContent = tickerContainer.querySelector('.marquee__content');
+        const marqueeText = tickerContainer.querySelector('.marquee__text');
+        const marqueeCopies = tickerContainer.querySelector('.marquee__copies');
+
+        function synchronizeMarqueeLayout() {
+            if (!tickerContainer || !marqueeText || !marqueeCopies) return;
+
+            // Gather structural viewport boundary metrics natively without heavy library dependencies
+            const containerWidth = tickerContainer.getBoundingClientRect().width || 300;
+            const textWidth = marqueeText.offsetWidth;
+            
+            if (textWidth === 0) return; // Safeguard if DOM layer hasn't initialized frame metrics yet
+
+            // Compute exact number of clones required to fill the window boundary + 1 buffer unit
+            const numberOfCopies = Math.ceil(containerWidth / textWidth) + 1;
+            
+            // Assign the text width to the CSS custom property pipeline to lock down animation speed ratios
+            tickerContainer.style.setProperty('--textWidth', textWidth);
+            
+            // Wipe any stale mirror clones from previous layout refreshes
+            marqueeCopies.innerHTML = "";
+            
+            // Inject the precise clone rail into the background track layer
+            for (let i = 0; i < numberOfCopies; i++) {
+                const cloneNode = marqueeText.cloneNode(true);
+                
+                // Re-bind click event tracking listeners to each fresh clone so they fire the lightbox natively
+                const linkTrigger = cloneNode.querySelector('.track-trigger');
+                if (linkTrigger) {
+                    linkTrigger.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const videoId = linkTrigger.getAttribute('data-yt-id');
+                        if (videoId && typeof lightbox !== 'undefined') {
+                            playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
+                            lightbox.style.display = 'flex';
+                        }
+                    });
+                }
+                marqueeCopies.appendChild(cloneNode);
+            }
+        }
+
+        // Initialize and lock listeners across system transformations
+        window.addEventListener('DOMContentLoaded', synchronizeMarqueeLayout);
+        window.addEventListener('resize', synchronizeMarqueeLayout);
         
+        // Execute an immediate second-pass frame pass to catch high-DPI tracking layouts perfectly
+        setTimeout(synchronizeMarqueeLayout, 200);
+
         // Forces mobile panels to lock the scroll animation frame instantly upon touch contact
-        tickerWindow.addEventListener('touchstart', () => { tickerWindow.classList.add('manual-freeze'); }, {passive: true});
-        tickerWindow.addEventListener('touchend', () => { setTimeout(() => { tickerWindow.classList.remove('manual-freeze'); }, 400); });
+        tickerContainer.addEventListener('touchstart', () => { tickerContainer.classList.add('manual-freeze'); }, {passive: true});
+        tickerContainer.addEventListener('touchend', () => { setTimeout(() => { tickerContainer.classList.remove('manual-freeze'); }, 400); });
 
     </script>
 </body>
