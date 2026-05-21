@@ -141,10 +141,10 @@
         }
 
         .ticker-track {
-            display: inline-flex; /* Establishes an un-breakable horizontal layout rail */
+            display: inline-flex; /* Hardlocks an un-breakable horizontal layout rail */
             white-space: nowrap;
-            /* Stretched timeline ensures smooth legibility across high-DPI panels */
-            animation: winamp-asteroids-scroll 20s linear infinite;
+            width: 200%; /* Declares absolute spatial width context for twin strings */
+            animation: winamp-asteroids-scroll 24s linear infinite;
         }
 
         /* Standard Dark Windows Text String */
@@ -156,7 +156,9 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: inline-block;
-            padding-right: 64px; /* Set solid spatial buffer between the mirror text loops */
+            width: 50%; /* Force each string block to occupy exactly half the flex rail */
+            padding-right: 32px; /* Set solid padding buffer before the mirror clone rolls in */
+            text-align: center;
         }
 
         /* Distinct Hyperlink Blue Link */
@@ -174,10 +176,10 @@
             0% { transform: translate3d(0, 0, 0); }
             
             /* Loops forward smoothly across the width of the primary text block */
-            50% { transform: translate3d(-50%, 0, 0); }
+            40% { transform: translate3d(-50%, 0, 0); }
             
             /* Holds perfectly still for exactly 3.236 seconds (1.618 * 2) to read data coordinates */
-            50%, 66.18% { transform: translate3d(-50%, 0, 0); }
+            40%, 53.5% { transform: translate3d(-50%, 0, 0); }
             
             /* Instantly resets to zero without a visual skip, running the text infinitely */
             100% { transform: translate3d(-100%, 0, 0); }
@@ -336,7 +338,7 @@
         .placard-tilt-1 .eye-iris, 
         .placard-tilt-2 .eye-iris {
             animation: none !important;
-            transform: translate(0, 0) scale(1.2) !important; /* Iris expands slightly in panic */
+            transform: translate(0, 0) scale(1.4) !important; /* Iris expands in panic */
         }
 
         /* CHAD NATIONAL FLAG COLORS & YE OLDE TOWN SQUARE CANVAS FRUIT VENDOR MARQUEE */
