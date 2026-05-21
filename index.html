@@ -125,6 +125,53 @@
             margin-bottom: 42px;
         }
 
+        /* --- WINAMP TERMINAL TICKER TAPE ENGINE --- */
+        .ticker-window {
+            width: 100%;
+            max-width: 300px; /* Aligned precisely with the retro asset grid items */
+            margin: 26px auto;
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: #15171a; /* Hardcoded terminal black */
+            border: 1px solid #83007f;
+            border-radius: 4px;
+            padding: 6px 0;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .ticker-track {
+            display: inline-block;
+            padding-left: 100%; /* Deliberate initial offset window */
+            animation: winamp-scroll 12s linear infinite;
+        }
+
+        /* Pure Bureaucratic Monospace Data Feed */
+        .ticker-text {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: #d300cd; /* High-visibility frequency violet */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+
+        /* Continuous Asteroids-Style Trajectory Loop with built-in reading intervals */
+        @keyframes winamp-scroll {
+            0% { transform: translate3d(0, 0, 0); }
+            /* Slides across the 300px grid mask */
+            45% { transform: translate3d(-100%, 0, 0); }
+            /* Pauses firmly for exactly 3.236 seconds (1.618 * 2) to allow human data decoding */
+            45%, 72% { transform: translate3d(-100%, 0, 0); }
+            /* Snaps back to start the next incoming transmission block seamlessly */
+            100% { transform: translate3d(-200%, 0, 0); }
+        }
+
+        /* Hover interaction: freezes the tracking tape instantly on inspector request */
+        .ticker-window:hover .ticker-track {
+            animation-play-state: paused;
+        }
+
         /* --- HARDWARE-ACCELERATED GYMNASTICS OVERRIDE --- */
         .mouse-icon {
             width: 128px;
@@ -373,7 +420,13 @@
             </div>
         </div>
 
-        <p class="fruit-caption">🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" style="cursor: pointer; text-decoration: underline;" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️</p>
+        <div class="ticker-window">
+            <div class="ticker-track">
+                <span class="ticker-text">
+                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" style="cursor: pointer; text-decoration: underline;" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
+                </span>
+            </div>
+        </div>
 
         <div class="fruit-divider">
             <span class="fruit-item" data-yt-id="309WIMZJQ4M">🥭</span>
@@ -536,7 +589,7 @@
         </ul>
         
         <p style="margin-top: 42px"><strong>...Bon appétit!</strong></p>
-        <p>~ Chad/Bonhomme/Arrayed Fruit Peddler 🍨</p>
+        <p>~ Chad/Bonhomme/Arrayed Fruit Peddler (AFP) #8585 🍨</p>
 
     </div>
 
