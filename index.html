@@ -134,7 +134,7 @@
             white-space: nowrap;
             background-color: #ffffe1; /* Vintage 16-bit Windows System Warning Yellow */
             border: 1px solid #7f7f7f; /* Clean, raw industrial border */
-            padding: 6px 0;
+            padding: 6px 12px;
             cursor: pointer;
             -webkit-user-select: none;
             user-select: none;
@@ -143,34 +143,43 @@
         .ticker-track {
             display: inline-block;
             white-space: nowrap;
-            /* Stretched timeline ensures smooth legibility across high-DPI panels */
-            animation: winamp-asteroids-scroll 24s linear infinite;
+            /* Doubled layout width context */
+            padding-left: 0;
+            animation: winamp-asteroids-scroll 18s linear infinite;
         }
 
-        /* High-Visibility Monospace Telemetry Data Feed */
+        /* Standard Dark Windows Text String */
         .ticker-text {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
             font-size: 11px;
             font-weight: 700;
-            color: #83007f; /* Sovereign MIRE Violet */
+            color: #111111; /* Windows Default Dark Neutral Text */
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: inline-block;
-            padding-right: 42px; /* Set exact spatial buffer between text loops */
+            padding-right: 50px; /* Precise layout spacing buffer between loops */
         }
 
-        /* Seamless Asteroids-Style Trajectory Loop with explicit Golden Ratio Reading Breaks */
+        /* Distinct Hyperlink Blue Link */
+        .ticker-text .track-trigger {
+            color: #0000ee !important; /* System Blue */
+            text-decoration: underline;
+        }
+        
+        .ticker-text .track-trigger:hover {
+            color: #551a8b !important; /* Traditional Visited/Active Purple state on hover */
+        }
+
+        /* Seamless Loop Transformation: Exactly half the total double-width track value */
         @keyframes winamp-asteroids-scroll {
             0% { transform: translate3d(0, 0, 0); }
-            /* Smooth translation across the first text segment */
-            40% { transform: translate3d(-50%, 0, 0); }
-            /* Holds perfectly still for exactly 3.236 seconds to allow human data decoding */
-            40%, 53.5% { transform: translate3d(-50%, 0, 0); }
-            /* Marches seamlessly forward into the mirror clone string */
+            35% { transform: translate3d(-50%, 0, 0); }
+            /* Holds perfectly still for exactly 3.236 seconds (1.618 * 2) to read data coordinates */
+            35%, 53% { transform: translate3d(-50%, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* Hover Halt Override: Hardcoded stasis thread */
+        /* Touch & Mouse Hover Halt Engine */
         .ticker-window:hover .ticker-track,
         .ticker-window.manual-freeze .ticker-track {
             animation-play-state: paused !important;
@@ -424,10 +433,13 @@
             </div>
         </div>
 
-        <div class="ticker-window">
+        <div class="ticker-window" id="winamp-ticker">
             <div class="ticker-track">
                 <span class="ticker-text">
-                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" style="cursor: pointer; text-decoration: underline;" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
+                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
+                </span>
+                <span class="ticker-text">
+                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
                 </span>
             </div>
         </div>
