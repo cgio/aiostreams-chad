@@ -141,9 +141,9 @@
         }
 
         .ticker-track {
-            display: inline-flex; /* Hardlocks an un-breakable horizontal layout rail */
+            display: inline-block; /* Returns rail to a natural, fluid text pipeline */
             white-space: nowrap;
-            width: 200%; /* Declares absolute spatial width context for twin strings */
+            padding-left: 0;
             animation: winamp-asteroids-scroll 24s linear infinite;
         }
 
@@ -156,9 +156,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: inline-block;
-            width: 50%; /* Force each string block to occupy exactly half the flex rail */
-            padding-right: 32px; /* Set solid padding buffer before the mirror clone rolls in */
-            text-align: center;
+            padding-right: 64px; /* Crisp spatial gap before the mirror copy appears */
         }
 
         /* Distinct Hyperlink Blue Link */
@@ -171,17 +169,17 @@
             color: #551a8b !important; /* Traditional Visited/Active Purple state on hover */
         }
 
-        /* Pure Architecture Asteroids Wrap Matrix */
+        /* Perfect Seamless Loop: Shifts exactly the length of one text node, then snaps back invisibly */
         @keyframes winamp-asteroids-scroll {
             0% { transform: translate3d(0, 0, 0); }
             
-            /* Loops forward smoothly across the width of the primary text block */
+            /* Loops forward smoothly to the halfway mark */
             40% { transform: translate3d(-50%, 0, 0); }
             
             /* Holds perfectly still for exactly 3.236 seconds (1.618 * 2) to read data coordinates */
             40%, 53.5% { transform: translate3d(-50%, 0, 0); }
             
-            /* Instantly resets to zero without a visual skip, running the text infinitely */
+            /* Transitions cleanly into the identical mirror frame */
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
