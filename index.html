@@ -82,12 +82,13 @@
         @media (max-width: 600px) { .screenshot-item { flex: 1 1 100%; max-width: 100%; } }
 
         /* --- THE CASHEW-FAMILY ANTI-CONTAMINATION FLEX GRID --- */
+        /* --- AKA THE UNIFIED MULTIMEDIA TYPOGRAPHIC ENGINE --- */
         .fruit-divider { 
             display: flex; 
             flex-wrap: wrap; 
             justify-content: center; 
             gap: 16px; 
-            margin: 42px auto 16px auto; 
+            margin: 26px auto;
             font-size: 42px; 
             line-height: 1; 
         }
@@ -101,11 +102,9 @@
             transition: transform 0.1s ease-out;
         }
         
-        .fruit-item:active {
-            transform: scale(1.2); /* Tactile click feedback engine */
-        }
+        .fruit-item:active { transform: scale(1.2); }
 
-        /* Pure Bureaucratic Micro-Typography Callout */
+        /* Symmetrical Micro-Typography Callouts */
         .fruit-caption {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
             font-size: 11px;
@@ -114,11 +113,16 @@
             text-align: center;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            margin-bottom: 42px;
+            margin: 0 auto;
             padding: 0 26px;
             opacity: 0.8;
-            -webkit-user-select: none;
             user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        /* Structural spatial padding applied specifically to the bottom callout */
+        .caption-bottom {
+            margin-bottom: 42px;
         }
 
         /* --- HARDWARE-ACCELERATED GYMNASTICS OVERRIDE --- */
@@ -127,7 +131,6 @@
             height: 128px;
             margin: 26px 0;
             cursor: pointer;
-            /* Force independent 3D rendering context instantly */
             transform: translate3d(0, 0, 0);
             transform-origin: bottom center;
             transition: transform 0.15s ease-in-out, opacity 0.3s ease-out;
