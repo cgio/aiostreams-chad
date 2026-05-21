@@ -82,8 +82,44 @@
         @media (max-width: 600px) { .screenshot-item { flex: 1 1 100%; max-width: 100%; } }
 
         /* --- THE CASHEW-FAMILY ANTI-CONTAMINATION FLEX GRID --- */
-        .fruit-divider { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 42px auto; font-size: 42px; line-height: 1; }
-        .fruit-item { display: inline-block; padding: 4px; }
+        .fruit-divider { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 16px; 
+            margin: 42px auto 16px auto; 
+            font-size: 42px; 
+            line-height: 1; 
+        }
+        
+        .fruit-item { 
+            display: inline-block; 
+            padding: 4px; 
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            transition: transform 0.1s ease-out;
+        }
+        
+        .fruit-item:active {
+            transform: scale(1.2); /* Tactile click feedback engine */
+        }
+
+        /* Pure Bureaucratic Micro-Typography Callout */
+        .fruit-caption {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: #83007f;
+            text-align: center;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 42px;
+            padding: 0 26px;
+            opacity: 0.8;
+            -webkit-user-select: none;
+            user-select: none;
+        }
 
         /* --- HARDWARE-ACCELERATED GYMNASTICS OVERRIDE --- */
         .mouse-icon {
@@ -335,8 +371,32 @@
         </div>
 
         <div class="fruit-divider">
-            <span class="fruit-item">🥭</span><span class="fruit-item">🍎</span><span class="fruit-item">🍐</span><span class="fruit-item">🍊</span><span class="fruit-item">🍋</span><span class="fruit-item">🍌</span><span class="fruit-item">🍉</span><span class="fruit-item">🍏</span><span class="fruit-item">🍇</span><span class="fruit-item">🍓</span><span class="fruit-item">🫐</span><span class="fruit-item">🍈</span><span class="fruit-item">🍒</span><span class="fruit-item">🍑</span><span class="fruit-item">🍍</span><span class="fruit-item">🥥</span><span class="fruit-item">🥝</span>
+            <span class="fruit-item" data-yt-id="iCW2_qSFOs4">🥭</span>
+            <span class="fruit-item" data-yt-id="">🍎</span>
+            <span class="fruit-item" data-yt-id="">🍐</span>
+            <span class="fruit-item" data-yt-id="">🍊</span>
+            <span class="fruit-item" data-yt-id="">🍋</span>
+            <span class="fruit-item" data-yt-id="">🍌</span>
+            <span class="fruit-item" data-yt-id="">🍉</span>
+            <span class="fruit-item" data-yt-id="">🍏</span>
+            <span class="fruit-item" data-yt-id="">🍇</span>
+            <span class="fruit-item" data-yt-id="">🍓</span>
+            <span class="fruit-item" data-yt-id="">🫐</span>
+            <span class="fruit-item" data-yt-id="">🍈</span>
+            <span class="fruit-item" data-yt-id="">🍒</span>
+            <span class="fruit-item" data-yt-id="">🍑</span>
+            <span class="fruit-item" data-yt-id="">🍍</span>
+            <span class="fruit-item" data-yt-id="">🥥</span>
+            <span class="fruit-item" data-yt-id="">🥝</span>
         </div>        
+        <p class="fruit-caption">&uarr; Click a fruit and sink your ears into delectable, sonic delight! &uarr;</p>
+
+        <div id="media-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+            <div style="position: relative; width: 90%; max-width: 640px; aspect-ratio: 16/9; background-color: #15171a; border: 1px solid #83007f; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <button id="close-lightbox" style="position: absolute; top: 10px; right: 10px; min-height: 44px; min-width: 44px; background-color: #83007f; color: #ffffff; border: none; border-radius: 50%; font-weight: bold; cursor: pointer; z-index: 10000; font-family: monospace; font-size: 14px;">X</button>
+                <div id="lightbox-player-target" style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
 
         <h3>Requirements</h3>
         <ul>
@@ -572,6 +632,31 @@
                 wrapperElement.style.height = '0';
             }
         }
+
+        // --- MIRE LIGHTBOX INTERCEPT MATRIX ---
+        const lightbox = document.getElementById('media-lightbox');
+        const playerTarget = document.getElementById('lightbox-player-target');
+        const closeBtn = document.getElementById('close-lightbox');
+        const fruitNodes = document.querySelectorAll('.fruit-item');
+
+        fruitNodes.forEach(fruit => {
+            fruit.addEventListener('click', () => {
+                const videoId = fruit.getAttribute('data-yt-id');
+                if (videoId) {
+                    // Inject a clean iframe payload onto the screen layer safely on user request
+                    playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
+                    lightbox.style.display = 'flex';
+                }
+            });
+        });
+
+        function terminateLightboxStream() {
+            lightbox.style.display = 'none';
+            playerTarget.innerHTML = ''; // Clear frame context instantly to terminate audio threads
+        }
+
+        closeBtn.addEventListener('click', terminateLightboxStream);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) terminateLightboxStream(); });
     </script>
 </body>
 </html>
