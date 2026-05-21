@@ -125,51 +125,55 @@
             margin-bottom: 42px;
         }
 
-        /* --- WINAMP TERMINAL TICKER TAPE ENGINE --- */
+        /* --- WINAMP WINDOWS 95 SYSTEM TICKER ENGINE --- */
         .ticker-window {
             width: 100%;
-            max-width: 300px; /* Aligned precisely with the retro asset grid items */
+            max-width: 300px; /* Aligned with retro grid item footprint */
             margin: 26px auto;
             overflow: hidden;
             white-space: nowrap;
-            background-color: #15171a; /* Hardcoded terminal black */
-            border: 1px solid #83007f;
-            border-radius: 4px;
+            background-color: #ffffe1; /* Vintage 16-bit Windows System Warning Yellow */
+            border: 1px solid #7f7f7f; /* Clean, raw industrial border */
             padding: 6px 0;
-            box-shadow: inset 0 2px 6px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.05);
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         .ticker-track {
             display: inline-block;
-            padding-left: 100%; /* Deliberate initial offset window */
-            animation: winamp-scroll 12s linear infinite;
+            white-space: nowrap;
+            /* Stretched timeline ensures smooth legibility across high-DPI panels */
+            animation: winamp-asteroids-scroll 24s linear infinite;
         }
 
-        /* Pure Bureaucratic Monospace Data Feed */
+        /* High-Visibility Monospace Telemetry Data Feed */
         .ticker-text {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
             font-size: 11px;
             font-weight: 700;
-            color: #d300cd; /* High-visibility frequency violet */
+            color: #83007f; /* Sovereign MIRE Violet */
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: inline-block;
+            padding-right: 42px; /* Set exact spatial buffer between text loops */
         }
 
-        /* Continuous Asteroids-Style Trajectory Loop with built-in reading intervals */
-        @keyframes winamp-scroll {
+        /* Seamless Asteroids-Style Trajectory Loop with explicit Golden Ratio Reading Breaks */
+        @keyframes winamp-asteroids-scroll {
             0% { transform: translate3d(0, 0, 0); }
-            /* Slides across the 300px grid mask */
-            45% { transform: translate3d(-100%, 0, 0); }
-            /* Pauses firmly for exactly 3.236 seconds (1.618 * 2) to allow human data decoding */
-            45%, 72% { transform: translate3d(-100%, 0, 0); }
-            /* Snaps back to start the next incoming transmission block seamlessly */
-            100% { transform: translate3d(-200%, 0, 0); }
+            /* Smooth translation across the first text segment */
+            40% { transform: translate3d(-50%, 0, 0); }
+            /* Holds perfectly still for exactly 3.236 seconds to allow human data decoding */
+            40%, 53.5% { transform: translate3d(-50%, 0, 0); }
+            /* Marches seamlessly forward into the mirror clone string */
+            100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* Hover interaction: freezes the tracking tape instantly on inspector request */
-        .ticker-window:hover .ticker-track {
-            animation-play-state: paused;
+        /* Hover Halt Override: Hardcoded stasis thread */
+        .ticker-window:hover .ticker-track,
+        .ticker-window.manual-freeze .ticker-track {
+            animation-play-state: paused !important;
         }
 
         /* --- HARDWARE-ACCELERATED GYMNASTICS OVERRIDE --- */
@@ -451,10 +455,14 @@
         
         <p class="fruit-caption">💥&nbsp;&uarr;&nbsp;Click a fruit and sink your ears into delectable, sonic delight!&nbsp;&uarr;&nbsp;💥</p>
 
-        <div id="media-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
-            <div style="position: relative; width: 90%; max-width: 640px; aspect-ratio: 16/9; background-color: #15171a; border: 1px solid #83007f; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                <button id="close-lightbox" style="position: absolute; top: 10px; right: 10px; min-height: 44px; min-width: 44px; background-color: #83007f; color: #ffffff; border: none; border-radius: 50%; font-weight: bold; cursor: pointer; z-index: 10000; font-family: monospace; font-size: 14px;">X</button>
-                <div id="lightbox-player-target" style="width: 100%; height: 100%;"></div>
+        <div class="ticker-window" id="winamp-ticker">
+            <div class="ticker-track">
+                <span class="ticker-text">
+                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" style="cursor: pointer; text-decoration: underline;" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
+                </span>
+                <span class="ticker-text">
+                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" style="cursor: pointer; text-decoration: underline;" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
+                </span>
             </div>
         </div>
         
@@ -722,6 +730,14 @@
 
         closeBtn.addEventListener('click', terminateLightboxStream);
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) terminateLightboxStream(); });
+
+        // --- TICKER TOUCH FREQUENCY FREEZE LOOP ---
+        const tickerWindow = document.getElementById('winamp-ticker');
+        
+        // Forces mobile panels to lock the scroll animation frame instantly upon touch contact
+        tickerWindow.addEventListener('touchstart', () => { tickerWindow.classList.add('manual-freeze'); }, {passive: true});
+        tickerWindow.addEventListener('touchend', () => { setTimeout(() => { tickerWindow.classList.remove('manual-freeze'); }, 400); });
+
     </script>
 </body>
 </html>
