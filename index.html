@@ -133,17 +133,18 @@
             overflow: hidden;
             white-space: nowrap;
             background-color: #ffffe1; /* Vintage 16-bit Windows System Warning Yellow */
-            border: 1px solid #7f7f7f; /* Clean, raw industrial border */
-            padding: 6px 12px;
+            border: 1px solid #d0d0d0; /* Matches your H3 divider metrics flawlessly */
+            padding: 6px 0;
             cursor: pointer;
             -webkit-user-select: none;
             user-select: none;
         }
 
         .ticker-track {
-            display: inline-block;
+            display: inline-flex; /* Establishes an un-breakable horizontal layout rail */
             white-space: nowrap;
-            animation: winamp-asteroids-scroll 22s linear infinite;
+            /* Stretched timeline ensures smooth legibility across high-DPI panels */
+            animation: winamp-asteroids-scroll 20s linear infinite;
         }
 
         /* Standard Dark Windows Text String */
@@ -155,7 +156,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: inline-block;
-            padding-right: 50px; /* Symmetrical spatial buffer before the mirror clone string appears */
+            padding-right: 64px; /* Set solid spatial buffer between the mirror text loops */
         }
 
         /* Distinct Hyperlink Blue Link */
@@ -168,14 +169,17 @@
             color: #551a8b !important; /* Traditional Visited/Active Purple state on hover */
         }
 
-        /* Seamless Asteroids Loop: Relies on twin-string layout inside a single tracking container */
+        /* Pure Architecture Asteroids Wrap Matrix */
         @keyframes winamp-asteroids-scroll {
             0% { transform: translate3d(0, 0, 0); }
-            /* Slides across the first text layout block */
-            40% { transform: translate3d(-50%, 0, 0); }
-            /* Holds perfectly still for exactly 3.236 seconds (1.618 * 2) to read coordinates */
-            40%, 55% { transform: translate3d(-50%, 0, 0); }
-            /* Marches seamlessly through the mirror string into the native reset clip */
+            
+            /* Loops forward smoothly across the width of the primary text block */
+            50% { transform: translate3d(-50%, 0, 0); }
+            
+            /* Holds perfectly still for exactly 3.236 seconds (1.618 * 2) to read data coordinates */
+            50%, 66.18% { transform: translate3d(-50%, 0, 0); }
+            
+            /* Instantly resets to zero without a visual skip, running the text infinitely */
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
