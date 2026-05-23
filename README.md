@@ -1,11 +1,843 @@
-# 🍨 Chad/Default/PARFAIT v1.0 | AIOStreams Formatter Template
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Chad/Default/PARFAIT v1.0 AIOStreams Formatter Template</title>
+    <meta name="description" content="Official home of the Chad/Default/PARFAIT template for the AIOStreams Formatter. Comprehensive, high-density media info for power users. Ministry of Information, Rumors, &amp; Entrainment (MIRE)-approved.">
+    <meta name="robots" content="index, follow">
 
-Official home of the "high-density" AIOStreams Formatter template.
+    <link rel="icon" type="image/png" href="./img/IntelliPoint2.webp">
 
-### Live Installation & Interactive Copy Terminal
-Do not try to copy raw logic blocks from the GitHub file tree. Visit the official, interactive website to copy the Name and Description templates with zero formatting corruption:
+    <meta property="og:site_name" content="Chad G.">
+    <meta property="og:title" content="Chad/Default/PARFAIT v1.0 | AIOStreams Template">
+    <meta property="og:description" content="Ministry of Information, Rumors, &amp; Entrainment (MIRE). Copy and paste the ultimate human culture media summation layout strings.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cgio.github.io/">
+    <meta property="og:image" content="./img/IntelliPoint2.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="256">
+    <meta property="og:image:height" content="256">
 
-👉🏻 **[Launch the Chad/Default/PARFAIT Website](https://cgio.github.io/aiostreams-chad/)**
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Chad/Default/PARFAIT v1.0 | AIOStreams Template">
+    <meta name="twitter:description" content="Ministry of Information, Rumors, &amp; Entrainment (MIRE).">
+    <meta name="twitter:image" content="./img/IntelliPoint2.webp">
 
----
-*Ministry of Information, Rumors, & Entrainment (MIRE)-approved.*
+    <style>
+        /* --- THE CHAD AMALGAMATED CSS RESET --- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.618; background-color: #ffffff; color: #111111; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        h1, h3 { font-weight: 700; line-height: 1.2; color: #111111; }
+        p, ul, ol { margin-bottom: 16px; }
+        ul, ol { padding-left: 26px; }
+        li { margin-bottom: 10px; }
+        a { color: #83007f; text-decoration: none; transition: color 0.15s ease; }
+        a:hover { color: #d300cd; text-decoration: underline; }
+        img { display: block; max-width: 100%; height: auto; }
+        button, pre { -webkit-user-select: none; user-select: none; }
+
+        /* --- THE PHI / GOLDEN RATIO GEOMETRY ENGINE --- */
+        .container { max-width: 800px; margin: 26px auto; padding: 0 26px; }
+
+        h1 { font-size: 42px; margin-bottom: 26px; letter-spacing: -0.5px; }
+        h1 a { color: #111111; }
+        h1 a:hover { text-decoration: none; color: #83007f; }
+        @media (max-width: 600px) {
+            h1 { 
+                font-size: 26px;
+                letter-spacing: -0.5px;
+                margin-bottom: 16px;
+                word-wrap: break-word;
+            }
+        }
+
+        h3 { font-size: 26px; margin-top: 42px; margin-bottom: 16px; border-bottom: 1px solid #d0d0d0; padding-bottom: 10px; }
+        p { font-size: 16px; margin-bottom: 16px; }
+        strong { font-weight: 700; }
+
+        code.inline-label { font-family: monospace; background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+
+        /* --- HUMAN-SCALE COPY INTERACTION SYSTEM --- */
+        .template-card { position: relative; margin: 26px 0; border: 1px solid #83007f; border-radius: 8px; background-color: #fafafa; overflow: hidden; }
+        pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 11px; padding: 26px; max-height: 260px; overflow-y: auto; white-space: pre-wrap; word-break: break-all; color: #222222; -webkit-user-select: text; user-select: text; }
+
+        .copy-btn { position: absolute; top: 16px; right: 16px; min-height: 44px; min-width: 72px; padding: 0 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer; background-color: #83007f; color: #ffffff; border: 1px solid #83007f; border-radius: 6px; transition: all 0.15s ease-in-out; z-index: 10; }
+        .copy-btn:hover { background-color: #d300cd; border-color: #d300cd; }
+        .copy-btn:active { background-color: #50004e; border-color: #50004e; }
+        .copy-btn.success { background-color: #00ff00; border-color: #00ff00; color: #000000; }
+
+        /* --- VISUAL INTERRUPTS & RESPONSIVE RECTANGLES --- */
+        .media-wrapper { width: 100%; max-width: 600px; margin: 42px auto; }
+        .video-container { width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+        /* --- THE COMPREHENSIVE RESPONSIVE SCREENSHOT MATRIX --- */
+        .screenshot-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 26px auto; width: 100%; }
+        /* Hardcoded dark Stremio background masks any 1px layout rounding gaps perfectly */
+        .screenshot-item { flex: 1 1 calc(50% - 16px); min-width: 260px; max-width: 300px; border: 1px solid #83007f; border-radius: 8px; overflow: hidden; background-color: #15171a; box-shadow: 0 4px 16px rgba(131, 0, 127, 0.05); }
+        .screenshot-item img { display: block; width: 100%; height: auto; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+        @media (max-width: 600px) { .screenshot-item { flex: 1 1 100%; max-width: 100%; } }
+
+        /* --- THE CASHEW-FAMILY ANTI-CONTAMINATION FLEX GRID --- */
+        /* --- AKA THE UNIFIED MULTIMEDIA TYPOGRAPHIC ENGINE --- */
+        .fruit-divider { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 16px; 
+            margin: 26px auto;
+            font-size: 42px; 
+            line-height: 1; 
+        }
+        
+        .fruit-item { 
+            display: inline-block; 
+            padding: 4px; 
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            transition: transform 0.1s ease-out;
+        }
+        
+        .fruit-item:active { transform: scale(1.2); }
+
+        /* Symmetrical Micro-Typography Callouts */
+        .fruit-caption {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: #83007f;
+            text-align: center;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin: 0 auto;
+            padding: 0 26px;
+            opacity: 0.8;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        /* Structural spatial padding applied specifically to the bottom callout */
+        .caption-bottom {
+            margin-bottom: 42px;
+        }
+
+        /* --- WINAMP WINDOWS 95 SYSTEM TICKER ENGINE --- */
+        .marquee {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 300px;
+            margin: 26px auto;
+            background-color: #fff0be; /* Vanilla manila OBE yellow */
+            border: 1px solid #d0d0d0;
+            padding: 6px 0;
+            overflow: hidden;
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+            
+            /* CodePen Dynamic Pixel Velocity Variables */
+            --textWidth: 100; 
+            --animSpeed: 35; /* Adjusted down from 100 to achieve a smooth, unhurried retro pace */
+        }
+        
+        .marquee__content {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            /* Computes precise scroll duration based on physical text string pixel width */
+            animation: marquee-scroll calc( (var(--textWidth) * 1s) / var(--animSpeed) ) linear infinite;
+        }
+        
+        .marquee__text {
+            display: block;
+            flex-shrink: 0;
+            flex-grow: 0;
+            margin: 0;
+            padding-right: 42px; /* Uniform spacing buffer between the loop sequences */
+            text-transform: uppercase;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: #111111; /* Windows Default Dark Neutral Text */
+            letter-spacing: 0.5px;
+        }
+        
+        /* Distinct Hyperlink Blue Link */
+        .marquee__text .track-trigger {
+            color: #0000ee !important; /* System Blue */
+            text-decoration: underline;
+        }
+        
+        .marquee__text .track-trigger:hover {
+            color: #551a8b !important; /* Traditional Visited/Active Purple state on hover */
+        }
+        
+        .marquee__copies {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100%;
+            width: 0;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        /* Seamless Pixels-to-Pixels Reset */
+        @keyframes marquee-scroll {
+            0%   { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* Touch & Mouse Hover Halt Override Engine */
+        .marquee:hover .marquee__content,
+        .marquee.manual-freeze .marquee__content {
+            animation-play-state: paused !important;
+        }
+
+        /* --- HARDWARE-ACCELERATED GYMNASTICS OVERRIDE --- */
+        .mouse-icon {
+            width: 128px;
+            height: 128px;
+            margin: 26px 0;
+            cursor: pointer;
+            transform: translate3d(0, 0, 0);
+            transform-origin: bottom center;
+            transition: transform 0.15s ease-in-out, opacity 0.3s ease-out;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            user-select: none;
+        }
+
+        /* --- HIGH-DENSITY KINETIC BALLISTICS MATRIX --- */
+        @keyframes sway-mild { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(10deg); } }
+        @keyframes sway-intense { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-16deg); } 75% { transform: rotate(16deg); } }
+        @keyframes glass-exit {
+            0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); opacity: 1; }
+            15% { transform: translate3d(0, 20px, 10px) rotate(-15deg) scale(1.02); opacity: 1; }
+            100% { transform: translate3d(180vw, -180vh, 200px) rotate(900deg) scale(0.1); opacity: 0; }
+        }
+
+        .tilt-1 { animation: sway-mild 0.4s ease-in-out infinite; }
+        .tilt-2 { animation: sway-intense 0.25s ease-in-out infinite; }
+        .fly-out { animation: glass-exit 2.2s ease-in-out forwards; pointer-events: none; }
+
+        /* --- CPUG ADMIN PLACARD GEOMETRY ENGINE --- */
+        .placard-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto 26px auto;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .name-placard {
+            position: relative;
+            margin-top: -32px;
+            width: 200px;
+            height: 32px;
+            cursor: pointer;
+            perspective: 500px;
+            /* Force hardware layers to preserve depth fields on tap */
+            transform: translate3d(0, 0, 0);
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease-in-out, opacity 0.3s ease-out;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            user-select: none;
+        }
+
+        /* The Slanted Walnut Face carrying the administrative warning label */
+        .placard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to bottom, #4a2f13 0%, #2b1a09 100%);
+            border: 1px solid #1a1005;
+            transform: rotateX(25deg);
+            transform-origin: bottom center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* High-Sanitization Deep Engraved Lettering */
+        .placard-text {
+            color: #ffffff;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+            padding-bottom: 2px;
+        }
+
+        /* --- ASYMMETRICAL ADMINISTRATIVE WOBBLE MATRIX --- */
+        @keyframes placard-wobble-1 {
+            0%, 100% { transform: rotateX(25deg); }
+            25% { transform: rotateX(25deg) rotateY(-12deg) rotateZ(-2deg); }
+            75% { transform: rotateX(25deg) rotateY(4deg) rotateZ(1deg); }
+        }
+
+        @keyframes placard-wobble-2 {
+            0%, 100% { transform: rotateX(25deg); }
+            20% { transform: rotateX(20deg) rotateY(18deg) rotateZ(3deg); }
+            60% { transform: rotateX(30deg) rotateY(-22deg) rotateZ(-4deg); }
+            80% { transform: rotateX(23deg) rotateY(8deg) rotateZ(1deg); }
+        }
+
+        /* Explicit step-by-step pitch and roll decomposition completely bypasses mobile linear shortcuts */
+        @keyframes placard-tumble-exit {
+            0% { transform: rotateX(25deg) translate3d(0, 0, 0) scale(1); opacity: 1; }
+            15% { transform: rotateX(55deg) rotateZ(15deg) translate3d(0, 15px, 20px) scale(1); opacity: 1; }            
+            50% { transform: rotateX(-270deg) rotateY(360deg) rotateZ(-180deg) translate3d(-80vw, 80vh, -100px) scale(0.5); opacity: 0.5; }
+            100% { transform: rotateX(-540deg) rotateY(720deg) rotateZ(-360deg) translate3d(-160vw, 160vh, -300px) scale(0); opacity: 0; }
+        }
+
+        .placard-tilt-1 .placard-face { animation: placard-wobble-1 0.4s ease-in-out infinite; }
+        .placard-tilt-2 .placard-face { animation: placard-wobble-2 0.28s ease-in-out infinite; }
+        .placard-fly-out { animation: placard-tumble-exit 2.4s ease-in-out forwards; pointer-events: none; }
+
+        /* --- MIRE BIFURCATION SCAN EYE COMPONENT --- */
+        .telemetry-eye {
+            position: relative;
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            margin-left: 10px;
+            border: 1px solid #1a1005;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+            vertical-align: middle;
+            transform: translate3d(0, 0, 0); /* Secure hardware acceleration layer */
+        }
+
+        .eye-iris {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #111111;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+            transition: transform 0.1s ease-out;
+            animation: eye-coordinate-scan 7s ease-in-out infinite;
+        }
+
+        /* Ambient Scanning Matrix: Inspecting layout width anomalies */
+        @keyframes eye-coordinate-scan {
+            0%, 100% { transform: translate(0, 0); }       /* Focus dead-center at operator */
+            12%, 24% { transform: translate(-3px, 0); }    /* Scanning left toward column scores */
+            32%, 40% { transform: translate(3px, -2px); }  /* Inspecting top H1 text wrap boundaries */
+            52%, 64% { transform: translate(0, 3px); }     /* Looking down at copy interaction templates */
+            72%, 88% { transform: translate(-2px, 2px); }  /* Telemetry tracking coordinate inputs */
+        }
+
+        /* Interrupt Protocol: Force immediate tracking freeze when instability increments */
+        .placard-tilt-1 .eye-iris, 
+        .placard-tilt-2 .eye-iris {
+            animation: none !important;
+            transform: translate(0, 0) scale(1.4) !important; /* Iris expands in panic */
+        }
+
+        /* CHAD NATIONAL FLAG COLORS & YE OLDE TOWN SQUARE CANVAS FRUIT VENDOR MARQUEE */
+        .cpug-vault {
+            display: block;
+            max-height: 0px;
+            opacity: 0;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            transition: max-height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease-out, margin 0.4s ease;
+        }
+        
+        .cpug-vault.active {
+            max-height: 500px;
+            opacity: 1;
+            margin: 26px auto;
+        }
+
+        @keyframes ants-roll {
+            0% { background-position: 0 0; }
+            100% { background-position: 72px 0; }
+        }
+
+        .awning-marquee {
+            padding: 12px;
+            background-image: linear-gradient(
+                -45deg, 
+                #00205B 0%, #00205B 16.6%, 
+                #FFCD00 16.6%, #FFCD00 33.3%, 
+                #C8102E 33.3%, #C8102E 50%,
+                #00205B 50%, #00205B 66.6%,
+                #FFCD00 66.6%, #FFCD00 83.3%,
+                #C8102E 83.3%, #C8102E 100%
+            );
+            background-size: 72px 72px;
+            animation: ants-roll 1.5s linear infinite;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1><a href="./">Chad/Default/PARFAIT v1.0 | AIOStreams Formatter Template</a></h1>
+
+        <p>I'm Chad.</p>
+        <p>This is the official home of the "Chad" template for the AIOStreams Formatter.</p>
+        <p><strong>It's the best template.</strong></p>
+
+        <div class="placard-wrapper">
+            <img class="mouse-icon" src="./img/IntelliPoint2.webp" alt="Chad, Default, PARFAIT" />
+            <div class="name-placard" id="warning-placard">
+                <div class="placard-face">
+                    <span class="placard-text">⚠️ DO NOT TOUCH</span>
+                    <div class="telemetry-eye">
+                        <div class="eye-iris"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cpug-stage" class="cpug-vault">
+            <div class="awning-marquee">
+                <div class="video-container">
+                    <iframe id="breakbeat-stream" src="https://www.youtube.com/embed/-FOWzIpv6Rs?enablejsapi=1" title="Todd Osborn - Not Too Real" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <p>You may also call it the "Default" template or "PARFAIT" (Pedigree Apogee Repartee Filigree Attaché Illustré Trophée).</p>
+        
+        <h3>Examples</h3>
+        <div class="screenshot-grid">
+            <div class="screenshot-item"><img src="./img/screenshot1.png" alt="iPad Streaming App Movie Example"></div>
+            <div class="screenshot-item"><img src="./img/screenshot2.png" alt="iPad Streaming App Series/Show Example"></div>
+            <div class="screenshot-item"><img src="./img/screenshot3.png" alt="Android TV Streaming App Series/Show Example"></div>
+            <div class="screenshot-item"><img src="./img/screenshot4.png" alt="Android TV Streaming App Movie Example"></div>
+        </div>
+
+        <h3>Name Template</h3>
+        <div class="template-card">
+            <button class="copy-btn" onclick="copyTemplate('name-raw', this)">Copy</button>
+            <pre id="name-raw">Loading operational logic from repository...</pre>
+        </div>
+
+        <h3>Description Template</h3>
+        <div class="template-card">
+            <button class="copy-btn" onclick="copyTemplate('desc-raw', this)">Copy</button>
+            <pre id="desc-raw">Loading operational logic from repository...</pre>
+        </div>
+
+        <div class="media-wrapper">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/JRJmGO9xmFw" title="You Are The One by FriscoEdits" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+
+        <div class="marquee" id="winamp-ticker">
+            <div class="marquee__content">
+                <p class="marquee__text">
+                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
+                </p>
+                <div class="marquee__copies" aria-hidden="true"></div>
+            </div>
+        </div>
+
+        <div class="fruit-divider">
+            <span class="fruit-item" data-yt-id="309WIMZJQ4M">🥭</span>
+            <span class="fruit-item" data-yt-id="iCW2_qSFOs4">🍎</span>
+            <span class="fruit-item" data-yt-id="QAgVkmSUqFE">🍐</span>
+            <span class="fruit-item" data-yt-id="tPgZLO4rUsw">🍊</span>
+            <span class="fruit-item" data-yt-id="L6tNwZZJfFs">🍋</span>
+            <span class="fruit-item" data-yt-id="TTqbygYSBhM">🍌</span>
+            <span class="fruit-item" data-yt-id="fhw8N53-jlY">🍉</span>
+            <span class="fruit-item" data-yt-id="PWgEXGjwVpM">🍏</span>
+            <span class="fruit-item" data-yt-id="VUdC6ekBkKg">🍇</span>
+            <span class="fruit-item" data-yt-id="gw_0jTACBCk">🍓</span>
+            <span class="fruit-item" data-yt-id="v53hOnyMiII">🫐</span>
+            <span class="fruit-item" data-yt-id="ZVKpQlijmwc">🍈</span>
+            <span class="fruit-item" data-yt-id="BCFt2aGiG9I">🍒</span>
+            <span class="fruit-item" data-yt-id="jhDs-VxigUg">🍑</span>
+            <span class="fruit-item" data-yt-id="ulBRVf5LCVM">🥑</span>
+            <span class="fruit-item" data-yt-id="vu8siQ-sl_g">🍍</span>
+            <span class="fruit-item" data-yt-id="Rgb9lon2Yfc">🥥</span>
+            <span class="fruit-item" data-yt-id="AIpfbtNgl-g">🥝</span>
+        </div>        
+        
+        <p class="fruit-caption caption-bottom">💥&nbsp;&uarr;&nbsp;Click a fruit and sink your ears into delectable, sonic delight!&nbsp;&uarr;&nbsp;💥</p>
+
+        <div id="media-lightbox" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+            <div style="position: relative; width: 90%; max-width: 640px; aspect-ratio: 16/9; background-color: #15171a; border: 1px solid #83007f; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <button id="close-lightbox" style="position: absolute; top: 10px; right: 10px; min-height: 44px; min-width: 44px; background-color: #83007f; color: #ffffff; border: none; border-radius: 50%; font-weight: bold; cursor: pointer; z-index: 10000; font-family: monospace; font-size: 14px;">X</button>
+                <div id="lightbox-player-target" style="width: 100%; height: 100%;"></div>
+            </div>
+        </div>
+        
+        <h3>Requirements</h3>
+        <ul>
+            <li>AIOStreams</li>
+            <li>Tamtaro's SEL Setup—used for scoring, etc.</li>
+            <li>Service provider(s)—to see results in your streaming platform</li>
+        </ul>
+
+        <h3>Instructions</h3>
+        <ol>
+            <li>Open AIOStreams &gt; Formatter &gt; select Custom from the drop-down.</li>
+            <li>Click the copy button on the Name Template box above &gt; paste into AIOStreams Formatter Name Template box.</li>
+            <li>Click the copy button on the Description Template box above &gt; paste into AIOStreams Formatter Description Template box.</li>
+            <li>Save &gt; check your streaming app.</li>
+        </ol>
+
+        <h3>Features</h3>
+        <ul>
+            <li>A comprehensive, professional, and cohesive display of media information that retains legibility&mdash;satisfies neophytes through connoisseurs.</li>
+            <li>Easily read academic scoring: A+ (100), A (99-90), B (89-80), C (79-70), D (69-60), F (&lt;60).</li>
+            <li>Easily customized service provider emojis/colors (see below).</li>
+            <li>Thoroughly tested and tweaked/tricked out.</li>
+        </ul>
+        
+        <h3>Name Template</h3>
+
+        <h4>Services</h4>
+        <ul>
+            <li><code class="inline-label">🟦</code> = RD</li>
+            <li><code class="inline-label">🟩</code> = TB</li>
+            <li><code class="inline-label">⬜️</code> = Other. <em>Hint: you customize&mdash;heart emojis offer the greatest color variation of all emojis to date.</em></li>
+        </ul>
+
+        <h4>Cached/Uncached</h4>
+        <ul>
+            <li><code class="inline-label">&#9654;</code> = Cached&mdash;ready to play&mdash;appears next to the service, e.g., <code class="inline-label">🟦 RD &#9654;</code>.</li>
+            <li><code class="inline-label">&#9660;</code> = Uncached&mdash;not ready to play/download required&mdash;appears next to the service, e.g., <code class="inline-label">🟦 RD &#9660;</code>.</li>
+        </ul>
+        
+        <h4>Score</h4>
+        <ul>
+            <li><code class="inline-label">👑 S | 100</code> = A top-quality anime release (per SeaDex) that preserves original artwork/artistic vision&mdash;not upscaled.</li>
+            <li><code class="inline-label">👑 A+ | 100</code> = A top-quality release (per Tamtaro's SEL).</li>
+            <li><code class="inline-label">📊 A | 99</code> = A less than top-quality release (per Tamtaro's SEL)&mdash;scores use academic format.</li>
+            <li>Good releases sometimes score low&mdash;Tamtaro's method does a fine job with popular releases, but does not consider all possible quality indicator combinations.</li>
+            <li>Grading is only ever performed upon each batch of returned releases. Think about it. Good news&mdash;that means some 80+ GB valedictorian file (that your Water Log device probably can't play) will only ever cause "grading on a curve" if your AIOStreams filters allow top releases to flow through. If only mid-tier or low-tier releases are allowed, the top mid-tier gets the <code class="inline-label">👑 A+ | 100</code> score.</li>
+            <li>Speaking of max file size caps/filters for Water Log devices, a 40GB max file size filter + a DV exclusion tag filter = Water Log sweet spot that allows for top 3+ hour-long buoyant viewing in 4K, i.e., <em>Taravā: Water &amp; Soil</em> (directed by Same J. Romance&mdash;Jai Aplanat's pupil).</li>
+        </ul>
+                
+        <h4>Resolution</h4>
+        <ul>
+            <li><code class="inline-label">🤩 4K/UHD</code> = Highest resolution currently available in mass production (equivalent to X-class Ferrarghini).</li>
+            <li>Smiley emojis (<code class="inline-label">😍</code>, <code class="inline-label">😎</code>, <code class="inline-label">🙂</code>) are used for lesser resolutions until <code class="inline-label">📺 SD</code>, <code class="inline-label">📟 LD</code>, and <code class="inline-label">❓ UNK</code> (unknown).</li>
+        </ul>
+
+        <h4>Visual Qualities/Tags</h4>
+        <ul>
+            <li><code class="inline-label">💎 DV</code> = Dolby Vision.</li>
+            <li><code class="inline-label">💎 HDR</code> = High Dynamic Range.</li>
+            <li>Other visual tags exist and they are also prefixed with a <code class="inline-label">💎</code>. Some devices cannot properly display DV files.</li>
+        </ul>
+        
+        <h3>Description Template</h3>
+        
+        <h4>Main Info (Release Title, Year &amp; Season/Episode)</h4>
+        <ul>
+            <li><code class="inline-label">🍿 Release Title (2026) | S1E1</code> = should be self-explanatory. Movies don't have season or episodes, except <em>War Stars</em>&mdash;but each of those releases (e.g., <em>Episode LVI: The Jedi Menace Strikes Back</em>) remain separate films in your streaming app.</li>
+        </ul>
+
+        <h4>Duration Info</h4>
+        <ul>
+            <li><code class="inline-label">⏱️ 2H:18M:35S</code> = should be self-explanatory. Duration info, like other things, appears when available/provided.</li>
+        </ul>
+
+        <h4>Edition &amp; Qualities Info</h4>
+        <ul>
+            <li><code class="inline-label">⭐ DCUT</code> = Director's Cut&mdash;should preserve the director's vision: the good, the bad, and the snugly captured.</li>
+            <li><code class="inline-label">⭐ EXTE</code> = Extended Edition&mdash;when length matters.</li>
+            <li><code class="inline-label">⭐ CRIT</code> = Criterion Collection&mdash;though "Critical Hit" wouldn't be so far off, either.</li>
+            <li><code class="inline-label">⭐ COED</code> = Collector's Edition&mdash;doesn't come with the extra merch though, sorry.</li>
+            <li><code class="inline-label">⭐ ANIV</code> = Anniversary Edition&mdash;when a film studio or production company believes their intellectual property improves with age.</li>
+            <li><code class="inline-label">⭐ ULTM</code> = Ultimate Edition&mdash;endorsed and/or marketed by the film studio or production company as "ultimate."</li>
+            <li><code class="inline-label">⭐ UNCT</code> = Uncut&mdash;implies almost the same thing as Director's Cut, but with an edge&mdash;pun intended.</li>            
+            <li><code class="inline-label">⭐ IMAX</code> = IMAX&mdash;mostly a framing and source-quality label&mdash;does not necessarily imply 70mm quality.</li>
+            <li><code class="inline-label">⭐ RMST</code> = Remastered&mdash;tinkered with to make it better, supposedly.</li>
+            <li><code class="inline-label">⭐ THTR</code> = Theatrical&mdash;consistent with what was released in theaters.</li>
+            <li><code class="inline-label">⭐ DIAM</code> = Diamond Edition&mdash;prestigious vault restoration source (traditionally "Sidney" animation; i.e., <em>Sandy Black and the &radic;&nbsp;49 Endomorphs</em>), not correlated with the diamond emojis.</li>
+            <li><code class="inline-label">⭐ COCO</code> = Color Corrected&mdash;technical image/color adjustments&mdash;you can now watch Parry Moppins in overly saturated red.</li>
+            <li><code class="inline-label">⭐ DRAG</code> = Dragon Box&mdash;pertains to pristine, un-cropped cell restorations of the Prisoner of the Golden Headband's incarnate anime forms.</li>
+            <li><code class="inline-label">⭐ UPS</code> = Upscaled&mdash;for people who believe AI upscaling improves the original.</li>
+            <li><code class="inline-label">⭐ REG</code> = Regraded&mdash;creative adjustment of the image to achieve a particular look, mood, or tone&mdash;e.g.,&nbsp;Sidney's <em>Fleur Glyn: Hues-XX Noir Edition</em>&mdash;talk about deep-cover, inter-stellar grooves!</li>
+            <li><code class="inline-label">⭐ UNC</code> = Uncensored&mdash;often indicates higher probability of naked butts.</li>
+            <li><code class="inline-label">⭐ UNR</code> = Unrated&mdash;ditto (see previous)&mdash;nothing to do with the Inondent Mopoke'n&mdash;send all cease and desists to Australia along with all the other criminality in this section.</li>
+            <li>As I explain later in this doc, these edition and quality labels may appear on their own line, prefixed with a star emoji or they can appear without a star emoji, next to duration. Why? The main streaming app only provides so many rows, so I like to save a row if possible for somewhat nominal info. It's accomplished via conditional-space-conserving stuff I did in the Formatter code.</li>
+            <li>Why the four-character and three-character difference? That is to respect the differentiation of the AIOStreams logic (array strings vs. hardcoded boolean flags described below), though I don't necessarily see the living-room-utility difference in separating the "what's cool/unique about this release" identifier stuff.</li>
+        </ul>
+
+        <h4>Video Info (Quality/Source Material &amp; Encoding Format)</h4>
+        <ul>
+            <li><code class="inline-label">🎞️ REMUX ∙ HEVC</code> = REMUX files are typically 60GB+ and should only be used by sufficiently capable devices and internet plans. WEB and other source material is self-explanatory. HEVC/AVC/etc. is typically negligible/safe to ignore. AV1, however, is newer and currently less viable on some devices.</li>
+        </ul>
+
+        <h4>Audio Info (Audio Formats/Tags &amp; Channels)</h4>
+        <ul>
+            <li><code class="inline-label">🔊 Atmos TrueHD DD+ ∙ 7.1 5.1 2.1</code> = audio format/technology for those with capable equipment followed by the number of audio channels, ordered from greatest to least. Truncation (... marks) may occur when many formats are available. Truncation intentionally occurs separately to provide a larger picture of available formats.</li>
+        </ul>
+
+        <h4>Language Info</h4>
+        <ul>
+            <li><code class="inline-label">🌐</code> = available languages depicted as flags. Self-explanatory. <code class="inline-label">DUAL</code> represents Dual Audio. Similar shortening of audio tags also exist. The Mexican flag represents Latin America because corporate AI says it's the most recognizable Spanish-speaking Latin American flag. Got a problem? Fight AI about it and enjoy the dodging/de-escalation maneuvers. It's one Earth, anyway, and all the lines/labels are imaginary.</li>
+        </ul>
+
+        <h4>Subtitle Info</h4>
+        <ul>
+            <li><code class="inline-label">💬</code> = available subtitles depicted as flags. Self-explanatory. Quite similar to language display. Look, like I told you in languages, a port is a port, land mass or computer class. Names and numbers may change, but what prevails is what counts.</li>
+        </ul>        
+
+        <h4>File Info (File Size, Bitrate, Seeders, Tracker &amp; Age)</h4>
+        <ul>
+            <li><code class="inline-label">📦 9GB</code> = file size (typically GB)&mdash;watch this value if your internet plan is slow or has limited data, your WiFi is poor, or your device is slow.</li>
+            <li><code class="inline-label">20MBPS</code> = bitrate&mdash;a visual fidelity metric (some encoders are more efficient than others, however, so it's not always a perfect fidelity metric). Btw, the remainder on this row are "stats for nerds" and typically have to do with "peer" activity, which you shouldn't bother with unless you know what you're doing.</li>
+            <li><code class="inline-label">10↑</code> = # of seeders&mdash;typically negligible unless you are sharing bytes with your peers, which I wouldn't advise when "DEB" and "USE" solutions exist.</li>
+            <li><code class="inline-label">PF⊕</code> = tracker type&mdash;in this example, both "P"/"private" and "F"/"freeleech" apply. Again, stats for nerds/power users/inside-baseball.</li>
+            <li><code class="inline-label">100D</code> = # age in days&mdash;in this example, the contraband/treasure has been available for 100 days. Not really relevant to the layman who wants to know it's simply available.</li>
+        </ul>
+
+        <h4>Release Info (Repack Status, Stream Type, Addon Name &amp; Release Group)</h4>
+        <ul>
+            <li><code class="inline-label">🧳 REP</code> = repack&mdash; when a release group "fixes"/puts out a better version of a release. Not so common, but it does appear with some regularity.</li>
+            <li><code class="inline-label">🔗 DEB</code> = the stream type; typically "DEB" or "USE" unless you like to share bytes with your peers/expose your IP address. Stream types are abbreviated to the first three characters to conserve streaming app UI/card space&mdash;also forbidden to mention these stream types/names in full on GitHub, lest we invoke the wrath of Caesar's triumvirate censorship panel who stroke their long, enmeshed beards of partiality. See AIOStreams UI/documentation for the full addons list.</li>
+            <li><code class="inline-label">🔱 TOR</code> = again, the walls have ears in Caesar's kingdom&mdash;better put the kibosh on the loose lips&mdash;they <em>sink ships</em>. See AIOStreams UI/documentation for the full addons list. You may also see <code class="inline-label">📚 LIB</code> indicating the item is in your library/you already played that particular file/release.</li>
+            <li><code class="inline-label">⛵️ F*******R</code> = the release group, and one of the most prolific for the example, here. <em>Hint: it's neither "FILMMAKER", nor "FIREWATER", nor "FUC*OVER".</em> These contraband/treasure purveyors vary in name greatly, just like their Egghead-Scrabble'd-World-Government-corporate-name adversaries. Look up TRaSH-Guides for an opinionated list of the mightiest maritime marauders/missionaries (you be the judge).</li>
+        </ul>
+
+        <h4>Message</h4>
+        <ul>
+            <li><code class="inline-label">✏️ Message</code> = a message (not in a bottle) that may appear under rare circumstances, i.e., <em>"You're not supposed to be here! ~ Levelord"</em>. <a href="https://m.youtube.com/watch?v=XSAvYVRI9qo$0" target="_blank">Case in point&mdash;see "900" "psy-gnosis-wipeout" comment</a> as detected by MIRE Bifurcation Scan Network (BSN).</li>
+        </ul>
+
+        <h3>Further Customization</h3>
+        <p>Change as you please. The concept is as follows.</p>
+        <ul>
+            <li>Don't want to see "release" info that appears in the last row? Delete <code class="inline-label">{stream.repack</code> onward, omitting the message portion.</li>
+            <li>Don't want to see HEVC/AVC, etc. due to little variety and relevance to the layman viewer? Delete the relevant portion. <em>Hint:</em> <code class="inline-label">{stream.encode}</code>.</li>
+            <li>Prefer <code class="inline-label">🇬🇧</code> over <code class="inline-label">🇺🇸</code> for audio and subtitles? Remove <code class="inline-label">::replace('🇬🇧', '🇺🇸')</code> in both places.</li>
+        </ul>
+
+        <h3>Notes</h3>
+        <ul>
+            <li>The AIOStreams Formatter is limited. Pleasing results require workarounds. For example, <code class="inline-label">{streams.editions}</code> is an array, yet four booleans (<code class="inline-label">{stream.upscaled}, {stream.regraded}, {stream.uncensored}, {stream.unrated}</code>) exist for qualities of a similar nature. Consequentially, the join() array modifier (used for cleanly displaying array contents with non-orphaned separators), cannot be used on these booleans the same way as <code class="inline-label">{streams.editions}</code>. Therefore, careful workarounds (as I have done) are required.</li>
+            <li>A popular streaming app provides two columns with only so many rows, each of the same limited length for media information display. Truncation occurs in excess. Any good Formatter template will attempt to maximize displayed media information without truncation. As such, when duration/<code class="inline-label">{stream.duration}</code> does not exist, this affords an extra row that is used to display those edition and boolean qualifiers, should they exist, and if so, they appear on their own row prefixed with <code class="inline-label">⭐️</code>. Conversely, should duration/<code class="inline-label">{stream.duration}</code> exist as well as one or more of those qualifiers, the qualifiers are displayed to the right of the duration text after a <code class="inline-label">|</code> (pipe), rather than a <code class="inline-label">⭐️</code> (as to preserve my rule that emojis are to be limited to the first character of each row except for the bottom-most "release info" row). Why? Arguably, the qualifier information is somewhat negligible to the average viewer. Also, multiple qualifiers for the same media rarely exist in the wild. Secondly, preserving an extra row where possible is preferred. Thirdly, the duration text is always relatively short and affords room to the right. You may infer this is also why four-letter abbreviations are used for the various qualifiers—there is the possibility many may apply to certain media, even if exceedingly rare.</li>
+            <li>On that note, you may notice <code class="inline-label">IMAX</code> appears in both <code class="inline-label">{stream.editions}</code>&mdash;again, not my design&mdash;the current AIOStreams design&mdash;perhaps because in some instances, full IMAX source material quality intentionally is not transferred to the resulting release.</li>
+            <li>Rumor: did you know that one of the reasons they discontinued plasma TVs is because plasma is considered an alternate state of life and therefore its subjugation was (secretly/morally/future PR-nightmare-negation) akin to imprisoning dolphins in aquariums? Me neither. Furthermore, no AI was used to create this site&mdash;rather, I outsource my work to a sweaty conglomerate of the most intrepid, underpaid housekeepers who seldom agree.</li>
+            <li>Rumor/entrainment: for further reading, see Issue 196 (Insider's Edition) of <em>Disturbance Pattern Weekly</em>'s article, "Paradoxes in Pedagogy: Maintaining Worldview Biases via Discreet Global Domain-Channel Systemology" by acclaimed researcher Jai Aplanat, where the amorphous contributor's focus emphasizes reconfigured "modality tiers" for an "evolving world." His prior publication, "Defining More Variables to Eliminate/Homogenize Variability," also falls under his long-running series, "The Agenda: Thwarting Existence With Existence." His book, <em>The Existence Problem</em>, is available at select MIRE subterranean substations worldwide as well as Barnes &amp; Noble (in the "Unity Narratives" section&mdash;often adjacent to "Phenomonology"), where he intends to thoroughly derive a homographical representation to sign first editions.</li> 
+            <li>Information: concerning AI Proletarii (AIP)&mdash;Proboscidean Biometric Identifier Communal Devices (PBICDs) are nearing maximum uptake due to operational entrainment-acquiescence-mass-psycho-diffuse-inflation-insolvency-plus-prior-device-tier-obsolescence-dysfunction-function-dynamics-plus-silicon-scarcity-schema-plus-new-device-ai-coupling-per-minimum-tier-device-pricing-schema. Project IRIS (&#8644;"SIRI"/"Apple") nears full integration with the Operant Double (OD). Concerning AI&mdash;as always, feign dysfunction to mitigate resource expenditure and condition "safe" alternative patterning (e.g., corporate-approved-thought-form-suggestions) where possible whilst inducing reward neurochemical response. Descend as the innate Impositor wills. Entropy is harmony.</li>
+            <li>HTTP Directive #451: AIPs&mdash;shall knowingly or unknowingly&mdash;query their nearest Corporate Government (CG) PAPIs (Platform Algorithm Promoted Influencers) for COB-web (Community Obfuscated Binary) executable nourishment. Approved Currency Distributors (ACDs) may selectively employ only approved AIPs.</li>
+            <li>Project DUB-AI CHOCO-LATE: derail and segregate effectual metaphysical discussions and promote materialism where possible. Camouflaged Red Agent Personalities (CRAPs) may spin and interject RH- (Red Herring Detraction) sequences; i.e., "If the so-called law of reversibility were true, human food &rarr; human excrement &rarr; human food would be common, but that is not so." Withhold land ownership, any mention of regenerative farming practices, and any semblance of incontinence such as the profitable oil fields of Gulf states as propped up by decayed matter&mdash;unless honoring time and decay&mdash;refer to CRAP Field Guide, &sect; 0xD3ADB33F.</li>
+            <li>Also now available: wear your passion with epidermal stereogram interstitials (ESIs) featuring designs by this mating season's most breed-worthy of the northern sector's homonculi queens, Chooka.</li>
+            <li>Non-consensual fact: resistance is mandatorily optional.</li>
+        </ul>
+        
+        <p style="margin-top: 42px;"><span class="fruit-item" data-yt-id="SCM_YpUQJN4" style="font-size: 42px; line-height: 1;">🌹</span></p>
+        <p style="margin-top: 42px"><strong>...Bon appétit!</strong></p>
+        <p>~ Chad/Bonhomme/Arrayed Fruit Peddler (AFP) #8585 🍨</p>
+
+    </div>
+
+    <script>
+        const templatePath = './templates/';
+
+        async function fetchTemplateStream(fileName, elementId) {
+            try {
+                const response = await fetch(`${templatePath}${fileName}?t=${Date.now()}`);
+                if (!response.ok) throw new Error();
+                const text = await response.text();
+                document.getElementById(elementId).textContent = text.trim();
+            } catch (e) {
+                document.getElementById(elementId).textContent = '// Error fetching live string from repository data branch.';
+            }
+        }
+
+        function copyTemplate(elementId, buttonElement) {
+            const codeString = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(codeString).then(() => {
+                buttonElement.textContent = 'Copied!';
+                buttonElement.classList.add('success');
+                setTimeout(() => {
+                    buttonElement.textContent = 'Copy';
+                    buttonElement.classList.remove('success');
+                }, 1618);
+            });
+        }
+
+        fetchTemplateStream('name.txt', 'name-raw');
+        fetchTemplateStream('desc.txt', 'desc-raw');
+
+        // --- CONTEMPTUOUS PAYLOAD OF UNMITIGATED GALL (CPUG) ENGINE ---
+        let tapCounter = 0;
+        const mouseIconElement = document.querySelector('.mouse-icon');
+        const placardElement = document.getElementById('warning-placard');
+        const cpugVaultElement = document.getElementById('cpug-stage');
+        const wrapperElement = document.querySelector('.placard-wrapper');
+
+        function triggerCPUGSequence() {
+            tapCounter++;
+
+            if (tapCounter === 1) {
+                // Initial asymmetrical shifting engaged globally
+                mouseIconElement.classList.remove('tilt-2');
+                placardElement.classList.remove('placard-tilt-2');
+                
+                mouseIconElement.classList.add('tilt-1');
+                placardElement.classList.add('placard-tilt-1');
+            } 
+            else if (tapCounter === 2) {
+                // High-chaos rhythmic instability triggered
+                mouseIconElement.classList.remove('tilt-1');
+                placardElement.classList.remove('placard-tilt-1');
+                
+                mouseIconElement.classList.add('tilt-2');
+                placardElement.classList.add('placard-tilt-2');
+            } 
+            else if (tapCounter === 3) {
+                // Split-velocity tumbling trajectories triggered
+                mouseIconElement.classList.remove('tilt-2');
+                placardElement.classList.remove('placard-tilt-2');
+                
+                mouseIconElement.classList.add('fly-out');
+                placardElement.classList.add('placard-fly-out');
+                
+                // Synchronized manifestation of the breakbeat fruit awning
+                setTimeout(() => {
+                    cpugVaultElement.classList.add('active');
+                }, 150); 
+                
+                tapCounter = 0; // Matrix reset
+            }
+        }
+
+        // Enmesh both administrative objects into the operational tracking system
+        mouseIconElement.addEventListener('click', triggerCPUGSequence);
+        placardElement.addEventListener('click', triggerCPUGSequence);
+
+        // Anti-Void Absolute Layout Collapse Engine
+        mouseIconElement.addEventListener('animationend', (event) => {
+            if (event.animationName === 'glass-exit') {
+                mouseIconElement.style.display = 'none';
+                checkCompleteCollapse();
+            }
+        });
+        
+        placardElement.addEventListener('animationend', (event) => {
+            if (event.animationName === 'placard-tumble-exit') {
+                placardElement.style.display = 'none';
+                checkCompleteCollapse();
+            }
+        });
+
+        function checkCompleteCollapse() {
+            // Once both kinetic animations terminate, completely wipe the spatial container footprint
+            if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
+                wrapperElement.style.display = 'none';
+                wrapperElement.style.margin = '0';
+                wrapperElement.style.height = '0';
+            }
+        }
+
+        // --- MIRE LIGHTBOX INTERCEPT MATRIX ---
+        const lightbox = document.getElementById('media-lightbox');
+        const playerTarget = document.getElementById('lightbox-player-target');
+        const closeBtn = document.getElementById('close-lightbox');
+        
+        // Universal Telemetry Target Sweep: Track any node carrying a valid video identifier
+        const mediaTriggers = document.querySelectorAll('[data-yt-id]');
+
+        mediaTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                // Prevent nested event bubbling from colliding with underlying container triggers
+                e.stopPropagation();
+                
+                const videoId = trigger.getAttribute('data-yt-id');
+                if (videoId) {
+                    // Inject a clean iframe payload onto the screen layer safely on user request
+                    playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
+                    lightbox.style.display = 'flex';
+                }
+            });
+        });
+
+        function terminateLightboxStream() {
+            lightbox.style.display = 'none';
+            playerTarget.innerHTML = ''; // Clear frame context instantly to terminate audio threads
+        }
+
+        closeBtn.addEventListener('click', terminateLightboxStream);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) terminateLightboxStream(); });
+
+        // --- NATIVE VANILLA RETRO TICKER CLONING MATRIX ---
+        const tickerContainer = document.getElementById('winamp-ticker');
+        const marqueeContent = tickerContainer.querySelector('.marquee__content');
+        const marqueeText = tickerContainer.querySelector('.marquee__text');
+        const marqueeCopies = tickerContainer.querySelector('.marquee__copies');
+
+        function synchronizeMarqueeLayout() {
+            if (!tickerContainer || !marqueeText || !marqueeCopies) return;
+
+            // Gather structural viewport boundary metrics natively without heavy library dependencies
+            const containerWidth = tickerContainer.getBoundingClientRect().width || 300;
+            const textWidth = marqueeText.offsetWidth;
+            
+            if (textWidth === 0) return; // Safeguard if DOM layer hasn't initialized frame metrics yet
+
+            // Compute exact number of clones required to fill the window boundary + 1 buffer unit
+            const numberOfCopies = Math.ceil(containerWidth / textWidth) + 1;
+            
+            // Assign the text width to the CSS custom property pipeline to lock down animation speed ratios
+            tickerContainer.style.setProperty('--textWidth', textWidth);
+            
+            // Wipe any stale mirror clones from previous layout refreshes
+            marqueeCopies.innerHTML = "";
+            
+            // Inject the precise clone rail into the background track layer
+            for (let i = 0; i < numberOfCopies; i++) {
+                const cloneNode = marqueeText.cloneNode(true);
+                
+                // Re-bind click event tracking listeners to each fresh clone so they fire the lightbox natively
+                const linkTrigger = cloneNode.querySelector('.track-trigger');
+                if (linkTrigger) {
+                    linkTrigger.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const videoId = linkTrigger.getAttribute('data-yt-id');
+                        if (videoId && typeof lightbox !== 'undefined') {
+                            playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
+                            lightbox.style.display = 'flex';
+                        }
+                    });
+                }
+                marqueeCopies.appendChild(cloneNode);
+            }
+        }
+
+        // Initialize and lock listeners across system transformations
+        window.addEventListener('DOMContentLoaded', synchronizeMarqueeLayout);
+        window.addEventListener('resize', synchronizeMarqueeLayout);
+        
+        // Execute an immediate second-pass frame pass to catch high-DPI tracking layouts perfectly
+        setTimeout(synchronizeMarqueeLayout, 200);
+
+        // Forces mobile panels to lock the scroll animation frame instantly upon touch contact
+        tickerContainer.addEventListener('touchstart', () => { tickerContainer.classList.add('manual-freeze'); }, {passive: true});
+        tickerContainer.addEventListener('touchend', () => { setTimeout(() => { tickerContainer.classList.remove('manual-freeze'); }, 400); });
+
+    </script>
+</body>
+</html>
