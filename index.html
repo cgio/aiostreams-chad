@@ -555,6 +555,35 @@
             <li><code class="inline-label">🍿 Release Title (2026) | S1E1</code> = should be self-explanatory. Movies don't have season or episodes, except <em>War Stars</em>&mdash;but each of those releases (e.g., <em>Episode LVI: The Jedi Menace Strikes Back</em>) remain separate films in your streaming app.</li>
         </ul>
 
+        <h4>Duration Info</h4>
+        <ul>
+            <li><code class="inline-label">⏱️ 2H:18M:35S</code> = should be self-explanatory. Duration info, like other things, appears when available/provided.</li>
+        </ul>
+
+        <h4>Edition &amp; Qualities Info</h4>
+        <ul>
+            <li><code class="inline-label">⭐ DCUT</code> = Director's Cut&mdash;should preserve the director's vision: the good, the bad, and the snugly captured.</li>
+            <li><code class="inline-label">⭐ EXTE</code> = Extended Edition&mdash;when length matters.</li>
+            <li><code class="inline-label">⭐ CRIT</code> = Criterion Collection&mdash;though "Critical Hit" wouldn't be so far off, either.</li>
+            <li><code class="inline-label">⭐ COED</code> = Collector's Edition&mdash;doesn't come with the extra merch though, sorry.</li>
+            <li><code class="inline-label">⭐ ANIV</code> = Anniversary Edition&mdash;when a film studio or production company believes their intellectual property improves with age.</li>
+            <li><code class="inline-label">⭐ ULTM</code> = Ultimate Edition&mdash;endorsed and/or marketed by the film studio or production company as "ultimate."</li>
+            <li><code class="inline-label">⭐ UNCT</code> = Uncut&mdash;implies almost the same thing as Director's Cut, but with an edge&mdash;pun intended.</li>            
+            <li><code class="inline-label">⭐ IMAX</code> = IMAX&mdash;mostly a framing and source-quality label&mdash;does not necessarily imply 70mm quality.</li>
+            <li><code class="inline-label">⭐ RMST</code> = Remastered&mdash;tinkered with to make it better, supposedly.</li>
+            <li><code class="inline-label">⭐ THTR</code> = Theatrical&mdash;consistent with what was released in theaters.</li>
+            <li><code class="inline-label">⭐ DIAM</code> = Diamond Edition&mdash;prestigious vault restoration source (traditionally "Sidney" animation; i.e., <em>Sandy Black and the &radic;&nbsp;49 Endomorphs</em>), not correlated with the diamond emojis.</li>
+            <li><code class="inline-label">⭐ COCO</code> = Color Corrected&mdash;technical image/color adjustments&mdash;you can now watch Parry Moppins in overly saturated red.</li>
+            <li><code class="inline-label">⭐ DRAG</code> = Dragon Box&mdash;pertains to pristine, un-cropped cell restorations of the Prisoner of the Golden Headband's incarnate anime forms.</li>
+            <li><code class="inline-label">⭐ UPS</code> = Upscaled&mdash;for people who believe AI upscaling improves the original.</li>
+            <li><code class="inline-label">⭐ REG</code> = Regraded&mdash;creative adjustment of the image to achieve a particular look, mood, or tone&mdash;e.g.,&nbsp;Sidney's <em>Fleur Glyn: Hues-XX Noir Edition</em>&mdash;talk about deep-cover, inter-stellar grooves!</li>
+            <li><code class="inline-label">⭐ UNC</code> = Uncensored&mdash;often indicates higher probability of naked butts.</li>
+            <li><code class="inline-label">⭐ UNR</code> = Unrated&mdash;ditto (see previous)&mdash;nothing to do with the Inondent Mopoke&mdash;send all cease and desists to Australia along with all the other criminality in this section.</li>
+
+            <li>As I explain later in this doc, these edition and quality labels may appear on their own line, prefixed with a star emoji or they can appear without a star emoji, next to duration. Why? The main streaming app only provides so many rows, so I like to save a row if possible for somewhat nominal info. It's accomplished via conditional-space-conserving stuff I did in the Formatter code.</li>
+            <li>Why the four-character and three-character difference? That is to respect the differentiation of the AIOStreams logic (array strings vs. hardcoded boolean flags described below), though I don't necessarily see the living-room-utility difference in separating the "what's cool/unique about this release" identifier stuff.</li>
+        </ul>
+
         <h4>Video Info (Quality/Source Material &amp; Encoding Format)</h4>
         <ul>
             <li><code class="inline-label">🎞️ REMUX ∙ HEVC</code> = REMUX files are typically 60GB+ and should only be used by sufficiently capable devices and internet plans. WEB and other source material is self-explanatory. HEVC/AVC/etc. is typically negligible/safe to ignore. AV1, however, is newer and currently less viable on some devices.</li>
