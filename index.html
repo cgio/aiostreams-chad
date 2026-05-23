@@ -76,7 +76,7 @@
 
         /* --- THE COMPREHENSIVE RESPONSIVE SCREENSHOT MATRIX --- */
         .screenshot-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 26px auto; width: 100%; }
-        /* Hardcoded dark Stremio background masks any 1px layout rounding gaps perfectly */
+        /* Hardcoded dark streaming app background masks any 1px layout rounding gaps perfectly */
         .screenshot-item { flex: 1 1 calc(50% - 16px); min-width: 260px; max-width: 300px; border: 1px solid #83007f; border-radius: 8px; overflow: hidden; background-color: #15171a; box-shadow: 0 4px 16px rgba(131, 0, 127, 0.05); }
         .screenshot-item img { display: block; width: 100%; height: auto; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
         @media (max-width: 600px) { .screenshot-item { flex: 1 1 100%; max-width: 100%; } }
@@ -102,7 +102,7 @@
             transition: transform 0.1s ease-out;
         }
         
-        .fruit-item:active { transform: scale(1.4); }
+        .fruit-item:active { transform: scale(1.618); }
 
         /* Symmetrical Micro-Typography Callouts */
         .fruit-caption {
