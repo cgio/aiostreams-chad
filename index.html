@@ -457,13 +457,9 @@
             width: 100vw;
             height: 100vh;
             z-index: 5; /* Sandboxed right between the GIPHY backing void and your text sheets */
-            pointer-events: none;
-            
-            /* 🧪 HARDLOCKED CRYSTAL DIFFERENCE LAYER COMPOSITOR
-               Forces falling paths to mathematically invert against the white layout blocks below, 
-               shifting them into an organic neon magenta/cyan bismuth matrix track. */
-            mix-blend-mode: difference !important;
-            
+            pointer-events: none;            
+            mix-blend-mode: screen !important;
+            filter: blur(0.6px);            
             transform: translate3d(0, 0, 0);
             will-change: transform;
         }
@@ -1033,6 +1029,11 @@
         // Low-density configuration allows deep spatial gaps for background GIPHY art exposure
         const matrixTotalStreams = 45; 
 
+        // 🎨 CUSTOMIZABLE MATRIX MONOCHROME COLORS DEFINITIONS
+        // Modify these hex values to instantly reshape your entire page's holographic identity signature
+        const THEME_HEAD_GLOW = "#ffffff"; // The primary falling node item color (Pure White)
+        const THEME_TRAIL_CORE = "#00e6ff"; // The monochromatic trail channel target (Cyan / Matrix Blue)
+
         function resizeMatrixCanvas() {
             matrixCanvas.width = window.innerWidth;
             matrixCanvas.height = window.innerHeight;
@@ -1053,9 +1054,7 @@
                 
                 this.fontSize = Math.floor(this.z * 22) + 11; // 11px to 33px font scaling
                 
-                /* 📉 CRITICAL CHILL TIMING MODIFICATION:
-                   Speed values are slashed down to a super-lazy 0.3px baseline target, 
-                   completely neutralizing kinetic background clutter and user tension. */
+                // Super-lazy ambient velocity curve removes all vertical tension 
                 this.speed = (this.z * 2.5) + 0.3; 
                 
                 this.opacity = this.z * 0.75 + 0.20; 
@@ -1091,14 +1090,27 @@
                         this.charsList[i] = matrixChars[Math.floor(Math.random() * matrixChars.length)];
                     }
 
-                    // Pure holographic stasis colorway (Cyan splits into rich metallic crimson inside difference context)
+                    // 📺 INTERIOR CRT SHADER SHADOW EXTRACTION
+                    // Injects an active blooming neon aura natively behind every character line
+                    matrixCtx.shadowBlur = Math.floor(this.z * 8) + 4; // Deeper layers get a more diffuse glow shadow
+
                     if (i === 0) {
                         matrixCtx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                        matrixCtx.shadowColor = THEME_HEAD_GLOW;
                     } else {
-                        matrixCtx.fillStyle = `rgba(0, 230, 255, ${this.opacity * (1 - i / this.streamLength)})`;
+                        // Enforces uniform monochromatic tint scaling down the entire cascade track
+                        matrixCtx.fillStyle = `${THEME_TRAIL_CORE}`;
+                        matrixCtx.shadowColor = THEME_TRAIL_CORE;
+                        
+                        // Modulate global context globalAlpha safely for the trailing tail elements
+                        matrixCtx.globalAlpha = this.opacity * (1 - i / this.streamLength);
                     }
 
                     matrixCtx.fillText(this.charsList[i], finalX, charY);
+                    
+                    // CRITICAL RESET: Instantly scrub alpha and shadow states to avoid matrix bleeding errors
+                    matrixCtx.globalAlpha = 1.0;
+                    matrixCtx.shadowBlur = 0;
                 }
             }
         }
