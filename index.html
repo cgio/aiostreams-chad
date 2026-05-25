@@ -969,6 +969,15 @@
             const videoId = trigger.getAttribute('data-yt-id');
             
             if (videoId) {
+                // 🛠️ MOBILE CROSS-PLAYBACK SILENCER
+                // Forcefully commands both background inline engines to pause before launching the modal stream
+                if (inlinePlayer1 && typeof inlinePlayer1.pauseVideo === 'function') {
+                    inlinePlayer1.pauseVideo();
+                }
+                if (inlinePlayer2 && typeof inlinePlayer2.pauseVideo === 'function') {
+                    inlinePlayer2.pauseVideo();
+                }
+
                 playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
                 lightbox.style.display = 'flex';                
                 document.body.style.overflow = 'hidden'; // HARDLOCK VIEWPORT LAYER            
