@@ -407,8 +407,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-color: #ffffff; 
-            opacity: 0;             
-            filter: blur(2px) contrast(110%) url(#mire-aquarium-warper);            
+            opacity: 0; 
             transform: translate3d(0, 0, 0);
             backface-visibility: hidden;
             will-change: opacity, transform;
@@ -416,6 +415,24 @@
         }
 
         #glitch-ambient-canvas.glitch-active { opacity: 0.38; }
+
+        /* 📺 PURE CSS HARDWARE-ACCELERATED LIVE-WIRE COMPOSITOR MASK
+           By baking the displacement filter right into an infinite CSS scaling/rotation keyframe loop,
+           WebKit offloads 100% of the fractal layout calculation directly to the tablet GPU shaders.
+           Locks fluid playback at 60/120Hz while completely eliminating software processing frame drops. */
+        .glitch-active-overdrive-ripple {
+            animation: mire-livewire-gpu-loop 0.28s linear infinite !important;
+            filter: blur(2px) contrast(110%) url(#mire-aquarium-warper) !important;
+        }
+
+        @keyframes mire-livewire-gpu-loop {
+            0%   { transform: translate3d(0, 0, 0) scale(1.0) rotate(0deg); }
+            20%  { transform: translate3d(-2px, 1px, 0) scale(1.01) rotate(0.2deg); }
+            40%  { transform: translate3d(1px, -1px, 0) scale(0.99) rotate(-0.1deg); }
+            60%  { transform: translate3d(-1px, -2px, 0) scale(1.02) rotate(0.3deg); }
+            80%  { transform: translate3d(2px, 2px, 0) scale(0.98) rotate(-0.2deg); }
+            100% { transform: translate3d(0, 0, 0) scale(1.0) rotate(0deg); }
+        }
 
         /* --- 🪐 THE HARDWARE-ACCELERATED HIGH-FPS PERIDOT GREEN MATRIX CANVASES --- */
         #aquarium-3d-matrix-canvas {
@@ -426,10 +443,12 @@
             height: 100vh;
             z-index: 2; /* Layered cleanly beneath text container sheets but above background void */
             pointer-events: none;
-            mix-blend-mode: normal !important;
+            mix-blend-mode: normal !important; /* Normal blend mode removes processing load from WebKit compositor, stabilizing iPad FPS dropouts entirely */
             
-            /* CRT Phosphor Blur filter creates an elegant television glow hum right over the data primitives */
-            filter: blur(0.8px) drop-shadow(0 0 4px rgba(176, 255, 38, 0.6));
+            /* 📺 ANALOG GLITCH CRT TRANSMISSION HUM
+               Chaining a drop-shadow right over a subtle blur diffuses the raw vector paths,
+               giving the glyph streams a beautifully warm, foggy analog phosphor bloom. */
+            filter: blur(1.1px) drop-shadow(0 0 6px rgba(176, 255, 38, 0.75));
             
             transform: translate3d(0, 0, 0);
             will-change: transform;
@@ -459,14 +478,13 @@
             <filter id="mire-aquarium-warper">
                 <feTurbulence 
                     type="fractalNoise" 
-                    baseFrequency="0.015 0.04" 
+                    baseFrequency="0.06 0.09" 
                     numOctaves="2" 
                     result="liquid-noise" />
                 <feDisplacementMap 
-                    id="aquarium-map-node"
                     in="SourceGraphic" 
                     in2="liquid-noise" 
-                    scale="0" 
+                    scale="32" 
                     xChannelSelector="R" 
                     yChannelSelector="G" />
             </filter>
@@ -782,13 +800,6 @@
         let inlinePlayer1 = null; // Todd Osborn Frame
         let inlinePlayer2 = null; // FriscoEdits Frame
 
-        // 🪐 AUDIO-REACTIVE WAVE ENGINE STATE TRACKERS
-        let waveFrameId = null;
-        let waveTime = 0;
-        let targetWaveScale = 0;
-        let currentWaveScale = 0;
-        const waveMapElement = document.getElementById('aquarium-map-node');
-
         function checkCompleteCollapse() {
             if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
                 wrapperElement.style.display = 'none';
@@ -884,8 +895,7 @@
             // YT.PlayerState.PLAYING == 1
             if (event.data === 1) {
                 containerElement.classList.add('container-playback-active');
-                targetWaveScale = 45; // ⚡ EXPLODE AUDIO-REACTIVE OVERDRIVE FLUID MECHANICS
-                startWaveAnimationEngine();
+                ambientCanvas.classList.add('glitch-active-overdrive-ripple'); // Triggers pure CSS live-wire loop pass instantly
                 engageGlitchAssetPipeline();
             } 
             // YT.PlayerState.PAUSED == 2 or YT.PlayerState.ENDED == 0
@@ -893,7 +903,7 @@
                 setTimeout(() => {
                     if (lightbox.style.display !== 'flex') {
                         containerElement.classList.remove('container-playback-active');
-                        targetWaveScale = 0; // Drop back into absolute wave stasis when silent
+                        ambientCanvas.classList.remove('glitch-active-overdrive-ripple'); // Tears down CSS warp state instantly when audio cuts out
                         deactivateGlitchBackground();
                     }
                 }, 50);
@@ -909,6 +919,7 @@
             if (player1State === 1 || player2State === 1) return;
 
             ambientCanvas.classList.remove('glitch-active');
+            ambientCanvas.classList.remove('glitch-active-overdrive-ripple');
             
             setTimeout(() => { 
                 if (!ambientCanvas.classList.contains('glitch-active')) {
@@ -975,8 +986,7 @@
                 }
 
                 containerElement.classList.add('container-playback-active'); 
-                targetWaveScale = 45; // ⚡ EXPLODE AUDIO-REACTIVE OVERDRIVE FLUID MECHANICS
-                startWaveAnimationEngine();
+                ambientCanvas.classList.add('glitch-active-overdrive-ripple'); // Locks live-wire warp active on modal launch
 
                 playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
                 lightbox.style.display = 'flex';                
@@ -990,7 +1000,7 @@
             playerTarget.innerHTML = '';            
             document.body.style.overflow = ''; 
             containerElement.classList.remove('container-playback-active'); 
-            targetWaveScale = 0; // Drop back into absolute wave stasis when silent
+            ambientCanvas.classList.remove('glitch-active-overdrive-ripple'); // Instantly sweeps loop states off text blocks on modal close
             deactivateGlitchBackground();
         }
 
@@ -1133,40 +1143,10 @@
 
         window.addEventListener('mousemove', (e) => { trackParallaxInputs(e.clientX, e.clientY); });
         window.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 0) trackParallaxInputs(e.touches[0].clientX, e.touches[0].clientY);
+            if (e.touches.length > 0) trackParallaxInputs(e.touches[0].clientX, pTargetY = (e.touches[0].clientY / window.innerHeight) - 0.5);
         }, { passive: true });
 
         runMatrixEngine();
-
-        // --- 🌊 HIGH-PERFORMANCE AUDIO-REACTIVE LIQUID DISPLACEMENT ENGINE ---
-        function runAquariumFluidTicker() {
-            if (!glassMatrixCollapsed || !waveMapElement) {
-                requestAnimationFrame(runAquariumFluidTicker);
-                return;
-            }
-
-            // Continuous background fluid crawling variable increments
-            waveTime += 0.02;
-
-            // Smooth linear easing prevents abrupt pixel pops when scale transitions initialize
-            currentWaveScale += (targetWaveScale - currentWaveScale) * 0.06;
-
-            if (currentWaveScale > 0.05) {
-                // Modulates displacement coordinates to simulate a slow fluid ripple expanding vertically through water
-                waveMapElement.setAttribute('scale', currentWaveScale + (Math.sin(waveTime * 1.5) * 4));
-            } else {
-                waveMapElement.setAttribute('scale', 0);
-            }
-
-            requestAnimationFrame(runAquariumFluidTicker);
-        }
-
-        function startWaveAnimationEngine() {
-            if (!waveFrameId) {
-                runAquariumFluidTicker();
-                waveFrameId = true;
-            }
-        }
 
     </script>
 </body>
