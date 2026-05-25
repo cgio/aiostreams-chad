@@ -494,7 +494,7 @@
         <div id="cpug-stage" class="cpug-vault">
             <div class="awning-marquee">
                 <div class="video-container">
-                    <iframe id="breakbeat-stream" src="https://www.youtube.com/embed/-FOWzIpv6Rs?enablejsapi=1" title="Todd Osborn - Not Too Real" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>
+                    <div id="embedded-breakbeat-player"></div>
                 </div>
             </div>
         </div>
@@ -773,6 +773,7 @@
         // --- GLOBAL STATE REGISTERS ---
         let glassMatrixCollapsed = false; // Flag tracks if the administrative glass has been tipped over
         let cachedGlitchUrl = null; // Stores our parsed asset link locally to prevent redundant network hits
+        let inlinePlayer = null; // Holds the YouTube API instance for the breakbeat stream
 
         function checkCompleteCollapse() {
             // Once both kinetic animations terminate, completely wipe the spatial container footprint
@@ -842,16 +843,55 @@
         const closeBtn = document.getElementById('close-lightbox');
         const ambientCanvas = document.getElementById('glitch-ambient-canvas');
 
+        // --- LOAD OFFICIAL YOUTUBE IFRAME PLAYER API NATIVELY ---
+        (function loadYouTubeAPI() {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        })();
+
+        // Automatically executed by the YouTube script engine once initialization completes
+        window.onYouTubeIframeAPIReady = function() {
+            inlinePlayer = new YT.Player('embedded-breakbeat-player', {
+                height: '100%',
+                width: '100%',
+                videoId: '-FOWzIpv6Rs', // Todd Osborn - Not Too Real
+                playerVars: {
+                    'el': 'embedded',
+                    'origin': window.location.origin
+                },
+                events: {
+                    'onStateChange': onInlinePlayerStateChange
+                }
+            });
+        };
+
+        // Monitors playback parameters inside the marching-ants awning block
+        function onInlinePlayerStateChange(event) {
+            // YT.PlayerState.PLAYING == 1
+            if (event.data === 1) {
+                engageGlitchAssetPipeline();
+            } 
+            // YT.PlayerState.PAUSED == 2 or YT.PlayerState.ENDED == 0
+            else if (event.data === 2 || event.data === 0) {
+                deactivateGlitchBackground();
+            }
+        }
+
         // --- GIPHY TELEMETRY API DECOUPLING MATRIX ---
         async function engageGlitchAssetPipeline() {
-            if (cachedGlitchUrl) {
-                deployGlitchBackground(cachedGlitchUrl);
-                return;
-            }
+            // If glass matrix isn't broken, refuse to execute connection frames entirely
+            if (!glassMatrixCollapsed) return;
 
             try {
+                // Obfuscated string assembly protects your free Beta Key from simple scrapers
                 const targetK = ["Z4egzcpErC", "rwtC8c8yv6", "3Eh9z3JuvSlv"].join("");
-                const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${targetK}&tag=ext3+@polygon1993`;
+                
+                /* CRITICAL RANDOMIZATION PARAMETER: 
+                   Appending an evolving dynamic integer forces the GIPHY endpoint to break its 
+                   internal cache, returning a completely randomized artwork from the creator track on every pull */
+                const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${targetK}&tag=ext3+@polygon1993&_=${Math.random()}`;
                 
                 const response = await fetch(endpoint);
                 if (!response.ok) throw new Error("Signal interference detected.");
@@ -888,11 +928,17 @@
 
         function deactivateGlitchBackground() {
             ambientCanvas.classList.remove('glitch-active');
+            // Deliberately clears the style property to prevent background layout bleeding when audio rests
+            setTimeout(() => { 
+                if (!ambientCanvas.classList.contains('glitch-active')) {
+                    ambientCanvas.style.backgroundImage = "none"; 
+                }
+            }, 800);
         }
 
-        // Universal Event Intercept Delegation Pattern solves clone listener decay and handles URL tracking text safely
+        // Universal Event Intercept Delegation Pattern solves clone listener decay for fruit items
         document.addEventListener('click', (e) => {
-            const trigger = e.target.closest('[data-yt-id]');
+            const trigger = e.target.closest('.fruit-item');
             if (!trigger) return;
             
             e.stopPropagation();
