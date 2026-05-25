@@ -456,10 +456,10 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 5; /* Sandboxed right between the GIPHY backing void and your text sheets */
+            z-index: 5; /* Sandboxed right between the GIPHY backing void and text sheets */
             pointer-events: none;            
-            mix-blend-mode: screen !important;
-            filter: blur(0.6px);            
+            mix-blend-mode: normal !important;
+            filter: blur(0.5px) url(#crt-monochrome-lens);            
             transform: translate3d(0, 0, 0);
             will-change: transform;
         }
@@ -483,6 +483,18 @@
 </head>
 <body>
 
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <filter id="crt-monochrome-lens">
+                <feColorMatrix type="matrix" values="
+                    0 0 0 0 0.0
+                    0 0 0 0 0.9
+                    0 0 0 0 1.0
+                    0 0 0 1 0" />
+            </filter>
+        </defs>
+    </svg>
+    
     <div id="glitch-ambient-canvas"></div>
     <canvas id="aquarium-3d-matrix-canvas"></canvas>
 
@@ -1029,11 +1041,6 @@
         // Low-density configuration allows deep spatial gaps for background GIPHY art exposure
         const matrixTotalStreams = 45; 
 
-        // 🎨 CUSTOMIZABLE MATRIX MONOCHROME COLORS DEFINITIONS
-        // Modify these hex values to instantly reshape your entire page's holographic identity signature
-        const THEME_HEAD_GLOW = "#ffffff"; // The primary falling node item color (Pure White)
-        const THEME_TRAIL_CORE = "#00e6ff"; // The monochromatic trail channel target (Cyan / Matrix Blue)
-
         function resizeMatrixCanvas() {
             matrixCanvas.width = window.innerWidth;
             matrixCanvas.height = window.innerHeight;
@@ -1092,24 +1099,23 @@
 
                     // 📺 INTERIOR CRT SHADER SHADOW EXTRACTION
                     // Injects an active blooming neon aura natively behind every character line
-                    matrixCtx.shadowBlur = Math.floor(this.z * 8) + 4; // Deeper layers get a more diffuse glow shadow
+                    matrixCtx.shadowBlur = Math.floor(this.z * 8) + 4; 
 
                     if (i === 0) {
+                        /* White core heads pierce through the color lens cleanly, 
+                           creating a authentic neon trailing glow effect. */
                         matrixCtx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                        matrixCtx.shadowColor = THEME_HEAD_GLOW;
+                        matrixCtx.shadowColor = "#ffffff";
                     } else {
-                        // Enforces uniform monochromatic tint scaling down the entire cascade track
-                        matrixCtx.fillStyle = `${THEME_TRAIL_CORE}`;
-                        matrixCtx.shadowColor = THEME_TRAIL_CORE;
-                        
-                        // Modulate global context globalAlpha safely for the trailing tail elements
-                        matrixCtx.globalAlpha = this.opacity * (1 - i / this.streamLength);
+                        /* To feed the monochrome SVG color filter, we draw the trailing text using solid 
+                           white blocks carrying a linear alpha fade. The filter takes care of the rest. */
+                        matrixCtx.fillStyle = `rgba(255, 255, 255, ${this.opacity * (1 - i / this.streamLength)})`;
+                        matrixCtx.shadowColor = "#ffffff";
                     }
 
                     matrixCtx.fillText(this.charsList[i], finalX, charY);
                     
-                    // CRITICAL RESET: Instantly scrub alpha and shadow states to avoid matrix bleeding errors
-                    matrixCtx.globalAlpha = 1.0;
+                    // CRITICAL RESET: Instantly scrub shadow states to avoid tracking artifacts
                     matrixCtx.shadowBlur = 0;
                 }
             }
