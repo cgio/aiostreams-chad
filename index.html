@@ -679,7 +679,9 @@
             <li>Non-consensual fact: resistance is mandatorily optional.</li>
         </ul>
         
-        <p style="margin-top: 42px;"><span class="fruit-item" data-yt-id="SCM_YpUQJN4" style="font-size: 42px; line-height: 1;">🌹</span></p>
+        <p style="margin-top: 42px; text-align: left;">
+            <span class="fruit-item" data-yt-id="SCM_YpUQJN4" style="font-size: 42px; line-height: 1;">🌹</span>
+        </p>
         <p style="margin-top: 42px"><strong>...Bon appétit!</strong></p>
         <p>~ Chad/Bonhomme/Arrayed Fruit Peddler (AFP) #8585 🍨</p>
 
@@ -721,11 +723,25 @@
         const cpugVaultElement = document.getElementById('cpug-stage');
         const wrapperElement = document.querySelector('.placard-wrapper');
 
+        // --- GLOBAL STATE REGISTERS ---
+        let glassMatrixCollapsed = false; // Flag tracks if the administrative glass has been tipped over
+        let cachedGlitchUrl = null; // Stores our parsed asset link locally to prevent redundant network hits
+
+        function checkCompleteCollapse() {
+            // Once both kinetic animations terminate, completely wipe the spatial container footprint
+            if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
+                wrapperElement.style.display = 'none';
+                wrapperElement.style.margin = '0';
+                wrapperElement.style.height = '0';
+                
+                glassMatrixCollapsed = true; // The lock is broken. Ambient animation protocols are now cleared.
+            }
+        }
+
         function triggerCPUGSequence() {
             tapCounter++;
 
             if (tapCounter === 1) {
-                // Initial asymmetrical shifting engaged globally
                 mouseIconElement.classList.remove('tilt-2');
                 placardElement.classList.remove('placard-tilt-2');
                 
@@ -733,7 +749,6 @@
                 placardElement.classList.add('placard-tilt-1');
             } 
             else if (tapCounter === 2) {
-                // High-chaos rhythmic instability triggered
                 mouseIconElement.classList.remove('tilt-1');
                 placardElement.classList.remove('placard-tilt-1');
                 
@@ -741,14 +756,12 @@
                 placardElement.classList.add('placard-tilt-2');
             } 
             else if (tapCounter === 3) {
-                // Split-velocity tumbling trajectories triggered
                 mouseIconElement.classList.remove('tilt-2');
                 placardElement.classList.remove('placard-tilt-2');
                 
                 mouseIconElement.classList.add('fly-out');
                 placardElement.classList.add('placard-fly-out');
                 
-                // Synchronized manifestation of the breakbeat fruit awning
                 setTimeout(() => {
                     cpugVaultElement.classList.add('active');
                 }, 150); 
@@ -776,34 +789,20 @@
             }
         });
 
-        function checkCompleteCollapse() {
-            // Once both kinetic animations terminate, completely wipe the spatial container footprint
-            if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
-                wrapperElement.style.display = 'none';
-                wrapperElement.style.margin = '0';
-                wrapperElement.style.height = '0';
-            }
-        }
-
         // --- MIRE LIGHTBOX INTERCEPT MATRIX & AMBIENT GLITCH FETCH ENGINE ---
         const lightbox = document.getElementById('media-lightbox');
         const playerTarget = document.getElementById('lightbox-player-target');
         const closeBtn = document.getElementById('close-lightbox');
         const ambientCanvas = document.getElementById('glitch-ambient-canvas');
-        
-        let glassMatrixCollapsed = false; // Flag tracks if the administrative glass has been tipped over
-        let cachedGlitchUrl = null; // Stores our parsed asset link locally to prevent redundant network hits
 
         // --- GIPHY TELEMETRY API DECOUPLING MATRIX ---
         async function engageGlitchAssetPipeline() {
-            // If we already fetched a valid asset during this session, reuse it to respect rate caps
             if (cachedGlitchUrl) {
                 deployGlitchBackground(cachedGlitchUrl);
                 return;
             }
 
             try {
-                // Obfuscated string assembly prevents simple regex scrapers from harvesting your Beta Key
                 const targetK = ["Z4egzcpErC", "rwtC8c8yv6", "3Eh9z3JuvSlv"].join("");
                 const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${targetK}&tag=ext3+@polygon1993`;
                 
@@ -814,7 +813,7 @@
                 const targetUrl = payload?.data?.images?.original?.url;
                 
                 if (targetUrl) {
-                    cachedGlitchUrl = targetUrl; // Cache the asset link securely
+                    cachedGlitchUrl = targetUrl;
                     deployGlitchBackground(cachedGlitchUrl);
                 } else {
                     executeFallbackStasis();
@@ -826,7 +825,6 @@
         }
 
         function deployGlitchBackground(url) {
-            // Only mount the background visual if the operator has successfully broken the layout glass
             if (glassMatrixCollapsed) {
                 ambientCanvas.style.backgroundImage = `url('${url}')`;
                 ambientCanvas.classList.add('glitch-active');
@@ -836,7 +834,7 @@
         function executeFallbackStasis() {
             if (glassMatrixCollapsed) {
                 ambientCanvas.style.backgroundImage = "none";
-                ambientCanvas.style.backgroundColor = "#fff0be"; /* Manila yellow fallback */
+                ambientCanvas.style.backgroundColor = "#fff0be"; /* Manila yellow fallback matches Winamp frame */
                 ambientCanvas.classList.add('glitch-active');
             }
         }
@@ -854,34 +852,20 @@
             const videoId = trigger.getAttribute('data-yt-id');
             
             if (videoId) {
-                // Inject clean iframe payload natively
                 playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
                 lightbox.style.display = 'flex';
-                
-                // Trigger background animation attempt upon video playback start
                 engageGlitchAssetPipeline();
             }
         });
 
         function terminateLightboxStream() {
             lightbox.style.display = 'none';
-            playerTarget.innerHTML = ''; // Clear frame context instantly to terminate audio threads
-            deactivateGlitchBackground(); // Instantly fade background out to preserve text readability
+            playerTarget.innerHTML = '';
+            deactivateGlitchBackground();
         }
 
         closeBtn.addEventListener('click', terminateLightboxStream);
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) terminateLightboxStream(); });
-
-        // --- SINGLE UNIFIED HIGH-DENSITY COLLAPSE INTEGRATION ---
-        function checkCompleteCollapse() {
-            if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
-                wrapperElement.style.display = 'none';
-                wrapperElement.style.margin = '0';
-                wrapperElement.style.height = '0';
-                
-                glassMatrixCollapsed = true; // The lock is broken. Ambient animation protocols are now cleared.
-            }
-        }
 
         // --- NATIVE VANILLA RETRO TICKER CLONING MATRIX ---
         const tickerContainer = document.getElementById('winamp-ticker');
