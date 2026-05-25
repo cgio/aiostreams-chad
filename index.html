@@ -523,7 +523,7 @@
 
         <div class="media-wrapper">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/JRJmGO9xmFw" title="You Are The One by FriscoEdits" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>
+                <div id="embedded-frisco-player"></div>
             </div>
         </div>
 
@@ -851,23 +851,31 @@
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         })();
 
+        let inlinePlayer1 = null; // Todd Osborn Frame
+        let inlinePlayer2 = null; // FriscoEdits Frame
+
         // Automatically executed by the YouTube script engine once initialization completes
         window.onYouTubeIframeAPIReady = function() {
-            inlinePlayer = new YT.Player('embedded-breakbeat-player', {
+            // Player Module 1: The Top Marching-Ants Breakbeat Stream
+            inlinePlayer1 = new YT.Player('embedded-breakbeat-player', {
                 height: '100%',
                 width: '100%',
-                videoId: '-FOWzIpv6Rs', // Todd Osborn - Not Too Real
-                playerVars: {
-                    'el': 'embedded',
-                    'origin': window.location.origin
-                },
-                events: {
-                    'onStateChange': onInlinePlayerStateChange
-                }
+                videoId: '-FOWzIpv6Rs',
+                playerVars: { 'el': 'embedded', 'origin': window.location.origin },
+                events: { 'onStateChange': onInlinePlayerStateChange }
+            });
+
+            // Player Module 2: The Secondary Standalone Mid-Page Stream
+            inlinePlayer2 = new YT.Player('embedded-frisco-player', {
+                height: '100%',
+                width: '100%',
+                videoId: 'JRJmGO9xmFw',
+                playerVars: { 'el': 'embedded', 'origin': window.location.origin },
+                events: { 'onStateChange': onInlinePlayerStateChange }
             });
         };
 
-        // Monitors playback parameters inside the marching-ants awning block
+        // Universal State Monitor captures playback ticks from either embedded video asset window
         function onInlinePlayerStateChange(event) {
             // YT.PlayerState.PLAYING == 1
             if (event.data === 1) {
@@ -928,10 +936,11 @@
 
         function deactivateGlitchBackground() {
             ambientCanvas.classList.remove('glitch-active');
-            // Deliberately clears the style property to prevent background layout bleeding when audio rests
+            // Deliberately clears the style property and local cache registry to fetch a completely fresh asset link on the next play event
             setTimeout(() => { 
                 if (!ambientCanvas.classList.contains('glitch-active')) {
                     ambientCanvas.style.backgroundImage = "none"; 
+                    cachedGlitchUrl = null; // Flushes tracking pointer cache
                 }
             }, 800);
         }
@@ -946,16 +955,16 @@
             
             if (videoId) {
                 playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
-                lightbox.style.display = 'flex';
-                
-                // Fire the async GIPHY collection engine upon active media execution
+                lightbox.style.display = 'flex';                
+                document.body.style.overflow = 'hidden'; // HARDLOCK VIEWPORT LAYER            
                 engageGlitchAssetPipeline();
             }
         });
 
         function terminateLightboxStream() {
             lightbox.style.display = 'none';
-            playerTarget.innerHTML = '';
+            playerTarget.innerHTML = '';            
+            document.body.style.overflow = ''; // RELEASE VIEWPORT FREEDOM          
             deactivateGlitchBackground();
         }
 
