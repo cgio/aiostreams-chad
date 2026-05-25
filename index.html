@@ -883,8 +883,34 @@
             } 
             // YT.PlayerState.PAUSED == 2 or YT.PlayerState.ENDED == 0
             else if (event.data === 2 || event.data === 0) {
-                deactivateGlitchBackground();
+                // Check if the modal is currently open before deciding to kill the background
+                setTimeout(() => {
+                    if (lightbox.style.display !== 'flex') {
+                        deactivateGlitchBackground();
+                    }
+                }, 50);
             }
+        }
+
+        function deactivateGlitchBackground() {
+            // SAFEGUARD: If the modal is currently active, freeze the background state completely
+            if (lightbox.style.display === 'flex') return;
+
+            // Double check that neither inline player has sneakily started playing again
+            const player1State = inlinePlayer1 && typeof inlinePlayer1.getPlayerState === 'function' ? inlinePlayer1.getPlayerState() : -1;
+            const player2State = inlinePlayer2 && typeof inlinePlayer2.getPlayerState === 'function' ? inlinePlayer2.getPlayerState() : -1;
+            
+            if (player1State === 1 || player2State === 1) return;
+
+            ambientCanvas.classList.remove('glitch-active');
+            
+            // Deliberately clears the style property and local cache registry once all media is completely silent
+            setTimeout(() => { 
+                if (!ambientCanvas.classList.contains('glitch-active')) {
+                    ambientCanvas.style.backgroundImage = "none"; 
+                    cachedGlitchUrl = null; // Flushes tracking pointer cache
+                }
+            }, 800);
         }
 
         // --- GIPHY TELEMETRY API DECOUPLING MATRIX ---
@@ -932,17 +958,6 @@
                 ambientCanvas.style.backgroundColor = "#fff0be"; /* Manila yellow fallback matches Winamp frame */
                 ambientCanvas.classList.add('glitch-active');
             }
-        }
-
-        function deactivateGlitchBackground() {
-            ambientCanvas.classList.remove('glitch-active');
-            // Deliberately clears the style property and local cache registry to fetch a completely fresh asset link on the next play event
-            setTimeout(() => { 
-                if (!ambientCanvas.classList.contains('glitch-active')) {
-                    ambientCanvas.style.backgroundImage = "none"; 
-                    cachedGlitchUrl = null; // Flushes tracking pointer cache
-                }
-            }, 800);
         }
 
         // Universal Event Intercept Delegation Pattern solves clone listener decay for fruit items
