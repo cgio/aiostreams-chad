@@ -836,7 +836,7 @@
         function executeFallbackStasis() {
             if (glassMatrixCollapsed) {
                 ambientCanvas.style.backgroundImage = "none";
-                ambientCanvas.style.backgroundColor = "#ffffe1"; /* Standard system yellow fallback */
+                ambientCanvas.style.backgroundColor = "#fff0be"; /* Manila yellow fallback */
                 ambientCanvas.classList.add('glitch-active');
             }
         }
@@ -845,22 +845,22 @@
             ambientCanvas.classList.remove('glitch-active');
         }
 
-        // Universal Telemetry Target Sweep: Track any node carrying a valid video identifier
-        const mediaTriggers = document.querySelectorAll('[data-yt-id]');
-
-        mediaTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const videoId = trigger.getAttribute('data-yt-id');
-                if (videoId) {
-                    // Inject clean iframe payload natively
-                    playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
-                    lightbox.style.display = 'flex';
-                    
-                    // Trigger background animation attempt upon video playback start
-                    engageGlitchAssetPipeline();
-                }
-            });
+        // Universal Event Intercept Delegation Pattern solves the clone listener decay bug completely
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('[data-yt-id]');
+            if (!trigger) return;
+            
+            e.stopPropagation();
+            const videoId = trigger.getAttribute('data-yt-id');
+            
+            if (videoId) {
+                // Inject clean iframe payload natively
+                playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
+                lightbox.style.display = 'flex';
+                
+                // Trigger background animation attempt upon video playback start
+                engageGlitchAssetPipeline();
+            }
         });
 
         function terminateLightboxStream() {
@@ -872,8 +872,7 @@
         closeBtn.addEventListener('click', terminateLightboxStream);
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) terminateLightboxStream(); });
 
-        // --- UPDATE YOUR COLLAPSE ENGINE TO TOGGLE THE MATRIX FLAG ---
-        // Locate your existing checkCompleteCollapse function and modify its interior condition like so:
+        // --- SINGLE UNIFIED HIGH-DENSITY COLLAPSE INTEGRATION ---
         function checkCompleteCollapse() {
             if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
                 wrapperElement.style.display = 'none';
@@ -893,49 +892,25 @@
         function synchronizeMarqueeLayout() {
             if (!tickerContainer || !marqueeText || !marqueeCopies) return;
 
-            // Gather structural viewport boundary metrics natively without heavy library dependencies
             const containerWidth = tickerContainer.getBoundingClientRect().width || 300;
             const textWidth = marqueeText.offsetWidth;
             
-            if (textWidth === 0) return; // Safeguard if DOM layer hasn't initialized frame metrics yet
+            if (textWidth === 0) return;
 
-            // Compute exact number of clones required to fill the window boundary + 1 buffer unit
             const numberOfCopies = Math.ceil(containerWidth / textWidth) + 1;
-            
-            // Assign the text width to the CSS custom property pipeline to lock down animation speed ratios
             tickerContainer.style.setProperty('--textWidth', textWidth);
-            
-            // Wipe any stale mirror clones from previous layout refreshes
             marqueeCopies.innerHTML = "";
             
-            // Inject the precise clone rail into the background track layer
             for (let i = 0; i < numberOfCopies; i++) {
                 const cloneNode = marqueeText.cloneNode(true);
-                
-                // Re-bind click event tracking listeners to each fresh clone so they fire the lightbox natively
-                const linkTrigger = cloneNode.querySelector('.track-trigger');
-                if (linkTrigger) {
-                    linkTrigger.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const videoId = linkTrigger.getAttribute('data-yt-id');
-                        if (videoId && typeof lightbox !== 'undefined') {
-                            playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
-                            lightbox.style.display = 'flex';
-                        }
-                    });
-                }
                 marqueeCopies.appendChild(cloneNode);
             }
         }
 
-        // Initialize and lock listeners across system transformations
         window.addEventListener('DOMContentLoaded', synchronizeMarqueeLayout);
         window.addEventListener('resize', synchronizeMarqueeLayout);
-        
-        // Execute an immediate second-pass frame pass to catch high-DPI tracking layouts perfectly
         setTimeout(synchronizeMarqueeLayout, 200);
 
-        // Forces mobile panels to lock the scroll animation frame instantly upon touch contact
         tickerContainer.addEventListener('touchstart', () => { tickerContainer.classList.add('manual-freeze'); }, {passive: true});
         tickerContainer.addEventListener('touchend', () => { setTimeout(() => { tickerContainer.classList.remove('manual-freeze'); }, 400); });
 
