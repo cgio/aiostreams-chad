@@ -407,8 +407,8 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-color: #ffffff; 
-            opacity: 0; 
-            filter: blur(2px) contrast(110%);
+            opacity: 0;             
+            filter: blur(2px) contrast(110%) url(#mire-aquarium-warper);            
             transform: translate3d(0, 0, 0);
             backface-visibility: hidden;
             will-change: opacity, transform;
@@ -426,13 +426,9 @@
             height: 100vh;
             z-index: 2; /* Layered cleanly beneath text container sheets but above background void */
             pointer-events: none;
-            
-            /* Normal blend mode removes processing load from WebKit compositor, stabilizing iPad FPS dropouts entirely */
             mix-blend-mode: normal !important;
             
-            /* 📺 CRT PHOSPHOR FILTER BLUR
-               Applies a gentle global webkit blur over the drawing context to blend 
-               the character vectors together, creating an organic, diffuse analog glass hum. */
+            /* CRT Phosphor Blur filter creates an elegant television glow hum right over the data primitives */
             filter: blur(0.8px) drop-shadow(0 0 4px rgba(176, 255, 38, 0.6));
             
             transform: translate3d(0, 0, 0);
@@ -457,6 +453,25 @@
     </style>
 </head>
 <body>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <defs>
+            <filter id="mire-aquarium-warper">
+                <feTurbulence 
+                    type="fractalNoise" 
+                    baseFrequency="0.015 0.04" 
+                    numOctaves="2" 
+                    result="liquid-noise" />
+                <feDisplacementMap 
+                    id="aquarium-map-node"
+                    in="SourceGraphic" 
+                    in2="liquid-noise" 
+                    scale="0" 
+                    xChannelSelector="R" 
+                    yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
 
     <div id="glitch-ambient-canvas"></div>
     <canvas id="aquarium-3d-matrix-canvas"></canvas>
@@ -767,6 +782,13 @@
         let inlinePlayer1 = null; // Todd Osborn Frame
         let inlinePlayer2 = null; // FriscoEdits Frame
 
+        // 🪐 AUDIO-REACTIVE WAVE ENGINE STATE TRACKERS
+        let waveFrameId = null;
+        let waveTime = 0;
+        let targetWaveScale = 0;
+        let currentWaveScale = 0;
+        const waveMapElement = document.getElementById('aquarium-map-node');
+
         function checkCompleteCollapse() {
             if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
                 wrapperElement.style.display = 'none';
@@ -861,8 +883,9 @@
         function onInlinePlayerStateChange(event) {
             // YT.PlayerState.PLAYING == 1
             if (event.data === 1) {
-                // Injects the dynamic transparency mask over the central column sheet natively during playback
                 containerElement.classList.add('container-playback-active');
+                targetWaveScale = 45; // ⚡ EXPLODE AUDIO-REACTIVE OVERDRIVE FLUID MECHANICS
+                startWaveAnimationEngine();
                 engageGlitchAssetPipeline();
             } 
             // YT.PlayerState.PAUSED == 2 or YT.PlayerState.ENDED == 0
@@ -870,6 +893,7 @@
                 setTimeout(() => {
                     if (lightbox.style.display !== 'flex') {
                         containerElement.classList.remove('container-playback-active');
+                        targetWaveScale = 0; // Drop back into absolute wave stasis when silent
                         deactivateGlitchBackground();
                     }
                 }, 50);
@@ -950,7 +974,9 @@
                     inlinePlayer2.pauseVideo();
                 }
 
-                containerElement.classList.add('container-playback-active'); // Activates transparency injection block instantly
+                containerElement.classList.add('container-playback-active'); 
+                targetWaveScale = 45; // ⚡ EXPLODE AUDIO-REACTIVE OVERDRIVE FLUID MECHANICS
+                startWaveAnimationEngine();
 
                 playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
                 lightbox.style.display = 'flex';                
@@ -963,7 +989,8 @@
             lightbox.style.display = 'none';
             playerTarget.innerHTML = '';            
             document.body.style.overflow = ''; 
-            containerElement.classList.remove('container-playback-active'); // Restores stark card contrast instantly
+            containerElement.classList.remove('container-playback-active'); 
+            targetWaveScale = 0; // Drop back into absolute wave stasis when silent
             deactivateGlitchBackground();
         }
 
@@ -1012,8 +1039,8 @@
         const matrixTotalStreams = 45; 
 
         // 🟢 FIXED PERIDOT GREEN TINT COMPOSITOR VARIABLES
-        const COLOR_HEAD = "rgba(255, 255, 255, "; // Pure incandescent white head nodes
-        const COLOR_TRAIL = "rgba(176, 255, 38, "; // Vibrant, olivine Peridot Green trail tracks
+        const COLOR_HEAD = "rgba(255, 255, 255, "; 
+        const COLOR_TRAIL = "rgba(176, 255, 38, "; 
 
         function resizeMatrixCanvas() {
             matrixCanvas.width = window.innerWidth;
@@ -1031,14 +1058,12 @@
             reset() {
                 this.x = Math.random() * matrixCanvas.width;
                 this.y = Math.random() * -250 - 50;
-                this.z = Math.random() * 0.9 + 0.1; // Distance vector mapping
-                this.fontSize = Math.floor(this.z * 22) + 11; // 11px to 33px font scaling
-                
-                // Extra chill re-calibrated speed matrix caps velocity for deep atmospheric tracking
+                this.z = Math.random() * 0.9 + 0.1; 
+                this.fontSize = Math.floor(this.z * 22) + 11; 
                 this.speed = (this.z * 1.75) + 0.2; 
                 this.opacity = this.z * 0.75 + 0.20; 
                 this.charsList = [];
-                this.streamLength = Math.floor(Math.random() * 8) + 4; // Compact data droplets
+                this.streamLength = Math.floor(Math.random() * 8) + 4; 
             }
 
             update() {
@@ -1055,7 +1080,6 @@
                 
                 matrixCtx.font = `bold ${this.fontSize}px sans-serif`;
                 
-                // Multi-Planar Parallax Perspective Mapping
                 const parallaxX = pMouseX * this.z * 45;
                 const parallaxY = pMouseY * this.z * 25;
                 const finalX = this.x + parallaxX;
@@ -1068,8 +1092,6 @@
                         this.charsList[i] = matrixChars[Math.floor(Math.random() * matrixChars.length)];
                     }
 
-                    // 📺 CONTEXT PHOSPHOR BLUR EXPANSION
-                    // Applies an internal multi-pass core glow map right inside the loop pass, mirroring authentic CRT glass refraction
                     matrixCtx.shadowBlur = Math.floor(this.z * 12) + 6; 
 
                     if (i === 0) {
@@ -1082,7 +1104,7 @@
                     }
 
                     matrixCtx.fillText(this.charsList[i], finalX, charY);
-                    matrixCtx.shadowBlur = 0; // Immediate cleanup loop resets rendering state safely
+                    matrixCtx.shadowBlur = 0; 
                 }
             }
         }
@@ -1115,6 +1137,36 @@
         }, { passive: true });
 
         runMatrixEngine();
+
+        // --- 🌊 HIGH-PERFORMANCE AUDIO-REACTIVE LIQUID DISPLACEMENT ENGINE ---
+        function runAquariumFluidTicker() {
+            if (!glassMatrixCollapsed || !waveMapElement) {
+                requestAnimationFrame(runAquariumFluidTicker);
+                return;
+            }
+
+            // Continuous background fluid crawling variable increments
+            waveTime += 0.02;
+
+            // Smooth linear easing prevents abrupt pixel pops when scale transitions initialize
+            currentWaveScale += (targetWaveScale - currentWaveScale) * 0.06;
+
+            if (currentWaveScale > 0.05) {
+                // Modulates displacement coordinates to simulate a slow fluid ripple expanding vertically through water
+                waveMapElement.setAttribute('scale', currentWaveScale + (Math.sin(waveTime * 1.5) * 4));
+            } else {
+                waveMapElement.setAttribute('scale', 0);
+            }
+
+            requestAnimationFrame(runAquariumFluidTicker);
+        }
+
+        function startWaveAnimationEngine() {
+            if (!waveFrameId) {
+                runAquariumFluidTicker();
+                waveFrameId = true;
+            }
+        }
 
     </script>
 </body>
