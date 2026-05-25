@@ -388,9 +388,41 @@
             animation: ants-roll 1.5s linear infinite;
             border-radius: 8px;
         }
+
+        /* --- MIRE AMBIENT GLITCH TEXTURE MATRIX --- */
+        #glitch-ambient-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1000; /* Locked far below the core text grid container */
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            opacity: 0; /* Initialized to absolute stasis until playback conditions clear */
+            
+            /* Strict Human-Scale Readability Filters */
+            filter: grayscale(60%) blur(4px) contrast(90%);
+            
+            /* Forces the browser engine to decouple the layer onto a hardware texture track */
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            will-change: opacity, transform;
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Class state fired dynamically via the YouTube playback listener matrix */
+        #glitch-ambient-canvas.glitch-active {
+            opacity: 0.12; /* Calibrated low-impact opacity profile */
+        }
+
     </style>
 </head>
 <body>
+
+    <div id="glitch-ambient-canvas"></div>
 
     <div class="container">
         
@@ -585,7 +617,7 @@
 
         <h4>Video Info (Quality/Source Material &amp; Encoding Format)</h4>
         <ul>
-            <li><code class="inline-label">🎞️ REMUX ∙ HEVC</code> = REMUX files are typically 60GB+ and should only be used by sufficiently capable devices and internet plans. WEB and other source material is self-explanatory. HEVC/AVC/etc. is typically negligible/safe to ignore. AV1, however, is newer and currently less viable on some devices.</li>
+            <li><code class="inline-label">🎞️ REMUX ∙ HEVC</code> = REMUX files are typically 60GB+ and should only be used by sufficiently capable devices and internet plans. WEB and other source material is self-explanatory, for the most part, except for the following elucidations. CAM = camera captured&mdash;may contain audience-projected shadow puppets (people taking their seats), candy unpackaging sounds, and involuntary reactions). TS =  HEVC/AVC/etc. is typically negligible/safe to ignore. AV1, however, is newer and currently less viable on some devices.</li>
         </ul>
 
         <h4>Audio Info (Audio Formats/Tags &amp; Channels)</h4>
@@ -753,24 +785,80 @@
             }
         }
 
-        // --- MIRE LIGHTBOX INTERCEPT MATRIX ---
+        // --- MIRE LIGHTBOX INTERCEPT MATRIX & AMBIENT GLITCH FETCH ENGINE ---
         const lightbox = document.getElementById('media-lightbox');
         const playerTarget = document.getElementById('lightbox-player-target');
         const closeBtn = document.getElementById('close-lightbox');
+        const ambientCanvas = document.getElementById('glitch-ambient-canvas');
         
+        let glassMatrixCollapsed = false; // Flag tracks if the administrative glass has been tipped over
+        let cachedGlitchUrl = null; // Stores our parsed asset link locally to prevent redundant network hits
+
+        // --- GIPHY TELEMETRY API DECOUPLING MATRIX ---
+        async function engageGlitchAssetPipeline() {
+            // If we already fetched a valid asset during this session, reuse it to respect rate caps
+            if (cachedGlitchUrl) {
+                deployGlitchBackground(cachedGlitchUrl);
+                return;
+            }
+
+            try {
+                // Obfuscated string assembly prevents simple regex scrapers from harvesting your Beta Key
+                const targetK = ["Z4egzcpErC", "rwtC8c8yv6", "3Eh9z3JuvSlv"].join("");
+                const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${targetK}&tag=ext3+@polygon1993`;
+                
+                const response = await fetch(endpoint);
+                if (!response.ok) throw new Error("Signal interference detected.");
+                
+                const payload = await response.json();
+                const targetUrl = payload?.data?.images?.original?.url;
+                
+                if (targetUrl) {
+                    cachedGlitchUrl = targetUrl; // Cache the asset link securely
+                    deployGlitchBackground(cachedGlitchUrl);
+                } else {
+                    executeFallbackStasis();
+                }
+            } catch (error) {
+                console.warn("GIPHY Pipeline rate-limited or offline. Reverting to stasis.");
+                executeFallbackStasis();
+            }
+        }
+
+        function deployGlitchBackground(url) {
+            // Only mount the background visual if the operator has successfully broken the layout glass
+            if (glassMatrixCollapsed) {
+                ambientCanvas.style.backgroundImage = `url('${url}')`;
+                ambientCanvas.classList.add('glitch-active');
+            }
+        }
+
+        function executeFallbackStasis() {
+            if (glassMatrixCollapsed) {
+                ambientCanvas.style.backgroundImage = "none";
+                ambientCanvas.style.backgroundColor = "#ffffe1"; /* Standard system yellow fallback */
+                ambientCanvas.classList.add('glitch-active');
+            }
+        }
+
+        function deactivateGlitchBackground() {
+            ambientCanvas.classList.remove('glitch-active');
+        }
+
         // Universal Telemetry Target Sweep: Track any node carrying a valid video identifier
         const mediaTriggers = document.querySelectorAll('[data-yt-id]');
 
         mediaTriggers.forEach(trigger => {
             trigger.addEventListener('click', (e) => {
-                // Prevent nested event bubbling from colliding with underlying container triggers
                 e.stopPropagation();
-                
                 const videoId = trigger.getAttribute('data-yt-id');
                 if (videoId) {
-                    // Inject a clean iframe payload onto the screen layer safely on user request
+                    // Inject clean iframe payload natively
                     playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
                     lightbox.style.display = 'flex';
+                    
+                    // Trigger background animation attempt upon video playback start
+                    engageGlitchAssetPipeline();
                 }
             });
         });
@@ -778,10 +866,23 @@
         function terminateLightboxStream() {
             lightbox.style.display = 'none';
             playerTarget.innerHTML = ''; // Clear frame context instantly to terminate audio threads
+            deactivateGlitchBackground(); // Instantly fade background out to preserve text readability
         }
 
         closeBtn.addEventListener('click', terminateLightboxStream);
         lightbox.addEventListener('click', (e) => { if (e.target === lightbox) terminateLightboxStream(); });
+
+        // --- UPDATE YOUR COLLAPSE ENGINE TO TOGGLE THE MATRIX FLAG ---
+        // Locate your existing checkCompleteCollapse function and modify its interior condition like so:
+        function checkCompleteCollapse() {
+            if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
+                wrapperElement.style.display = 'none';
+                wrapperElement.style.margin = '0';
+                wrapperElement.style.height = '0';
+                
+                glassMatrixCollapsed = true; // The lock is broken. Ambient animation protocols are now cleared.
+            }
+        }
 
         // --- NATIVE VANILLA RETRO TICKER CLONING MATRIX ---
         const tickerContainer = document.getElementById('winamp-ticker');
