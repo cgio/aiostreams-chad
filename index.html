@@ -449,17 +449,21 @@
             opacity: 0.38; /* Intensely vivid cyberpunk tracking profile output */
         }
 
-        /* --- 🪐 THE HOLOGRAPHIC 3D MATRIX CANVASES TRACK --- */
+        /* --- 🪐 THE 100% UNIFORM PERIDOT GREEN MATRIX CANVASES TRACK --- */
         #aquarium-3d-matrix-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 5; /* Sandboxed right between the GIPHY backing void and text sheets */
-            pointer-events: none;            
+            z-index: 5; /* Sandboxed right between the GIPHY backing void and your text sheets */
+            pointer-events: none;
+            
+            /* ⚡ WEBKIT VELOCITY BYPASS FILTER:
+               Switched blend mode to 'normal' to insulate WebKit from calculation strain, 
+               completely stabilizing iPad FPS dropouts. */
             mix-blend-mode: normal !important;
-            filter: blur(0.5px) url(#crt-monochrome-lens);            
+            
             transform: translate3d(0, 0, 0);
             will-change: transform;
         }
@@ -483,18 +487,6 @@
 </head>
 <body>
 
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <defs>
-            <filter id="crt-monochrome-lens">
-                <feColorMatrix type="matrix" values="
-                    0 0 0 0 0.0
-                    0 0 0 0 0.9
-                    0 0 0 0 1.0
-                    0 0 0 1 0" />
-            </filter>
-        </defs>
-    </svg>
-    
     <div id="glitch-ambient-canvas"></div>
     <canvas id="aquarium-3d-matrix-canvas"></canvas>
 
@@ -557,7 +549,7 @@
         <div class="marquee" id="winamp-ticker">
             <div class="marquee__content">
                 <p class="marquee__text">
-                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
+                    🏴‍☠️&nbsp;📡&nbsp:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
                 </p>
                 <div class="marquee__copies" aria-hidden="true"></div>
             </div>
@@ -1029,7 +1021,7 @@
         tickerContainer.addEventListener('touchstart', () => { tickerContainer.classList.add('manual-freeze'); }, {passive: true});
         tickerContainer.addEventListener('touchend', () => { setTimeout(() => { tickerContainer.classList.remove('manual-freeze'); }, 400); });
 
-        // --- 🪐 UNIFIED 3D PARALLAX ULTRA-CHILL HOLO-MATRIX ENGINE ---
+        // --- 🪐 UNIFIED 3D PARALLAX ULTRA-CHILL HIGH-FPS MONOCHROME ENGINE ---
         const matrixCanvas = document.getElementById('aquarium-3d-matrix-canvas');
         const matrixCtx = matrixCanvas.getContext('2d');
 
@@ -1040,6 +1032,11 @@
         
         // Low-density configuration allows deep spatial gaps for background GIPHY art exposure
         const matrixTotalStreams = 45; 
+
+        // 🟢 PERIDOT GREEN CRYSTAL MONOCHROME THEME DEFINITIONS
+        // Hard-coded natively into fill styles to banish WebKit multi-color splitting anomalies completely.
+        const COLOR_HEAD = "rgba(255, 255, 255, "; // Pure incandescent white head node
+        const COLOR_TRAIL = "rgba(176, 255, 38, "; // Vibrant, olivine Peridot Green trail track
 
         function resizeMatrixCanvas() {
             matrixCanvas.width = window.innerWidth;
@@ -1061,8 +1058,10 @@
                 
                 this.fontSize = Math.floor(this.z * 22) + 11; // 11px to 33px font scaling
                 
-                // Super-lazy ambient velocity curve removes all vertical tension 
-                this.speed = (this.z * 2.5) + 0.3; 
+                /* 📉 EXTRA CHILL RE-CALIBRATED SPEED:
+                   Baseline pace slashed down by another 30% to enforce an absolute 
+                   non-rushed, ambient atmosphere that respects reading layout elements. */
+                this.speed = (this.z * 1.75) + 0.2; 
                 
                 this.opacity = this.z * 0.75 + 0.20; 
                 this.charsList = [];
@@ -1097,25 +1096,23 @@
                         this.charsList[i] = matrixChars[Math.floor(Math.random() * matrixChars.length)];
                     }
 
-                    // 📺 INTERIOR CRT SHADER SHADOW EXTRACTION
-                    // Injects an active blooming neon aura natively behind every character line
+                    // 📺 HIGH-VELOCITY INTEGRATED BLUR CONTEXT SHADER
+                    // Rasterizes the warm CRT phosphor bleed smoothly on any WebKit engine panel
                     matrixCtx.shadowBlur = Math.floor(this.z * 8) + 4; 
 
                     if (i === 0) {
-                        /* White core heads pierce through the color lens cleanly, 
-                           creating a authentic neon trailing glow effect. */
-                        matrixCtx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                        matrixCtx.shadowColor = "#ffffff";
+                        matrixCtx.fillStyle = `${COLOR_HEAD}${this.opacity})`;
+                        matrixCtx.shadowColor = "rgba(255, 255, 255, 0.9)";
                     } else {
-                        /* To feed the monochrome SVG color filter, we draw the trailing text using solid 
-                           white blocks carrying a linear alpha fade. The filter takes care of the rest. */
-                        matrixCtx.fillStyle = `rgba(255, 255, 255, ${this.opacity * (1 - i / this.streamLength)})`;
-                        matrixCtx.shadowColor = "#ffffff";
+                        // Dynamic alpha calculations are processed directly inside the fill profile strings
+                        const trailingAlpha = this.opacity * (1 - i / this.streamLength);
+                        matrixCtx.fillStyle = `${COLOR_TRAIL}${trailingAlpha})`;
+                        matrixCtx.shadowColor = `${COLOR_TRAIL}0.8)`;
                     }
 
                     matrixCtx.fillText(this.charsList[i], finalX, charY);
                     
-                    // CRITICAL RESET: Instantly scrub shadow states to avoid tracking artifacts
+                    // CRITICAL RESET: Instantly scrub canvas shadow parameters to preserve tablet RAM boundaries
                     matrixCtx.shadowBlur = 0;
                 }
             }
