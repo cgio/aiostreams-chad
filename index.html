@@ -35,7 +35,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: transparent !important; /* Clears the white mask to unlock the canvas layer */
+            background-color: #ffffff !important; /* Uniform white foundation eliminates background color collisions permanently */
             -webkit-text-size-adjust: 100%; 
             -moz-text-size-adjust: 100%; 
             text-size-adjust: 100%; 
@@ -56,21 +56,24 @@
         li { margin-bottom: 10px; }
         a { color: #83007f; text-decoration: none; transition: color 0.15s ease; }
         a:hover { color: #d300cd; text-decoration: underline; }
-        img { display: block; max-width: 100%; height: auto; }
+        img { display: block; max-width: 100%; height: auto; image-rendering: -webkit-optimize-contrast; }
         button, pre { -webkit-user-select: none; user-select: none; }
 
         /* --- THE PHI / GOLDEN RATIO GEOMETRY SHIELD & READABILITY MASK --- */
         .container { 
             position: relative;
-            z-index: 10; /* Elevated to float clearly above your interactive 3D matrix background */
+            z-index: 10; /* Elevated safely above your interactive 3D matrix background */
             max-width: 800px; 
             margin: 26px auto; 
             padding: 26px; 
             border-radius: 8px;
             
-            /* High-contrast alpha backing forces neon lines to invert your layout colors beautifully */
-            background-color: rgba(255, 255, 255, 0.85) !important;
-            mix-blend-mode: difference !important;
+            /* ⚪ CLEAN ALPHA DECOUPLING
+               Removed 'mix-blend-mode: difference' to shield the underlying peridot font paths, 
+               while a dense white shield preserves maximum text legibility limits flawlessly. */
+            background-color: rgba(255, 255, 255, 0.92) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(131, 0, 127, 0.08);
         }
 
         h1 { font-size: 42px; margin-bottom: 26px; letter-spacing: -0.5px; }
@@ -106,13 +109,11 @@
 
         /* --- THE COMPREHENSIVE RESPONSIVE SCREENSHOT MATRIX --- */
         .screenshot-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 26px auto; width: 100%; }
-        /* Hardcoded dark streaming app background masks any 1px layout rounding gaps perfectly */
         .screenshot-item { flex: 1 1 calc(50% - 16px); min-width: 260px; max-width: 300px; border: 1px solid #83007f; border-radius: 8px; overflow: hidden; background-color: #15171a; box-shadow: 0 4px 16px rgba(131, 0, 127, 0.05); }
-        .screenshot-item img { display: block; width: 100%; height: auto; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+        .screenshot-item img { display: block; width: 100%; height: auto; }
         @media (max-width: 600px) { .screenshot-item { flex: 1 1 100%; max-width: 100%; } }
 
         /* --- THE CASHEW-FAMILY ANTI-CONTAMINATION FLEX GRID --- */
-        /* --- AKA THE UNIFIED MULTIMEDIA TYPOGRAPHIC ENGINE --- */
         .fruit-divider { 
             display: flex; 
             flex-wrap: wrap; 
@@ -134,7 +135,6 @@
         
         .fruit-item:active { transform: scale(1.618); }
 
-        /* Symmetrical Micro-Typography Callouts */
         .fruit-caption {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
             font-size: 11px;
@@ -150,10 +150,7 @@
             -webkit-user-select: none;
         }
         
-        /* Structural spatial padding applied specifically to the bottom callout */
-        .caption-bottom {
-            margin-bottom: 42px;
-        }
+        .caption-bottom { margin-bottom: 42px; }
 
         /* --- WINAMP WINDOWS 95 SYSTEM TICKER ENGINE --- */
         .marquee {
@@ -162,17 +159,15 @@
             width: 100%;
             max-width: 300px;
             margin: 26px auto;
-            background-color: #fff0be; /* Vanilla manila OBE yellow */
+            background-color: #fff0be; 
             border: 1px solid #d0d0d0;
             padding: 6px 0;
             overflow: hidden;
             cursor: pointer;
             -webkit-user-select: none;
             user-select: none;
-            
-            /* CodePen Dynamic Pixel Velocity Variables */
             --textWidth: 100; 
-            --animSpeed: 35; /* Adjusted down from 100 to achieve a smooth, unhurried retro pace */
+            --animSpeed: 35; 
         }
         
         .marquee__content {
@@ -180,7 +175,6 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            /* Computes precise scroll duration based on physical text string pixel width */
             animation: marquee-scroll calc( (var(--textWidth) * 1s) / var(--animSpeed) ) linear infinite;
         }
         
@@ -189,23 +183,22 @@
             flex-shrink: 0;
             flex-grow: 0;
             margin: 0;
-            padding-right: 42px; /* Uniform spacing buffer between the loop sequences */
+            padding-right: 42px; 
             text-transform: uppercase;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
             font-size: 11px;
             font-weight: 700;
-            color: #111111; /* Windows Default Dark Neutral Text */
+            color: #111111; 
             letter-spacing: 0.5px;
         }
         
-        /* Distinct Hyperlink Blue Link */
         .marquee__text .track-trigger {
-            color: #0000ee !important; /* System Blue */
+            color: #0000ee !important; 
             text-decoration: underline;
         }
         
         .marquee__text .track-trigger:hover {
-            color: #551a8b !important; /* Traditional Visited/Active Purple state on hover */
+            color: #551a8b !important; 
         }
         
         .marquee__copies {
@@ -218,13 +211,11 @@
             flex-shrink: 0;
         }
 
-        /* Seamless Pixels-to-Pixels Reset */
         @keyframes marquee-scroll {
             0%   { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* Touch & Mouse Hover Halt Override Engine */
         .marquee:hover .marquee__content,
         .marquee.manual-freeze .marquee__content {
             animation-play-state: paused !important;
@@ -273,7 +264,6 @@
             height: 32px;
             cursor: pointer;
             perspective: 500px;
-            /* Force hardware layers to preserve depth fields on tap */
             transform: translate3d(0, 0, 0);
             transform-style: preserve-3d;
             transition: transform 0.15s ease-in-out, opacity 0.3s ease-out;
@@ -282,7 +272,6 @@
             user-select: none;
         }
 
-        /* The Slanted Walnut Face carrying the administrative warning label */
         .placard-face {
             position: absolute;
             width: 100%;
@@ -298,7 +287,6 @@
             justify-content: center;
         }
 
-        /* High-Sanitization Deep Engraved Lettering */
         .placard-text {
             color: #ffffff;
             font-family: ui-monospace, SFMono-Regular, monospace;
@@ -310,21 +298,8 @@
             padding-bottom: 2px;
         }
 
-        /* --- ASYMMETRICAL ADMINISTRATIVE WOBBLE MATRIX --- */
-        @keyframes placard-wobble-1 {
-            0%, 100% { transform: rotateX(25deg); }
-            25% { transform: rotateX(25deg) rotateY(-12deg) rotateZ(-2deg); }
-            75% { transform: rotateX(25deg) rotateY(4deg) rotateZ(1deg); }
-        }
-
-        @keyframes placard-wobble-2 {
-            0%, 100% { transform: rotateX(25deg); }
-            20% { transform: rotateX(20deg) rotateY(18deg) rotateZ(3deg); }
-            60% { transform: rotateX(30deg) rotateY(-22deg) rotateZ(-4deg); }
-            80% { transform: rotateX(23deg) rotateY(8deg) rotateZ(1deg); }
-        }
-
-        /* Explicit step-by-step pitch and roll decomposition completely bypasses mobile linear shortcuts */
+        @keyframes placard-wobble-1 { 0%, 100% { transform: rotateX(25deg); } 25% { transform: rotateX(25deg) rotateY(-12deg) rotateZ(-2deg); } 75% { transform: rotateX(25deg) rotateY(4deg) rotateZ(1deg); } }
+        @keyframes placard-wobble-2 { 0%, 100% { transform: rotateX(25deg); } 20% { transform: rotateX(20deg) rotateY(18deg) rotateZ(3deg); } 60% { transform: rotateX(30deg) rotateY(-22deg) rotateZ(-4deg); } 80% { transform: rotateX(23deg) rotateY(8deg) rotateZ(1deg); } }
         @keyframes placard-tumble-exit {
             0% { transform: rotateX(25deg) translate3d(0, 0, 0) scale(1); opacity: 1; }
             15% { transform: rotateX(55deg) rotateZ(15deg) translate3d(0, 15px, 20px) scale(1); opacity: 1; }            
@@ -336,7 +311,6 @@
         .placard-tilt-2 .placard-face { animation: placard-wobble-2 0.28s ease-in-out infinite; }
         .placard-fly-out { animation: placard-tumble-exit 2.4s ease-in-out forwards; pointer-events: none; }
 
-        /* --- MIRE BIFURCATION SCAN EYE COMPONENT --- */
         .telemetry-eye {
             position: relative;
             display: inline-block;
@@ -349,7 +323,7 @@
             overflow: hidden;
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
             vertical-align: middle;
-            transform: translate3d(0, 0, 0); /* Secure hardware acceleration layer */
+            transform: translate3d(0, 0, 0); 
         }
 
         .eye-iris {
@@ -364,23 +338,14 @@
             animation: eye-coordinate-scan 7s ease-in-out infinite;
         }
 
-        /* Ambient Scanning Matrix: Inspecting layout width anomalies */
-        @keyframes eye-coordinate-scan {
-            0%, 100% { transform: translate(0, 0); }       /* Focus dead-center at operator */
-            12%, 24% { transform: translate(-3px, 0); }    /* Scanning left toward column scores */
-            32%, 40% { transform: translate(3px, -2px); }  /* Inspecting top H1 text wrap boundaries */
-            52%, 64% { transform: translate(0, 3px); }     /* Looking down at copy interaction templates */
-            72%, 88% { transform: translate(-2px, 2px); }  /* Telemetry tracking coordinate inputs */
-        }
+        @keyframes eye-coordinate-scan { 0%, 100% { transform: translate(0, 0); } 12%, 24% { transform: translate(-3px, 0); } 32%, 40% { transform: translate(3px, -2px); } 52%, 64% { transform: translate(0, 3px); } 72%, 88% { transform: translate(-2px, 2px); } }
 
-        /* Interrupt Protocol: Force immediate tracking freeze when instability increments */
         .placard-tilt-1 .eye-iris, 
         .placard-tilt-2 .eye-iris {
             animation: none !important;
-            transform: translate(0, 0) scale(1.4) !important; /* Iris expands in panic */
+            transform: translate(0, 0) scale(1.4) !important; 
         }
 
-        /* CHAD NATIONAL FLAG COLORS & YE OLDE TOWN SQUARE CANVAS FRUIT VENDOR MARQUEE */
         .cpug-vault {
             display: block;
             max-height: 0px;
@@ -398,10 +363,7 @@
             margin: 26px auto;
         }
 
-        @keyframes ants-roll {
-            0% { background-position: 0 0; }
-            100% { background-position: 72px 0; }
-        }
+        @keyframes ants-roll { 0% { background-position: 0 0; } 100% { background-position: 72px 0; } }
 
         .awning-marquee {
             padding: 12px;
@@ -428,40 +390,34 @@
             bottom: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1000; /* Locked far below the core text grid container */
+            z-index: 1; /* Floats perfectly at baseline backing layer */
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            background-color: #0d0e12; /* Provides a solid dark bedrock to compute the difference math */
-            opacity: 0; /* Initialized to absolute stasis until playback conditions clear */
-            
-            /* 🛠️ ENHANCED VISIBILITY FILTER MATRIX */
+            background-color: #ffffff; 
+            opacity: 0; 
             filter: blur(2px) contrast(110%);
-            
-            /* Forces the browser engine to decouple the layer onto a hardware texture track */
             transform: translate3d(0, 0, 0);
             backface-visibility: hidden;
             will-change: opacity, transform;
             transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        #glitch-ambient-canvas.glitch-active {
-            opacity: 0.38; /* Intensely vivid cyberpunk tracking profile output */
-        }
+        #glitch-ambient-canvas.glitch-active { opacity: 0.38; }
 
-        /* --- 🪐 THE 100% UNIFORM PERIDOT GREEN MATRIX CANVASES TRACK --- */
+        /* --- 🪐 THE HARDWARE-ACCELERATED HIGH-FPS PERIDOT GREEN MATRIX CANVASES --- */
         #aquarium-3d-matrix-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 5; /* Sandboxed right between the GIPHY backing void and your text sheets */
+            z-index: 2; /* Layered cleanly beneath text container sheets but above background void */
             pointer-events: none;
             
-            /* ⚡ WEBKIT VELOCITY BYPASS FILTER:
-               Switched blend mode to 'normal' to insulate WebKit from calculation strain, 
-               completely stabilizing iPad FPS dropouts. */
+            /* ⚡ NATIVE HARDWARE BLEND EXCLUSION:
+               Hardlocked to 'normal' to entirely insulate modern iPad Safari engines from 
+               pixel math strain, securing smooth-as-butter layout transitions. */
             mix-blend-mode: normal !important;
             
             transform: translate3d(0, 0, 0);
@@ -549,7 +505,7 @@
         <div class="marquee" id="winamp-ticker">
             <div class="marquee__content">
                 <p class="marquee__text">
-                    🏴‍☠️&nbsp;📡&nbsp:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
+                    🏴‍☠️&nbsp;📡&nbsp;:::incoming:::pirate_shortwave_radio_broadcast.m3u:::&nbsp;&darr;&nbsp;:::&nbsp;&#9654;&nbsp;🎶&nbsp;<span data-yt-id="cPJdvCRCUNE" class="track-trigger">SHISHISHISHI.s3m</span>:::&nbsp;📡&nbsp;🏴‍☠️
                 </p>
                 <div class="marquee__copies" aria-hidden="true"></div>
             </div>
@@ -1026,17 +982,17 @@
         const matrixCtx = matrixCanvas.getContext('2d');
 
         let pMouseX = 0, pMouseY = 0, pTargetX = 0, pTargetY = 0;
-        const matrixAlphabet = "010101010101アァカサタナハマヤラワガザダバパイウゥエオォキシチニヒミギリジヂビピクゥクスツヌフムユュルグズヅブプケセテネヘメレゲゼデベペコソトノホモヨョロヲゴゾドボポヴッン";
+        const matrixAlphabet = "010101010101アァカサタナハマヤラワガザダバパイウゥエオォキシチニヒミギリジヂビピクゥクスツヌフムユュルグズヅブプケセテネヘメレGEZEDEBEPEコソトノホモヨョロヲゴゾドボポヴッン";
         const matrixChars = matrixAlphabet.split("");
         let matrixStreams = [];
         
         // Low-density configuration allows deep spatial gaps for background GIPHY art exposure
         const matrixTotalStreams = 45; 
 
-        // 🟢 PERIDOT GREEN CRYSTAL MONOCHROME THEME DEFINITIONS
-        // Hard-coded natively into fill styles to banish WebKit multi-color splitting anomalies completely.
-        const COLOR_HEAD = "rgba(255, 255, 255, "; // Pure incandescent white head node
-        const COLOR_TRAIL = "rgba(176, 255, 38, "; // Vibrant, olivine Peridot Green trail track
+        // 🟢 PERIDOT GREEN CRT MONOCHROME COMPOSITOR MATRIX DEFINITIONS
+        // Hardcoded strings completely remove WebKit's dependency on color-splitting CSS parameters
+        const COLOR_HEAD = "rgba(255, 255, 255, "; // Pure incandescent white head nodes
+        const COLOR_TRAIL = "rgba(176, 255, 38, "; // Vibrant, olivine Peridot Green trail tracks
 
         function resizeMatrixCanvas() {
             matrixCanvas.width = window.innerWidth;
