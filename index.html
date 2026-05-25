@@ -919,13 +919,9 @@
             if (!glassMatrixCollapsed) return;
 
             try {
-                // Obfuscated string assembly protects your free Beta Key from simple scrapers
                 const targetK = ["Z4egzcpErC", "rwtC8c8yv6", "3Eh9z3JuvSlv"].join("");
                 
-                /* CRITICAL RANDOMIZATION PARAMETER: 
-                   Appending an evolving dynamic integer forces the GIPHY endpoint to break its 
-                   internal cache, returning a completely randomized artwork from the creator track on every pull */
-                const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${targetK}&tag=ext3+@polygon1993&_=${Math.random()}`;
+                const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${targetK}&tag=@polygon1993&_=${Math.random()}`;
                 
                 const response = await fetch(endpoint);
                 if (!response.ok) throw new Error("Signal interference detected.");
@@ -960,9 +956,30 @@
             }
         }
 
+        function deactivateGlitchBackground() {
+            // SAFEGUARD: If the modal is currently active, freeze the background state completely
+            if (lightbox.style.display === 'flex') return;
+
+            // Double check that neither inline player has sneakily started playing again
+            const player1State = inlinePlayer1 && typeof inlinePlayer1.getPlayerState === 'function' ? inlinePlayer1.getPlayerState() : -1;
+            const player2State = inlinePlayer2 && typeof inlinePlayer2.getPlayerState === 'function' ? inlinePlayer2.getPlayerState() : -1;
+            
+            if (player1State === 1 || player2State === 1) return;
+
+            ambientCanvas.classList.remove('glitch-active');
+            
+            // Deliberately clears the style property and local cache registry once all media is completely silent
+            setTimeout(() => { 
+                if (!ambientCanvas.classList.contains('glitch-active')) {
+                    ambientCanvas.style.backgroundImage = "none"; 
+                    cachedGlitchUrl = null; // Flushes tracking pointer cache
+                }
+            }, 800);
+        }
+
         // Universal Event Intercept Delegation Pattern solves clone listener decay for fruit items
         document.addEventListener('click', (e) => {
-            const trigger = e.target.closest('.fruit-item');
+            const trigger = e.target.closest('.fruit-item, .track-trigger');
             if (!trigger) return;
             
             e.stopPropagation();
@@ -970,7 +987,6 @@
             
             if (videoId) {
                 // 🛠️ MOBILE CROSS-PLAYBACK SILENCER
-                // Forcefully commands both background inline engines to pause before launching the modal stream
                 if (inlinePlayer1 && typeof inlinePlayer1.pauseVideo === 'function') {
                     inlinePlayer1.pauseVideo();
                 }
