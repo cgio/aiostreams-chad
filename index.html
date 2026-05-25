@@ -62,7 +62,7 @@
         /* --- THE PHI / GOLDEN RATIO GEOMETRY SHIELD & READABILITY MASK --- */
         .container { 
             position: relative;
-            z-index: 1; /* Floats safely above the ambient canvas layer below */
+            z-index: 10; /* Elevated to float clearly above your interactive 3D matrix background */
             max-width: 800px; 
             margin: 26px auto; 
             padding: 26px; 
@@ -95,7 +95,7 @@
         .template-card { position: relative; margin: 26px 0; border: 1px solid #83007f; border-radius: 8px; background-color: #fafafa; overflow: hidden; }
         pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 11px; padding: 26px; max-height: 260px; overflow-y: auto; white-space: pre-wrap; word-break: break-all; color: #222222; -webkit-user-select: text; user-select: text; }
 
-        .copy-btn { position: absolute; top: 16px; right: 16px; min-height: 44px; min-width: 72px; padding: 0 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer; background-color: #83007f; color: #ffffff; border: 1px solid #83007f; border-radius: 6px; transition: all 0.15s ease-in-out; z-index: 10; }
+        .copy-btn { position: absolute; top: 16px; right: 16px; min-height: 44px; min-width: 72px; padding: 0 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer; background-color: #83007f; color: #ffffff; border: 1px solid #83007f; border-radius: 6px; transition: all 0.15s ease-in-out; z-index: 20; }
         .copy-btn:hover { background-color: #d300cd; border-color: #d300cd; }
         .copy-btn:active { background-color: #50004e; border-color: #50004e; }
         .copy-btn.success { background-color: #00ff00; border-color: #00ff00; color: #000000; }
@@ -419,7 +419,7 @@
             border-radius: 8px;
         }
 
-        /* --- MIRE AMBIENT GLITCH TEXTURE MATRIX --- */
+        /* --- MIRE AMBIENT GLITCH TEXTURE CANVAS --- */
         #glitch-ambient-canvas {
             position: fixed;
             top: 0;
@@ -432,7 +432,7 @@
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            background-color: #111111; /* Provides a solid dark bedrock to compute the difference math */
+            background-color: #0d0e12; /* Provides a solid dark bedrock to compute the difference math */
             opacity: 0; /* Initialized to absolute stasis until playback conditions clear */
             
             /* 🛠️ ENHANCED VISIBILITY FILTER MATRIX */
@@ -445,9 +445,27 @@
             transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Class state fired dynamically via the YouTube playback listener matrix */
         #glitch-ambient-canvas.glitch-active {
             opacity: 0.38; /* Intensely vivid cyberpunk tracking profile output */
+        }
+
+        /* --- 🪐 THE HOLOGRAPHIC 3D MATRIX CANVASES TRACK --- */
+        #aquarium-3d-matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 5; /* Sandboxed right between the GIPHY backing void and your text sheets */
+            pointer-events: none;
+            
+            /* 🧪 HARDLOCKED CRYSTAL DIFFERENCE LAYER COMPOSITOR
+               Forces falling paths to mathematically invert against the white layout blocks below, 
+               shifting them into an organic neon magenta/cyan bismuth matrix track. */
+            mix-blend-mode: difference !important;
+            
+            transform: translate3d(0, 0, 0);
+            will-change: transform;
         }
 
         /* --- PRODUCTION LIGHTBOX CONTAINER MASK --- */
@@ -470,6 +488,7 @@
 <body>
 
     <div id="glitch-ambient-canvas"></div>
+    <canvas id="aquarium-3d-matrix-canvas"></canvas>
 
     <div class="container">
         
@@ -773,10 +792,10 @@
         // --- GLOBAL STATE REGISTERS ---
         let glassMatrixCollapsed = false; // Flag tracks if the administrative glass has been tipped over
         let cachedGlitchUrl = null; // Stores our parsed asset link locally to prevent redundant network hits
-        let inlinePlayer = null; // Holds the YouTube API instance for the breakbeat stream
+        let inlinePlayer1 = null; // Todd Osborn Frame
+        let inlinePlayer2 = null; // FriscoEdits Frame
 
         function checkCompleteCollapse() {
-            // Once both kinetic animations terminate, completely wipe the spatial container footprint
             if (mouseIconElement.style.display === 'none' && placardElement.style.display === 'none') {
                 wrapperElement.style.display = 'none';
                 wrapperElement.style.margin = '0';
@@ -818,11 +837,9 @@
             }
         }
 
-        // Enmesh both administrative objects into the operational tracking system
         mouseIconElement.addEventListener('click', triggerCPUGSequence);
         placardElement.addEventListener('click', triggerCPUGSequence);
 
-        // Anti-Void Absolute Layout Collapse Engine
         mouseIconElement.addEventListener('animationend', (event) => {
             if (event.animationName === 'glass-exit') {
                 mouseIconElement.style.display = 'none';
@@ -851,12 +868,7 @@
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         })();
 
-        let inlinePlayer1 = null; // Todd Osborn Frame
-        let inlinePlayer2 = null; // FriscoEdits Frame
-
-        // Automatically executed by the YouTube script engine once initialization completes
         window.onYouTubeIframeAPIReady = function() {
-            // Player Module 1: The Top Marching-Ants Breakbeat Stream
             inlinePlayer1 = new YT.Player('embedded-breakbeat-player', {
                 height: '100%',
                 width: '100%',
@@ -865,7 +877,6 @@
                 events: { 'onStateChange': onInlinePlayerStateChange }
             });
 
-            // Player Module 2: The Secondary Standalone Mid-Page Stream
             inlinePlayer2 = new YT.Player('embedded-frisco-player', {
                 height: '100%',
                 width: '100%',
@@ -875,15 +886,11 @@
             });
         };
 
-        // Universal State Monitor captures playback ticks from either embedded video asset window
         function onInlinePlayerStateChange(event) {
-            // YT.PlayerState.PLAYING == 1
             if (event.data === 1) {
                 engageGlitchAssetPipeline();
             } 
-            // YT.PlayerState.PAUSED == 2 or YT.PlayerState.ENDED == 0
             else if (event.data === 2 || event.data === 0) {
-                // Check if the modal is currently open before deciding to kill the background
                 setTimeout(() => {
                     if (lightbox.style.display !== 'flex') {
                         deactivateGlitchBackground();
@@ -893,10 +900,8 @@
         }
 
         function deactivateGlitchBackground() {
-            // SAFEGUARD: If the modal is currently active, freeze the background state completely
             if (lightbox.style.display === 'flex') return;
 
-            // Double check that neither inline player has sneakily started playing again
             const player1State = inlinePlayer1 && typeof inlinePlayer1.getPlayerState === 'function' ? inlinePlayer1.getPlayerState() : -1;
             const player2State = inlinePlayer2 && typeof inlinePlayer2.getPlayerState === 'function' ? inlinePlayer2.getPlayerState() : -1;
             
@@ -904,23 +909,20 @@
 
             ambientCanvas.classList.remove('glitch-active');
             
-            // Deliberately clears the style property and local cache registry once all media is completely silent
             setTimeout(() => { 
                 if (!ambientCanvas.classList.contains('glitch-active')) {
                     ambientCanvas.style.backgroundImage = "none"; 
-                    cachedGlitchUrl = null; // Flushes tracking pointer cache
+                    cachedGlitchUrl = null; 
                 }
             }, 800);
         }
 
         // --- GIPHY TELEMETRY API DECOUPLING MATRIX ---
         async function engageGlitchAssetPipeline() {
-            // If glass matrix isn't broken, refuse to execute connection frames entirely
             if (!glassMatrixCollapsed) return;
 
             try {
                 const targetK = ["Z4egzcpErC", "rwtC8c8yv6", "3Eh9z3JuvSlv"].join("");
-                
                 const endpoint = `https://api.giphy.com/v1/gifs/random?api_key=${targetK}&tag=@polygon1993&_=${Math.random()}`;
                 
                 const response = await fetch(endpoint);
@@ -951,33 +953,11 @@
         function executeFallbackStasis() {
             if (glassMatrixCollapsed) {
                 ambientCanvas.style.backgroundImage = "none";
-                ambientCanvas.style.backgroundColor = "#fff0be"; /* Manila yellow fallback matches Winamp frame */
+                ambientCanvas.style.backgroundColor = "#fff0be"; 
                 ambientCanvas.classList.add('glitch-active');
             }
         }
 
-        function deactivateGlitchBackground() {
-            // SAFEGUARD: If the modal is currently active, freeze the background state completely
-            if (lightbox.style.display === 'flex') return;
-
-            // Double check that neither inline player has sneakily started playing again
-            const player1State = inlinePlayer1 && typeof inlinePlayer1.getPlayerState === 'function' ? inlinePlayer1.getPlayerState() : -1;
-            const player2State = inlinePlayer2 && typeof inlinePlayer2.getPlayerState === 'function' ? inlinePlayer2.getPlayerState() : -1;
-            
-            if (player1State === 1 || player2State === 1) return;
-
-            ambientCanvas.classList.remove('glitch-active');
-            
-            // Deliberately clears the style property and local cache registry once all media is completely silent
-            setTimeout(() => { 
-                if (!ambientCanvas.classList.contains('glitch-active')) {
-                    ambientCanvas.style.backgroundImage = "none"; 
-                    cachedGlitchUrl = null; // Flushes tracking pointer cache
-                }
-            }, 800);
-        }
-
-        // Universal Event Intercept Delegation Pattern solves clone listener decay for fruit items
         document.addEventListener('click', (e) => {
             const trigger = e.target.closest('.fruit-item, .track-trigger');
             if (!trigger) return;
@@ -986,7 +966,6 @@
             const videoId = trigger.getAttribute('data-yt-id');
             
             if (videoId) {
-                // 🛠️ MOBILE CROSS-PLAYBACK SILENCER
                 if (inlinePlayer1 && typeof inlinePlayer1.pauseVideo === 'function') {
                     inlinePlayer1.pauseVideo();
                 }
@@ -996,7 +975,7 @@
 
                 playerTarget.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" title="MIRE Telemetry Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
                 lightbox.style.display = 'flex';                
-                document.body.style.overflow = 'hidden'; // HARDLOCK VIEWPORT LAYER            
+                document.body.style.overflow = 'hidden'; 
                 engageGlitchAssetPipeline();
             }
         });
@@ -1004,7 +983,7 @@
         function terminateLightboxStream() {
             lightbox.style.display = 'none';
             playerTarget.innerHTML = '';            
-            document.body.style.overflow = ''; // RELEASE VIEWPORT FREEDOM          
+            document.body.style.overflow = ''; 
             deactivateGlitchBackground();
         }
 
@@ -1041,6 +1020,119 @@
 
         tickerContainer.addEventListener('touchstart', () => { tickerContainer.classList.add('manual-freeze'); }, {passive: true});
         tickerContainer.addEventListener('touchend', () => { setTimeout(() => { tickerContainer.classList.remove('manual-freeze'); }, 400); });
+
+        // --- 🪐 UNIFIED 3D PARALLAX ULTRA-CHILL HOLO-MATRIX ENGINE ---
+        const matrixCanvas = document.getElementById('aquarium-3d-matrix-canvas');
+        const matrixCtx = matrixCanvas.getContext('2d');
+
+        let pMouseX = 0, pMouseY = 0, pTargetX = 0, pTargetY = 0;
+        const matrixAlphabet = "010101010101アァカサタナハマヤラワガザダバパイウゥエオォキシチニヒミギリジヂビピクゥクスツヌフムユュルグズヅブプケセテネヘメレゲゼデベペコソトノホモヨョロヲゴゾドボポヴッン";
+        const matrixChars = matrixAlphabet.split("");
+        let matrixStreams = [];
+        
+        // Low-density configuration allows deep spatial gaps for background GIPHY art exposure
+        const matrixTotalStreams = 45; 
+
+        function resizeMatrixCanvas() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeMatrixCanvas);
+        resizeMatrixCanvas();
+
+        class MatrixPerspectiveStream {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * matrixCanvas.height * -1.5;
+            }
+
+            reset() {
+                this.x = Math.random() * matrixCanvas.width;
+                this.y = Math.random() * -250 - 50;
+                this.z = Math.random() * 0.9 + 0.1; // Distance vector mapping
+                
+                this.fontSize = Math.floor(this.z * 22) + 11; // 11px to 33px font scaling
+                
+                /* 📉 CRITICAL CHILL TIMING MODIFICATION:
+                   Speed values are slashed down to a super-lazy 0.3px baseline target, 
+                   completely neutralizing kinetic background clutter and user tension. */
+                this.speed = (this.z * 2.5) + 0.3; 
+                
+                this.opacity = this.z * 0.75 + 0.20; 
+                this.charsList = [];
+                this.streamLength = Math.floor(Math.random() * 8) + 4; // Compact data droplets
+            }
+
+            update() {
+                // Hard-locked ambient speed framework protects your tracks from visual disruption loops
+                if (glassMatrixCollapsed) {
+                    this.y += this.speed;
+                }
+                if (this.y - (this.streamLength * this.fontSize) > matrixCanvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                if (!glassMatrixCollapsed) return; // Keep canvas silent until glass exits viewport
+                
+                matrixCtx.font = `bold ${this.fontSize}px sans-serif`;
+                
+                // Multi-Planar Parallax Perspective Mapping
+                const parallaxX = pMouseX * this.z * 45;
+                const parallaxY = pMouseY * this.z * 25;
+                const finalX = this.x + parallaxX;
+
+                for (let i = 0; i < this.streamLength; i++) {
+                    const charY = this.y - (i * this.fontSize) + parallaxY;
+                    if (charY < -50 || charY > matrixCanvas.height + 50) continue;
+
+                    if (Math.random() * 100 > 98 || !this.charsList[i]) {
+                        this.charsList[i] = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                    }
+
+                    // Pure holographic stasis colorway (Cyan splits into rich metallic crimson inside difference context)
+                    if (i === 0) {
+                        matrixCtx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                    } else {
+                        matrixCtx.fillStyle = `rgba(0, 230, 255, ${this.opacity * (1 - i / this.streamLength)})`;
+                    }
+
+                    matrixCtx.fillText(this.charsList[i], finalX, charY);
+                }
+            }
+        }
+
+        for (let i = 0; i < matrixTotalStreams; i++) {
+            matrixStreams.push(new MatrixPerspectiveStream());
+        }
+
+        function runMatrixEngine() {
+            matrixCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            
+            // Seamless layout easing prevents cursor tearing on high-hz glass panels
+            pMouseX += (pTargetX - pMouseX) * 0.08;
+            pMouseY += (pTargetY - pMouseY) * 0.08;
+
+            matrixStreams.forEach(stream => {
+                stream.update();
+                stream.draw();
+            });
+
+            requestAnimationFrame(runMatrixEngine);
+        }
+
+        function trackParallaxInputs(rawX, rawY) {
+            pTargetX = (rawX / window.innerWidth) - 0.5;
+            pTargetY = (rawY / window.innerHeight) - 0.5;
+        }
+
+        window.addEventListener('mousemove', (e) => { trackParallaxInputs(e.clientX, e.clientY); });
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) trackParallaxInputs(e.touches[0].clientX, e.touches[0].clientY);
+        }, { passive: true });
+
+        runMatrixEngine();
 
     </script>
 </body>
