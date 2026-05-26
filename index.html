@@ -441,10 +441,7 @@
             z-index: 2; /* Layered cleanly beneath text container sheets but above background void */
             pointer-events: none;
             mix-blend-mode: normal !important; /* Normal blend mode removes processing load from WebKit compositor, stabilizing iPad FPS dropouts entirely */
-            
-            /* CRT Phosphor Blur filter creates an elegant television glow hum right over the data primitives */
             filter: blur(1.1px) drop-shadow(0 0 6px rgba(176, 255, 38, 0.75));
-            
             transform: translate3d(0, 0, 0);
             will-change: transform;
         }
@@ -878,7 +875,7 @@
                 width: '100%',
                 videoId: '-FOWzIpv6Rs',
                 playerVars: { 'el': 'embedded', 'origin': window.location.origin },
-                events: { 'onStateChange': (e) => onInlinePlayerStateChange(e, 1) }
+                events: { 'onStateChange': onInlinePlayer1StateChange }
             });
 
             inlinePlayer2 = new YT.Player('embedded-frisco-player', {
@@ -886,29 +883,33 @@
                 width: '100%',
                 videoId: 'JRJmGO9xmFw',
                 playerVars: { 'el': 'embedded', 'origin': window.location.origin },
-                events: { 'onStateChange': (e) => onInlinePlayerStateChange(e, 2) }
+                events: { 'onStateChange': onInlinePlayer2StateChange }
             });
         };
 
-        // Handles cross-inline playback collisions seamlessly on mobile browsers
-        function onInlinePlayerStateChange(event, playerIndex) {
-            // SAFEGUARD: If administrative glass is standing, freeze asset deployment immediately
+        // Decoupled explicit scope targets solve asynchronous listener context racing
+        function onInlinePlayer1StateChange(event) {
+            processPlayerState(event, inlinePlayer1, inlinePlayer2);
+        }
+
+        function onInlinePlayer2StateChange(event) {
+            processPlayerState(event, inlinePlayer2, inlinePlayer1);
+        }
+
+        function processPlayerState(event, activePlayer, genericSibling) {
+            // SAFEGUARD: If administrative glass is standing, freeze initialization and enforce hard playback pauses
             if (!glassMatrixCollapsed) {
-                if (event.data === 1) {
-                    if (playerIndex === 1 && inlinePlayer1) inlinePlayer1.pauseVideo();
-                    if (playerIndex === 2 && inlinePlayer2) inlinePlayer2.pauseVideo();
+                if (event.data === 1 && activePlayer && typeof activePlayer.pauseVideo === 'function') {
+                    activePlayer.pauseVideo();
                 }
                 return;
             }
 
             // YT.PlayerState.PLAYING == 1
             if (event.data === 1) {
-                // --- CROSS-INLINE SILENCER ENGINE MATRIX ---
-                if (playerIndex === 1 && inlinePlayer2 && typeof inlinePlayer2.pauseVideo === 'function') {
-                    inlinePlayer2.pauseVideo();
-                }
-                if (playerIndex === 2 && inlinePlayer1 && typeof inlinePlayer1.pauseVideo === 'function') {
-                    inlinePlayer1.pauseVideo();
+                // Dynamic sibling silent override matrix stops dual audio streams across platforms
+                if (genericSibling && typeof genericSibling.pauseVideo === 'function') {
+                    genericSibling.pauseVideo();
                 }
 
                 containerElement.classList.add('container-playback-active');
@@ -922,7 +923,7 @@
                         const p1 = inlinePlayer1 && typeof inlinePlayer1.getPlayerState === 'function' ? inlinePlayer1.getPlayerState() : -1;
                         const p2 = inlinePlayer2 && typeof inlinePlayer2.getPlayerState === 'function' ? inlinePlayer2.getPlayerState() : -1;
                         
-                        // Only drop visibility states if neither inline engine is running
+                        // Drop visibility overrides exclusively if all ambient streaming engines are silent
                         if (p1 !== 1 && p2 !== 1) {
                             containerElement.classList.remove('container-playback-active');
                             ambientCanvas.classList.remove('glitch-active-overdrive-ripple'); 
@@ -1067,7 +1068,7 @@
         const matrixCtx = matrixCanvas.getContext('2d');
 
         let pMouseX = 0, pMouseY = 0, pTargetX = 0, pTargetY = 0;
-        const matrixAlphabet = "010101010101アァカサタナハマヤラワガザダバパイウゥエオォキシチニヒミギリジヂビピクゥクスツヌフムユュルグズヅブプケセテネヘメレゲゼデベペコソトノホモヨョロヲゴゾドボポヴッン";
+        const matrixAlphabet = "010101010101アァカサタナハマヤラワガザダバパイウゥエオォキシチニヒミギリジヂビピクゥクスツヌフムユュルグズヅブプケセテネヘメレゲゼデベペCOSOトノホモヨョロヲゴゾドボポヴッン";
         const matrixChars = matrixAlphabet.split("");
         let matrixStreams = [];
         const matrixTotalStreams = 45; 
