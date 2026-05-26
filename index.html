@@ -903,7 +903,7 @@
 
             // YT.PlayerState.PLAYING == 1
             if (event.data === 1) {
-                // 🛠️ CROSS-INLINE SILENCER ENGINE MATRIX
+                // --- CROSS-INLINE SILENCER ENGINE MATRIX ---
                 if (playerIndex === 1 && inlinePlayer2 && typeof inlinePlayer2.pauseVideo === 'function') {
                     inlinePlayer2.pauseVideo();
                 }
@@ -934,7 +934,8 @@
         }
 
         function deactivateGlitchBackground() {
-            if (lightbox.style.display === 'flex') return;
+            // SAFEGUARD: If the glass isn't collapsed or modal is active, exit instantly to prevent frame jams
+            if (!glassMatrixCollapsed || lightbox.style.display === 'flex') return;
 
             const player1State = inlinePlayer1 && typeof inlinePlayer1.getPlayerState === 'function' ? inlinePlayer1.getPlayerState() : -1;
             const player2State = inlinePlayer2 && typeof inlinePlayer2.getPlayerState === 'function' ? inlinePlayer2.getPlayerState() : -1;
