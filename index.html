@@ -402,7 +402,7 @@
             bottom: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 1; /* Pinned safely at base backing track */
+            z-index: 1; 
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -416,10 +416,7 @@
 
         #glitch-ambient-canvas.glitch-active { opacity: 0.38; }
 
-        /* 📺 PURE CSS HARDWARE-ACCELERATED LIVE-WIRE COMPOSITOR MASK
-           By baking the displacement filter right into an infinite CSS scaling/rotation keyframe loop,
-           WebKit offloads 100% of the fractal layout calculation directly to the tablet GPU shaders.
-           Locks fluid playback at 60/120Hz while completely eliminating software processing frame drops. */
+        /* 📺 CSS KEYFRAME LIVE-WIRE HARDWARE EXCURSION COMPOSITOR */
         .glitch-active-overdrive-ripple {
             animation: mire-livewire-gpu-loop 0.28s linear infinite !important;
             filter: blur(2px) contrast(110%) url(#mire-aquarium-warper) !important;
@@ -434,20 +431,18 @@
             100% { transform: translate3d(0, 0, 0) scale(1.0) rotate(0deg); }
         }
 
-        /* --- 🪐 THE HARDWARE-ACCELERATED HIGH-FPS PERIDOT GREEN MATRIX CANVASES --- */
+        /* --- 🪐 HARDWARE-ACCELERATED HIGH-FPS PERIDOT GREEN MATRIX CANVASES --- */
         #aquarium-3d-matrix-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 2; /* Layered cleanly beneath text container sheets but above background void */
+            z-index: 2; 
             pointer-events: none;
-            mix-blend-mode: normal !important; /* Normal blend mode removes processing load from WebKit compositor, stabilizing iPad FPS dropouts entirely */
+            mix-blend-mode: normal !important; 
             
-            /* 📺 ANALOG GLITCH CRT TRANSMISSION HUM
-               Chaining a drop-shadow right over a subtle blur diffuses the raw vector paths,
-               giving the glyph streams a beautifully warm, foggy analog phosphor bloom. */
+            /* CRT Phosphor Blur filter creates an elegant television glow hum right over the data primitives */
             filter: blur(1.1px) drop-shadow(0 0 6px rgba(176, 255, 38, 0.75));
             
             transform: translate3d(0, 0, 0);
@@ -687,7 +682,11 @@
 
         <h4>Video Info (Quality/Source Material &amp; Encoding Format)</h4>
         <ul>
-            <li><code class="inline-label">🎞️ REMUX ∙ HEVC</code> = REMUX files are typically 60GB+ and should only be used by sufficiently capable devices and internet plans. WEB and other source material is self-explanatory, for the most part, except for the following elucidations. CAM = camera captured&mdash;may contain audience-projected shadow puppets (people taking their seats), candy unpackaging sounds, and involuntary reactions). TS =  HEVC/AVC/etc. is typically negligible/safe to ignore. AV1, however, is newer and currently less viable on some devices.</li>
+            <li><code class="inline-label">🎞️ REMUX ∙ HEVC</code> = REMUX files are typically 60GB+ and should only be used by sufficiently capable devices and internet plans. WEB and other source material is self-explanatory, for the most part, except for the following elucidations. HEVC, AVC, and whatever else appears on the right-side of the bullet are popular encoding formats and not likely to matter unless your device is allergic to the newer AV1 format.</li>
+            <li><code class="inline-label">CAM</code> = Camera captured&mdash;lowest-tier&mdash;traditional theater recording; may contain "bonus footage" of people taking their seats, shadow puppets, audible candy wrappers, and grunts across both the emotional and sound spectrums.</li>
+            <li><code class="inline-label">TS</code> = Telesync&mdash;better than CAM&mdash;secondary theater projection record&mdash;utilizes an isolated direct audio connection line to strip theater environment noise channels out cleanly.</li>
+            <li><code class="inline-label">TC</code> = Telecine&mdash;better than TS&mdash;direct analog cell transfer structure&mdash;pulls visual timing grids directly from archival 35mm film components before processing digital formats.</li>
+            <li>Remember, you can always ask your friendly, neighborhood AIOStreams dealer to exclude unreleased/"unofficial" files, which withholds these premature rips of lesser quality from arousing your temptations.</li>
         </ul>
 
         <h4>Audio Info (Audio Formats/Tags &amp; Channels)</h4>
@@ -893,9 +892,8 @@
 
         // Handles cross-inline playback collisions seamlessly on mobile browsers
         function onInlinePlayerStateChange(event, playerIndex) {
-            // SAFEGUARD 1: If administrative glass is standing, freeze asset deployment immediately
+            // SAFEGUARD: If administrative glass is standing, freeze asset deployment immediately
             if (!glassMatrixCollapsed) {
-                // If a player attempts to play, forcefully pause it to protect stasis layout
                 if (event.data === 1) {
                     if (playerIndex === 1 && inlinePlayer1) inlinePlayer1.pauseVideo();
                     if (playerIndex === 2 && inlinePlayer2) inlinePlayer2.pauseVideo();
@@ -905,12 +903,10 @@
 
             // YT.PlayerState.PLAYING == 1
             if (event.data === 1) {
-                // 🛠️ CROSS-INLINE SILENCER MATRIX
-                // If Player 1 starts tracking, instantly kill Player 2 audio context streams
+                // 🛠️ CROSS-INLINE SILENCER ENGINE MATRIX
                 if (playerIndex === 1 && inlinePlayer2 && typeof inlinePlayer2.pauseVideo === 'function') {
                     inlinePlayer2.pauseVideo();
                 }
-                // If Player 2 starts tracking, instantly kill Player 1 audio context streams
                 if (playerIndex === 2 && inlinePlayer1 && typeof inlinePlayer1.pauseVideo === 'function') {
                     inlinePlayer1.pauseVideo();
                 }
@@ -1173,7 +1169,6 @@
         }, { passive: true });
 
         runMatrixEngine();
-
     </script>
 </body>
 </html>
