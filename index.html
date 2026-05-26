@@ -402,7 +402,7 @@
             bottom: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 1; 
+            z-index: 1; /* Pinned safely at base backing track */
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -416,7 +416,7 @@
 
         #glitch-ambient-canvas.glitch-active { opacity: 0.38; }
 
-        /* 📺 CSS KEYFRAME LIVE-WIRE HARDWARE EXCURSION COMPOSITOR */
+        /* 📺 PURE CSS HARDWARE-ACCELERATED LIVE-WIRE COMPOSITOR MASK */
         .glitch-active-overdrive-ripple {
             animation: mire-livewire-gpu-loop 0.28s linear infinite !important;
             filter: blur(2px) contrast(110%) url(#mire-aquarium-warper) !important;
@@ -431,16 +431,16 @@
             100% { transform: translate3d(0, 0, 0) scale(1.0) rotate(0deg); }
         }
 
-        /* --- 🪐 HARDWARE-ACCELERATED HIGH-FPS PERIDOT GREEN MATRIX CANVASES --- */
+        /* --- 🪐 THE HARDWARE-ACCELERATED HIGH-FPS PERIDOT GREEN MATRIX CANVASES --- */
         #aquarium-3d-matrix-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 2; 
+            z-index: 2; /* Layered cleanly beneath text container sheets but above background void */
             pointer-events: none;
-            mix-blend-mode: normal !important; 
+            mix-blend-mode: normal !important; /* Normal blend mode removes processing load from WebKit compositor, stabilizing iPad FPS dropouts entirely */
             
             /* CRT Phosphor Blur filter creates an elegant television glow hum right over the data primitives */
             filter: blur(1.1px) drop-shadow(0 0 6px rgba(176, 255, 38, 0.75));
@@ -736,7 +736,7 @@
 
         <h3>Notes</h3>
         <ul>
-            <li>The AIOStreams Formatter is limited. Pleasing results require workarounds. For example, <code class="inline-label">{streams.editions}</code> is an array, yet four booleans (<code class="inline-label">{stream.upscaled}, {stream.regraded}, {stream.uncensored}, {stream.unrated}</code>) exist for qualities of a similar nature. Consequentially, the join() array modifier (used for cleanly displaying array contents with non-orphaned separators), cannot be used on these booleans the same way as <code class="inline-label">{streams.editions}</code>. Therefore, careful workarounds (as I have done) are required.</li>
+            <li>The AIOStreams Formatter is limited. Pleasing results require workarounds. For example, <code class="inline-label">{streams.editions}</code> is an array, yet four booleans (<code class="inline-label">{stream.upscaled}, {stream.regraded}, {stream.uncensored}, {stream.unrated}</code>) exist for qualities of a similar nature. Consequentially, the join() array modifier (used for cleanly display array contents with non-orphaned separators), cannot be used on these booleans the same way as <code class="inline-label">{streams.editions}</code>. Therefore, careful workarounds (as I have done) are required.</li>
             <li>A popular streaming app provides two columns with only so many rows, each of the same limited length for media information display. Truncation occurs in excess. Any good Formatter template will attempt to maximize displayed media information without truncation. As such, when duration/<code class="inline-label">{stream.duration}</code> does not exist, this affords an extra row that is used to display those edition and boolean qualifiers, should they exist, and if so, they appear on their own row prefixed with <code class="inline-label">⭐️</code>. Conversely, should duration/<code class="inline-label">{stream.duration}</code> exist as well as one or more of those qualifiers, the qualifiers are displayed to the right of the duration text after a <code class="inline-label">|</code> (pipe), rather than a <code class="inline-label">⭐️</code> (as to preserve my rule that emojis are to be limited to the first character of each row except for the bottom-most "release info" row). Why? Arguably, the qualifier information is somewhat negligible to the average viewer. Also, multiple qualifiers for the same media rarely exist in the wild. Secondly, preserving an extra row where possible is preferred. Thirdly, the duration text is always relatively short and affords room to the right. You may infer this is also why abbreviations are used for the various qualifiers—there is the possibility many may apply to certain media, even if exceedingly rare.</li>
             <li>On that note, you may notice <code class="inline-label">IMAX</code> appears in both <code class="inline-label">{stream.editions}</code>&mdash;again, not my design&mdash;the current AIOStreams design&mdash;perhaps because in some instances, full IMAX source material quality intentionally is not transferred to the resulting release.</li>
             <li>Rumor: did you know that one of the reasons they discontinued plasma TVs is because plasma is considered an alternate state of life and therefore its subjugation was (secretly/morally/future PR-nightmare-negation) akin to imprisoning dolphins in aquariums? Me neither. Furthermore, no AI was used to create this site&mdash;rather, I outsource my work to a sweaty conglomerate of the most intrepid, underpaid housekeepers who seldom agree.</li>
