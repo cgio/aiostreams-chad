@@ -897,20 +897,17 @@
         }
 
         function processPlayerState(event, activePlayer, genericSibling) {
-            // SAFEGUARD: If administrative glass is standing, freeze initialization and enforce hard playback pauses
-            if (!glassMatrixCollapsed) {
-                if (event.data === 1 && activePlayer && typeof activePlayer.pauseVideo === 'function') {
-                    activePlayer.pauseVideo();
-                }
-                return;
-            }
-
             // YT.PlayerState.PLAYING == 1
             if (event.data === 1) {
-                // Dynamic sibling silent override matrix stops dual audio streams across platforms
+                // Sibling silent override prevents dual inline cross-playback audio streams instantly
                 if (genericSibling && typeof genericSibling.pauseVideo === 'function') {
                     genericSibling.pauseVideo();
                 }
+
+                /* 🟢 STASIS VISUAL INSULATION:
+                   If the glass is still standing, allow the music to play smoothly, but BAIL OUT 
+                   instantly before any background animations or transparency styles launch early! */
+                if (!glassMatrixCollapsed) return;
 
                 containerElement.classList.add('container-playback-active');
                 ambientCanvas.classList.add('glitch-active-overdrive-ripple'); 
@@ -918,6 +915,9 @@
             } 
             // YT.PlayerState.PAUSED == 2 or YT.PlayerState.ENDED == 0
             else if (event.data === 2 || event.data === 0) {
+                // If the glass is upright, visual states are dormant anyway, so ignore cleanup tracking
+                if (!glassMatrixCollapsed) return;
+
                 setTimeout(() => {
                     if (lightbox.style.display !== 'flex') {
                         const p1 = inlinePlayer1 && typeof inlinePlayer1.getPlayerState === 'function' ? inlinePlayer1.getPlayerState() : -1;
