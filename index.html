@@ -761,7 +761,15 @@
 
         async function fetchTemplateStream(fileName, elementId) {
             try {
-                const response = await fetch(`${templatePath}${fileName}?t=${Date.now()}`);
+                // Upgraded with strict no-store directives and anti-cache headers
+                const response = await fetch(`${templatePath}${fileName}?t=${Date.now()}`, {
+                    cache: 'no-store',
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    }
+                });
                 if (!response.ok) throw new Error();
                 const text = await response.text();
                 document.getElementById(elementId).textContent = text.trim();
@@ -769,7 +777,7 @@
                 document.getElementById(elementId).textContent = '// Error fetching live string from repository data branch.';
             }
         }
-
+        
         function copyTemplate(elementId, buttonElement) {
             const codeString = document.getElementById(elementId).textContent;
             navigator.clipboard.writeText(codeString).then(() => {
