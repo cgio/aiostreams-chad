@@ -761,10 +761,8 @@
 
         async function fetchTemplateStream(fileName, elementId) {
             try {
-                // Keep the query string and native cache bypass, but completely drop the custom headers
-                const response = await fetch(`${templatePath}${fileName}?t=${Date.now()}`, {
-                    cache: 'no-store'
-                });
+                // Stripped completely bare to bypass Apple's WebKit security tantrums
+                const response = await fetch(`${templatePath}${fileName}?t=${Date.now()}`);
                 if (!response.ok) throw new Error();
                 const text = await response.text();
                 document.getElementById(elementId).textContent = text.trim();
