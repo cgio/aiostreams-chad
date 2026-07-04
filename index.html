@@ -761,14 +761,9 @@
 
         async function fetchTemplateStream(fileName, elementId) {
             try {
-                // Upgraded with strict no-store directives and anti-cache headers
+                // Keep the query string and native cache bypass, but completely drop the custom headers
                 const response = await fetch(`${templatePath}${fileName}?t=${Date.now()}`, {
-                    cache: 'no-store',
-                    headers: {
-                        'Cache-Control': 'no-cache, no-store, must-revalidate',
-                        'Pragma': 'no-cache',
-                        'Expires': '0'
-                    }
+                    cache: 'no-store'
                 });
                 if (!response.ok) throw new Error();
                 const text = await response.text();
