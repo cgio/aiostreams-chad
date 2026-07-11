@@ -612,20 +612,21 @@
             <li><code class="inline-label">🟩</code> = RD</li>            
             <li><code class="inline-label">🟩</code> = etc. <em>Hint: you customize&mdash;heart emojis offer the greatest color variation of all emojis to date.</em></li>
         </ul>
-
-        <h4>Proxy Status</h4>
-        <ul>
-            <li><code class="inline-label">&#127327;</code> = Proxied&mdash;only appears when a stream will be proxied. Only seen by those with technical setups.</li>
-        </ul>
         
         <h4>Stream Status (Cached/Uncached/Preloaded)</h4>
+
         <ul>
-            <li><code class="inline-label">&#9654;</code> = Cached/playback-ready&mdash;ready to play&mdash;appears next to the service, e.g., <code class="inline-label">🟩 TB &#9654;</code>.</li>
-            <li><code class="inline-label">&#9655;</code> = Cached/playback-ready, preload-selected&mdash;ready to play and pre-resolved by the server&mdash;appears next to the service, e.g., <code class="inline-label">🟩 TB &#9655;</code>.</li>
-            <li><code class="inline-label">&#9660;</code> = Uncached/playback-delayed&mdash;not ready to play/cloud download required&mdash;appears next to the service, e.g., <code class="inline-label">🟩 TB &#9660;</code>.</li>
-            <li><code class="inline-label">&#9661;</code> = Uncached/playback-delayed, actively pre-caching/downloading&mdash;presently downloading&mdash;appears next to the service, e.g., <code class="inline-label">🟩 TB &#9661;</code>.</li>
+            <li><code class="inline-label">&#x25BA;</code> = Cached/playback-ready&mdash;ready to play&mdash;appears next to the service, e.g., <code class="inline-label">🟩 TB &#9654;</code>.</li>
+            <li><code class="inline-label">&#x25BB;</code> = Cached/playback-ready, preload-selected&mdash;ready to play and pre-resolved by the server&mdash;appears next to the service, e.g., <code class="inline-label">🟩 TB &#9655;</code>.</li>
+            <li><code class="inline-label">&#x25BC;</code> = Uncached/playback-delayed&mdash;not ready to play/cloud download required&mdash;appears next to the service, e.g., <code class="inline-label">🟩 TB &#9660;</code>.</li>
+            <li><code class="inline-label">&#x25BD;</code> = Uncached/playback-delayed, actively pre-caching/downloading&mdash;presently downloading&mdash;appears next to the service, e.g., <code class="inline-label">🟩 TB &#9661;</code>.</li>
         </ul>
         
+        <h4>Proxy Status</h4>
+        <ul>
+            <li><code class="inline-label">&#x1F15F;</code> = Proxied&mdash;only appears when a stream will be proxied. Only seen by those with technical setups.</li>
+        </ul>
+
         <h4>Score</h4>
         <ul>
             <li><code class="inline-label">👑 S | 100</code> = A top-quality anime release (per SeaDex) that preserves original artwork/artistic vision&mdash;not upscaled.</li>
@@ -647,7 +648,7 @@
             <li><code class="inline-label">💎 DV</code> = Dolby Vision.</li>
             <li><code class="inline-label">💎 HDR</code> = High Dynamic Range.</li>
             <li><code class="inline-label">💎 SDR</code> = Standard Dynamic Range. Yes, a diamond is still used for a "standard" thing because artificially exaggerated colors (HDR) are not always a benefit.</li>
-            <li>Other visual tags exist and they are also prefixed with a <code class="inline-label">💎</code>. Some devices cannot properly display DV files.</li>
+            <li>Other visual tags exist and they are also prefixed with a <code class="inline-label">💎</code>. By the way, some devices cannot properly display DV files. Nuvio has workarounds for this. Stremio doesn't.</li>
         </ul>
         
         <h3>Description Template</h3>
@@ -685,23 +686,32 @@
             <li>Why the four-character and three-character difference? That is to respect the differentiation of the AIOStreams logic (array strings vs. hardcoded boolean flags described below), though I don't necessarily see the living-room-utility difference in separating the "what's cool/unique about this release" identifier stuff.</li>
         </ul>
 
-        <h4>Video Info (Quality/Source Material &amp; Encoding Format)</h4>
-        <ul>
-            <li><code class="inline-label">🎞️ REMUX ∙ HEVC</code> = REMUX files are typically 60GB+ and should only be used by sufficiently capable devices and internet plans. WEB and other source material is self-explanatory, for the most part, except for the following elucidations. HEVC, AVC, and whatever else appears on the right-side of the bullet are popular encoding formats and not likely to matter unless your device is allergic to the newer AV1 format.</li>
-            <li><code class="inline-label">CAM</code> = Camera captured&mdash;lowest-tier&mdash;traditional theater recording; may contain "bonus footage" of people taking their seats, shadow puppets, audible candy wrappers, and grunts across both the emotional and sound spectrums.</li>
-            <li><code class="inline-label">TS</code> = Telesync&mdash;better than CAM&mdash;secondary theater projection record&mdash;utilizes an isolated direct audio connection line to strip theater environment noise channels out cleanly.</li>
-            <li><code class="inline-label">TC</code> = Telecine&mdash;better than TS&mdash;direct analog cell transfer structure&mdash;pulls visual timing grids directly from archival 35mm film components before processing digital formats.</li>
-            <li>Remember, you can always ask your friendly, neighborhood AIOStreams dealer to exclude unreleased/"unofficial" files, which withholds these premature rips of lesser quality from arousing your temptations.</li>
-        </ul>
+<h4>Video Info (Quality/Source Material &amp; Codec)</h4>
+<ul>
+    <li><code class="inline-label">ORIGINAL</code> = The top-shelf tier. Appears first in the video row to tell you at-a-glance that the stream comes from the best source possible (e.g., pristine Blu-Ray or untouched WEB-DL data).</li>
+    <li><code class="inline-label">COMMON</code> = The everyday workhorse tier. Indicates standard, reliable mid-tier rips, compressed encodes, or HDTV files that look great without melting your bandwidth.</li>
+    <li><code class="inline-label">EARLY</code> = The junk tier. Reserved for premature, unreleased leaks (e.g., CAM, TS, TC). Strictly for the impatient who don't mind a heavily compromised viewing experience.</li>
+    <li><code class="inline-label">REMUX</code> = These streams/files are typically 60GB+ and should only be used by sufficiently capable devices and unlimited data internet plans. These are top-quality versions, come from the best source possible, and sometimes include additional languages, subtitles, etc.</li>
+    <li><code class="inline-label">BLU-RAY</code> = The physical disc release, but unlike a heavy REMUX, these are standard compressed encodes (BDRips). They shrink the massive file size down to something reasonable while keeping high-fidelity visuals intact.</li>
+    <li><code class="inline-label">WEB</code> = Sourced from original content, should be 1:1 like a REMUX, but the source is from an original internet (hence "WEB") movie file.
+    <br><br>
+    WEB and other source material is self-explanatory, for the most part, except for the following elucidations. HEVC, AVC, and whatever else appears on the right side of the row are popular encoding formats and not likely to matter unless your device is allergic to the newer AV1 format.</li>
+    <li><code class="inline-label">WEB-RIP</code> = Unlike pristine WEB (WEB-DL) files which are captured 1:1 from the streaming provider, a WEB-Rip is a re-encode. It's often captured by recording the stream or compressed afterward, trading a tiny bit of fidelity for a much lighter file.</li>
+    <li><code class="inline-label">HDTV</code> = Sourced from a high-definition television broadcast. Great for catching network TV shows, but may occasionally come with a baked-in channel logo or slightly lower bitrates compared to a streaming release.</li>
+    <li><code class="inline-label">CAM</code> = Camera captured&mdash;lowest-tier&mdash;traditional theater recording; may contain "bonus footage" of people taking their seats, shadow puppets, audible candy wrappers, and grunts across both the emotional and sound spectrums.</li>
+    <li><code class="inline-label">TS</code> = Telesync&mdash;better than CAM&mdash;secondary theater projection record&mdash;utilizes an isolated direct audio connection line to strip theater environment noise channels out cleanly.</li>
+    <li><code class="inline-label">TC</code> = Telecine&mdash;better than TS&mdash;direct analog cell transfer structure&mdash;pulls visual timing grids directly from archival 35mm film components before processing digital formats.</li>
+    <li>Remember, you can always ask your friendly, neighborhood AIOStreams dealer to exclude early/unreleased/"unofficial" files, which withholds these premature rips of lesser quality from arousing your temptations. If you want more terminology details, check out the official <a href="https://trash-guides.info/Radarr/radarr-setup-quality-profiles/" target="_blank">TRaSH Guides Quality Profiles</a>.</li>
+</ul>
 
-        <h4>Audio Channels &amp; Codecs</h4>
-        <ul>
-            <li><code class="inline-label">🔊 7.1 | 5.1 | 2.1 ∙ Atmos | TrueHD | DD+</code> = audio format/technology for those with capable equipment followed by the number of audio channels, ordered from greatest to least. Truncation (... marks) may occur when many formats are available. Truncation intentionally occurs separately to provide a larger picture of available formats. By the way, why the pipe (|) characters? Because these represent distinct modes, whether audio channels or audio codec modes.</li>
-        </ul>
+<h4>Audio Channels &amp; Codecs</h4>
+<ul>
+    <li><code class="inline-label">🔊 7.1/5.1/ATMOS/TRUEHD/DD+</code> = Displays the number of audio channels available (ordered greatest to least), immediately followed by the specific audio codecs. If you have a multi-speaker surround sound setup, look for a release with more than 2.0 channels to get those extra speakers firing. The accompanying codecs indicate preserved audio fidelity. Because Stremio only allows so many characters per row, an ellipsis (...) truncation mark may appear if a file provides many audio formats. You can toggle between these available tracks using the audio track selection icon on your player's bottom control panel during playback.</li>
+</ul>
 
         <h4>Language Info</h4>
         <ul>
-            <li><code class="inline-label">🌐</code> = available languages depicted as flags. Self-explanatory. <code class="inline-label">DUAL</code> represents Dual Audio. Similar shortening of audio tags also exist. The Mexican flag represents Latin America because corporate AI says it's the most recognizable Spanish-speaking Latin American flag. Got a problem? Fight AI about it and enjoy the dodging/de-escalation maneuvers. It's one Earth, anyway, and all the lines/labels are imaginary.</li>
+            <li><code class="inline-label">🎙️</code> = available spoken languages depicted as flags. Self-explanatory. <code class="inline-label">DUAL</code> represents Dual Audio. Similar shortening of audio tags also exist. The Mexican flag represents Latin America because corporate AI says it's the most recognizable Spanish-speaking Latin American flag. Got a problem? Fight AI about it and enjoy the dodging/de-escalation maneuvers. It's one Earth, anyway, and all the lines/labels are imaginary.</li>
         </ul>
 
         <h4>Subtitle Info</h4>
@@ -709,22 +719,23 @@
             <li><code class="inline-label">💬</code> = available subtitles depicted as flags. Self-explanatory. Quite similar to language display. Look, like I told you in languages, a port is a port, land mass or computer class. Names and numbers may change, but what prevails is what counts.</li>
         </ul>        
 
-        <h4>File Info (File Size, Bitrate, Repack, Seeders, Tracker &amp; Age)</h4>
-        <ul>
-            <li><code class="inline-label">📦 9GB</code> = file size (typically GB)&mdash;watch this value if your internet plan is slow or has limited data, your WiFi is poor, or your device is slow.</li>
-            <li><code class="inline-label">20MBPS</code> = bitrate&mdash;a visual fidelity metric (some encoders are more efficient than others, however, so it's not always a perfect fidelity metric). Btw, the remainder on this row are "stats for nerds" and typically have to do with "peer" activity, which you shouldn't bother with unless you know what you're doing. Ya, reflect on that for a minute, and you could say it is better to be peerless in many things in life, mon.</li>
-            <li><code class="inline-label">&#127329;</code> = repack status; only appears when a release has been re-released with what should be improvements. Not so common, but it does appear with some regularity. Perhaps a tad more regular than seeing a recognizably-shaped cloud in the sky.</li>
-            <li><code class="inline-label">10↑</code> = # of seeders&mdash;typically negligible unless you are sharing bytes with your peers, which I wouldn't advise when "DEB" and "USE" solutions exist.</li>
-            <li><code class="inline-label">PF⊕</code> = tracker type&mdash;in this example, both "P"/"private" and "F"/"freeleech" apply. Again, stats for nerds/power users/inside-baseball.</li>
-            <li><code class="inline-label">100D</code> = # age in days&mdash;in this example, the contraband/treasure has been available for 100 days. Not really relevant to the layman who wants to know it's simply available.</li>
-        </ul>
+<h4>File Info (File Size/Bitrate/Library/Repack/Seeders/Tracker/Age)</h4>
+<ul>
+    <li><code class="inline-label">📦 9GB</code> = file size (typically GB)&mdash;this package icon anchors the metadata row. Watch this value if your internet plan is slow or has limited data, your WiFi is poor, or your device is slow.</li>
+    <li><code class="inline-label">20MBPS</code> = bitrate&mdashthis is a visual fidelity metric (some encoders are more efficient than others, however, so it's not always a perfect fidelity metric). Btw, the remainder on this row are "stats for nerds" and typically have to do with "peer" activity, which you shouldn't bother with unless you know what you're doing. Ya, reflect on that for a minute, and you could say it is better to be peerless in many things in life, mon.</li>
+    <li><code class="inline-label">🅛</code> = library status; only appears when a release has been added to your library (probably because you played it before).</li>
+    <li><code class="inline-label">🅡</code> = repack status; only appears when a release has been re-released with what should be improvements. Not so common, but it does appear with some regularity. Perhaps a tad more regular than seeing a recognizably-shaped cloud in the sky.</li>
+    <li><code class="inline-label">10↑</code> = # of seeders&mdash;typically negligible unless you are sharing bytes with your peers, which I wouldn't advise when "DEB" and "USE" solutions exist.</li>
+    <li><code class="inline-label">(P)</code> = private tracker status&mdash;for P2P use cases&mdash;indicates file originates from an invite-only digital club. Pure insider-baseball.</li>
+    <li><code class="inline-label">(F)</code> = freeleech status&mdash;in the P2P economy, this tells the user that downloading this specific bounty won't count against their upload/download data ratio. A nice perk for the data-conscious hoarder.</li>
+    <li><code class="inline-label">100D</code> = # age in days&mdash;in this final slot, the contraband/treasure has been available for 100 days. Not really relevant to the layman who just wants to know it's simply available.</li>
+</ul>
 
         <h4>Release Info (Stream Type/Addon Name/Indexer/Release Group)</h4>
         <ul>
             <li><code class="inline-label">⛵️ DEB</code> = the stream type; typically "DEB" or "USE" unless you like to share bytes with your peers/expose your IP address. Stream types are abbreviated to the first three characters to conserve streaming app UI/card space&mdash;also forbidden to mention these stream types/names in full on GitHub, lest we invoke the wrath of Caesar's triumvirate censorship panel who stroke their long, enmeshed beards of partiality. Truncated to three characters to fit on single line of limited lines per Stremio UI design. See AIOStreams UI/documentation for the full addons list.</li>
             <li><code class="inline-label">TOR</code> = again, the walls have ears in Caesar's kingdom&mdash;better put the kibosh on the loose lips&mdash;they <em>sink ships</em>. Truncated to three characters to fit on single line of limited lines per Stremio UI design. See AIOStreams UI/documentation for the full addons list.</li>
-				<li><code class="inline-label">BIT</code> = where the addon got the stream, i.e., the specific content scraper, torrent tracker, Usenet indexer, or upstream API endpoint responsible for locating and providing the media stream's metadata and hash. Truncated to three characters to fit on single line of limited lines per Stremio UI design. See AIOStreams UI/documentation for the full addons list.</li>
-<!-- You may also see <code class="inline-label">📚 LIB</code> indicating the item is in your library/you already played that particular file/release. -->
+				<li><code class="inline-label">THE</code> = where the addon got the stream, i.e., the specific content scraper, torrent tracker, Usenet indexer, or upstream API endpoint responsible for locating and providing the media stream's metadata and hash. Truncated to three characters to fit on a single line within the tight constraints of the Stremio UI design. See the AIOStreams documentation for the full list. This truncation is intentional here and for the three attributes prior; shortening preserves valuable space for the following release group name and shields the faint of heart from seeing further "nautical" connotations.</li>
             <li><code class="inline-label">F*******R</code> = the release group, and one of the most prolific for the example, here. <em>Hint: it's neither "FILMMAKER", nor "FIREWATER", nor "FUC*OVER".</em> These contraband/treasure purveyors vary in name greatly, just like their Egghead-Scrabble'd-World-Government-corporate-name adversaries. Look up TRaSH-Guides for an opinionated list of the mightiest maritime marauders/missionaries (you be the judge). Truncated to 10 characters to fit on single line of limited lines per Stremio UI design.</li>
         </ul>
 
