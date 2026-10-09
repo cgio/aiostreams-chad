@@ -118,7 +118,7 @@
         .media-wrapper { width: 100%; max-width: 600px; margin: 42px auto; }
         .video-container { width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 
-        /* --- THE COMPREHENSIVE RESPONSIVE SCREENSHOT MATRIX --- */
+/* --- THE COMPREHENSIVE RESPONSIVE SCREENSHOT MATRIX --- */
         .screenshot-grid {
             display: flex;
             flex-wrap: wrap;
@@ -137,23 +137,18 @@
         .screenshot-item {
             flex: 1 1 calc(50% - 16px);
             min-width: 260px;
-            max-width: 300px;
-            background-color: #1b1e22; /* Matches the dark background of the TV card surfaces */
-            border-radius: 8px; /* Stable radius container */
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-            /* Force GPU sub-pixel isolation to prevent zoom-aliasing fringing */
-            transform: translateZ(0);
-            -webkit-mask-image: -webkit-radial-gradient(white, black);
+            max-width: 320px;
+            background: transparent;
         }
 
         .screenshot-item img {
             display: block;
             width: 100%;
             height: auto;
-            /* Eliminates bilinear edge blurring during browser zoom scaling */
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+            /* Standard high-quality smooth scaling */
+            image-rendering: auto;
         }
 
         @media (max-width: 600px) {
